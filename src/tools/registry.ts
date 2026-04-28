@@ -1,5 +1,9 @@
 import type { ToolManifest } from "./types"
 import { manifest as heicToJpgManifest } from "./heic-to-jpg/manifest"
+import { manifest as screenshotMockupManifest } from "./screenshot-mockup/manifest"
+import { manifest as tweetToImageManifest } from "./tweet-to-image/manifest"
+import { manifest as socialCoverManifest } from "./social-cover/manifest"
+import { manifest as mp4ToGifManifest } from "./mp4-to-gif/manifest"
 
 /**
  * Central registry of all tools.
@@ -10,7 +14,13 @@ import { manifest as heicToJpgManifest } from "./heic-to-jpg/manifest"
  *
  * Order here drives display order in homepage / sitemap.
  */
-export const tools: ToolManifest[] = [heicToJpgManifest]
+export const tools: ToolManifest[] = [
+  heicToJpgManifest,
+  screenshotMockupManifest,
+  tweetToImageManifest,
+  socialCoverManifest,
+  mp4ToGifManifest,
+]
 
 export const toolsBySlug = Object.fromEntries(tools.map((t) => [t.slug, t]))
 
