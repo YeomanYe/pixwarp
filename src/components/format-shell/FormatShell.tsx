@@ -60,10 +60,10 @@ export function FormatShell({ format }: FormatShellProps) {
         </div>
       </section>
 
-      {/* Interactive component (Compare widget for HEIC etc.) */}
+      {/* Static demo: same photo across formats */}
       {Component && (
         <section className="mb-10 rounded-lg border bg-[var(--card)] p-6">
-          <h2 className="mb-4 text-xl font-semibold">Compare on your own photo</h2>
+          <h2 className="mb-4 text-xl font-semibold">See it: same photo, three formats</h2>
           <Component />
         </section>
       )}

@@ -1,6 +1,8 @@
 import type { FormatManifest } from "../types"
 import { HeicCompareWidget } from "./ui"
 
+// HeicCompareWidget is now a server-rendered static demo (no client interactivity).
+
 export const manifest: FormatManifest = {
   slug: "heic",
   category: "image",

@@ -1,297 +1,153 @@
-"use client"
+import Link from "next/link"
 
-import { useState, useCallback } from "react"
-import dynamic from "next/dynamic"
-
-type Heic2Any = (opts: { blob: Blob; toType: string; quality?: number }) => Promise<Blob | Blob[]>
-
-interface ComparisonResult {
-  heicSize: number
-  jpgSize: number
-  pngSize: number
-  jpgUrl: string
-  pngUrl: string
-  heicUrl: string
-  fileName: string
+interface FormatRow {
+  name: string
+  url: string
+  download: string
+  size: number
+  note: string
+  ratio: string
+  preview?: string
 }
+
+const SAMPLE_ROWS: FormatRow[] = [
+  {
+    name: "HEIC (original)",
+    url: "/samples/heic/winter-photo.heic",
+    download: "winter-photo.heic",
+    size: 248_006,
+    note: "Apple iOS default — half the size of JPG",
+    ratio: "baseline",
+  },
+  {
+    name: "JPG (quality 90)",
+    url: "/samples/heic/winter-photo.jpg",
+    download: "winter-photo.jpg",
+    size: 687_840,
+    note: "Universal compatibility, lossy compression",
+    ratio: "2.77× larger",
+    preview: "/samples/heic/winter-photo.jpg",
+  },
+  {
+    name: "PNG (lossless)",
+    url: "/samples/heic/winter-photo.png",
+    download: "winter-photo.png",
+    size: 2_421_339,
+    note: "Lossless, but no advantage for photos",
+    ratio: "9.76× larger",
+    preview: "/samples/heic/winter-photo.png",
+  },
+]
 
 function formatBytes(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`
-  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`
   return `${(bytes / (1024 * 1024)).toFixed(2)} MB`
 }
 
-function ratio(a: number, b: number): string {
-  if (b === 0) return "—"
-  const r = a / b
-  return r >= 1 ? `${r.toFixed(2)}× larger` : `${(1 / r).toFixed(2)}× smaller`
-}
-
-function HeicCompareInner() {
-  const [result, setResult] = useState<ComparisonResult | null>(null)
-  const [busy, setBusy] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-
-  const processFile = useCallback(async (file: File) => {
-    setBusy(true)
-    setError(null)
-    try {
-      const heic2anyModule = await import("heic2any")
-      const heic2any =
-        (heic2anyModule.default as unknown as Heic2Any) ?? (heic2anyModule as unknown as Heic2Any)
-
-      const jpgBlobRaw = await heic2any({ blob: file, toType: "image/jpeg", quality: 0.9 })
-      const jpgBlob = Array.isArray(jpgBlobRaw) ? jpgBlobRaw[0] : jpgBlobRaw
-
-      const pngBlobRaw = await heic2any({ blob: file, toType: "image/png" })
-      const pngBlob = Array.isArray(pngBlobRaw) ? pngBlobRaw[0] : pngBlobRaw
-
-      setResult({
-        heicSize: file.size,
-        jpgSize: jpgBlob.size,
-        pngSize: pngBlob.size,
-        heicUrl: URL.createObjectURL(file),
-        jpgUrl: URL.createObjectURL(jpgBlob),
-        pngUrl: URL.createObjectURL(pngBlob),
-        fileName: file.name.replace(/\.(heic|heif)$/i, ""),
-      })
-    } catch (err) {
-      console.error(err)
-      setError(err instanceof Error ? err.message : "Failed to process file")
-    } finally {
-      setBusy(false)
-    }
-  }, [])
-
-  const handleFiles = useCallback(
-    (fileList: FileList | null) => {
-      if (!fileList || fileList.length === 0) return
-      const file = fileList[0]
-      const lower = file.name.toLowerCase()
-      if (!lower.endsWith(".heic") && !lower.endsWith(".heif")) {
-        setError(`Not a HEIC file: ${file.name}`)
-        return
-      }
-      void processFile(file)
-    },
-    [processFile],
-  )
-
-  const handleClear = useCallback(() => {
-    if (result) {
-      URL.revokeObjectURL(result.heicUrl)
-      URL.revokeObjectURL(result.jpgUrl)
-      URL.revokeObjectURL(result.pngUrl)
-    }
-    setResult(null)
-    setError(null)
-  }, [result])
-
-  const loadSample = useCallback(
-    async (samplePath: string) => {
-      setBusy(true)
-      setError(null)
-      try {
-        const res = await fetch(samplePath)
-        if (!res.ok) throw new Error(`Failed to load sample (${res.status})`)
-        const blob = await res.blob()
-        const fileName = samplePath.split("/").pop() ?? "sample.heic"
-        const file = new File([blob], fileName, { type: "image/heic" })
-        await processFile(file)
-      } catch (err) {
-        console.error(err)
-        setError(err instanceof Error ? err.message : "Failed to load sample")
-        setBusy(false)
-      }
-    },
-    [processFile],
-  )
+export function HeicCompareWidget() {
+  const jpg = SAMPLE_ROWS[1]
+  const png = SAMPLE_ROWS[2]
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <p className="text-sm text-[var(--muted)]">
-        Drop a HEIC photo here. Your file is converted to JPG and PNG <strong>locally</strong> — it
-        never leaves your device. Compare the file sizes and preview side-by-side, then download all
-        three formats.
+        Below is the same photo in three formats — a winter landscape originally shot in HEIC. The
+        file sizes are real (just convert it yourself with{" "}
+        <code className="rounded bg-[var(--muted-bg)] px-1 py-0.5 font-mono text-xs">sips</code> or
+        any HEIC tool to verify).
       </p>
 
-      <div
-        onDrop={(e) => {
-          e.preventDefault()
-          handleFiles(e.dataTransfer.files)
-        }}
-        onDragOver={(e) => e.preventDefault()}
-        className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-[var(--border)] bg-[var(--muted-bg)]/40 px-6 py-10 text-center"
-      >
-        <p className="mb-3 text-sm font-medium">Drop a HEIC file to compare</p>
-        <label className="cursor-pointer rounded-md bg-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--accent-fg)] transition hover:bg-[var(--accent-hover)]">
-          Choose file
-          <input
-            type="file"
-            accept=".heic,.heif,image/heic,image/heif"
-            onChange={(e) => handleFiles(e.target.files)}
-            className="hidden"
+      {/* Side-by-side preview */}
+      <div className="grid gap-3 sm:grid-cols-2">
+        <figure className="rounded-lg border bg-[var(--card)] p-2">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={jpg.preview!}
+            alt="Winter photo rendered as JPG"
+            className="h-auto w-full rounded object-contain"
+            style={{ maxHeight: 360 }}
           />
-        </label>
+          <figcaption className="mt-2 text-center text-xs text-[var(--muted)]">
+            JPG · {formatBytes(jpg.size)}
+          </figcaption>
+        </figure>
+        <figure className="rounded-lg border bg-[var(--card)] p-2">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={png.preview!}
+            alt="Winter photo rendered as PNG"
+            className="h-auto w-full rounded object-contain"
+            style={{ maxHeight: 360 }}
+          />
+          <figcaption className="mt-2 text-center text-xs text-[var(--muted)]">
+            PNG · {formatBytes(png.size)}
+          </figcaption>
+        </figure>
+      </div>
+      <p className="text-xs text-[var(--muted)]">
+        The HEIC original is not previewed — most browsers (including Chrome and Firefox) can&apos;t
+        decode HEIC natively. That&apos;s the practical point: HEIC is smaller, but you usually have
+        to convert it before posting it anywhere outside Apple&apos;s ecosystem.
+      </p>
+
+      {/* Size comparison table */}
+      <div className="overflow-hidden rounded-lg border bg-[var(--card)]">
+        <table className="w-full text-sm">
+          <thead className="bg-[var(--muted-bg)]/50 text-left">
+            <tr>
+              <th className="px-4 py-2 font-mono text-xs tracking-wider text-[var(--muted)] uppercase">
+                Format
+              </th>
+              <th className="px-4 py-2 font-mono text-xs tracking-wider text-[var(--muted)] uppercase">
+                Size
+              </th>
+              <th className="px-4 py-2 font-mono text-xs tracking-wider text-[var(--muted)] uppercase">
+                vs HEIC
+              </th>
+              <th className="px-4 py-2 font-mono text-xs tracking-wider text-[var(--muted)] uppercase">
+                Note
+              </th>
+              <th className="px-4 py-2 font-mono text-xs tracking-wider text-[var(--muted)] uppercase">
+                Download
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {SAMPLE_ROWS.map((row, i) => (
+              <tr key={row.name} className={i === 0 ? "" : "border-t"}>
+                <td className="px-4 py-3 font-medium">{row.name}</td>
+                <td className="px-4 py-3 font-mono">{formatBytes(row.size)}</td>
+                <td className="px-4 py-3 text-[var(--muted)]">{row.ratio}</td>
+                <td className="px-4 py-3 text-[var(--muted)]">{row.note}</td>
+                <td className="px-4 py-3">
+                  <a
+                    href={row.url}
+                    download={row.download}
+                    className="text-[var(--accent)] hover:underline"
+                  >
+                    .{row.download.split(".").pop()} ↓
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
-      {/* Sample HEIC files for users without one */}
-      {!result && !busy && (
-        <div className="rounded-lg border bg-[var(--muted-bg)]/30 p-4">
-          <div className="mb-2 text-sm font-semibold">No HEIC handy? Try a sample:</div>
-          <div className="flex flex-wrap gap-2 text-xs">
-            {[
-              { path: "/samples/heic/winter-photo.heic", label: "Winter (242 KB)" },
-              { path: "/samples/heic/autumn-photo.heic", label: "Autumn (287 KB)" },
-              { path: "/samples/heic/iphone-portrait.heic", label: "Portrait (701 KB)" },
-              { path: "/samples/heic/live-photo.heic", label: "Live Photo (774 KB)" },
-            ].map((s) => (
-              <button
-                key={s.path}
-                type="button"
-                onClick={() => loadSample(s.path)}
-                className="rounded-md border bg-[var(--card)] px-3 py-1.5 transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
-              >
-                {s.label}
-              </button>
-            ))}
-          </div>
-          <p className="mt-2 text-xs text-[var(--muted)]">
-            Samples courtesy of nokiatech/heif and libheif test suite.
-          </p>
-        </div>
-      )}
-
-      {busy && <p className="text-center text-sm text-[var(--muted)]">Converting and analyzing…</p>}
-      {error && (
-        <p className="rounded-md border border-[var(--error)]/30 bg-[var(--error)]/10 px-3 py-2 text-sm text-[var(--error)]">
-          {error}
+      {/* CTA to interactive tool */}
+      <div className="rounded-lg border border-[var(--accent)]/30 bg-[var(--accent)]/5 p-4">
+        <p className="mb-2 text-sm">
+          <strong>Want to compare your own photo?</strong> Drop a HEIC into our converter and see
+          the real size difference for your file — fully local, no upload.
         </p>
-      )}
-
-      {result && (
-        <div className="space-y-4">
-          {/* Size comparison table */}
-          <div className="overflow-hidden rounded-lg border bg-[var(--card)]">
-            <table className="w-full text-sm">
-              <thead className="bg-[var(--muted-bg)]/50 text-left">
-                <tr>
-                  <th className="px-4 py-2 font-mono text-xs tracking-wider text-[var(--muted)] uppercase">
-                    Format
-                  </th>
-                  <th className="px-4 py-2 font-mono text-xs tracking-wider text-[var(--muted)] uppercase">
-                    Size
-                  </th>
-                  <th className="px-4 py-2 font-mono text-xs tracking-wider text-[var(--muted)] uppercase">
-                    vs HEIC
-                  </th>
-                  <th className="px-4 py-2 font-mono text-xs tracking-wider text-[var(--muted)] uppercase">
-                    Download
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-t">
-                  <td className="px-4 py-3 font-medium">HEIC (original)</td>
-                  <td className="px-4 py-3 font-mono">{formatBytes(result.heicSize)}</td>
-                  <td className="px-4 py-3 text-[var(--muted)]">baseline</td>
-                  <td className="px-4 py-3">
-                    <a
-                      href={result.heicUrl}
-                      download={`${result.fileName}.heic`}
-                      className="text-[var(--accent)] hover:underline"
-                    >
-                      .heic ↓
-                    </a>
-                  </td>
-                </tr>
-                <tr className="border-t">
-                  <td className="px-4 py-3 font-medium">JPG (quality 90)</td>
-                  <td className="px-4 py-3 font-mono">{formatBytes(result.jpgSize)}</td>
-                  <td className="px-4 py-3 text-[var(--muted)]">
-                    {ratio(result.jpgSize, result.heicSize)}
-                  </td>
-                  <td className="px-4 py-3">
-                    <a
-                      href={result.jpgUrl}
-                      download={`${result.fileName}.jpg`}
-                      className="text-[var(--accent)] hover:underline"
-                    >
-                      .jpg ↓
-                    </a>
-                  </td>
-                </tr>
-                <tr className="border-t">
-                  <td className="px-4 py-3 font-medium">PNG (lossless)</td>
-                  <td className="px-4 py-3 font-mono">{formatBytes(result.pngSize)}</td>
-                  <td className="px-4 py-3 text-[var(--muted)]">
-                    {ratio(result.pngSize, result.heicSize)}
-                  </td>
-                  <td className="px-4 py-3">
-                    <a
-                      href={result.pngUrl}
-                      download={`${result.fileName}.png`}
-                      className="text-[var(--accent)] hover:underline"
-                    >
-                      .png ↓
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          {/* Side-by-side preview */}
-          <div>
-            <div className="mb-2 text-sm font-semibold">Side-by-side preview</div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              <figure className="rounded-lg border bg-[var(--card)] p-2">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={result.jpgUrl}
-                  alt="JPG render"
-                  className="h-auto w-full rounded object-contain"
-                  style={{ maxHeight: 400 }}
-                />
-                <figcaption className="mt-2 text-center text-xs text-[var(--muted)]">
-                  JPG · {formatBytes(result.jpgSize)}
-                </figcaption>
-              </figure>
-              <figure className="rounded-lg border bg-[var(--card)] p-2">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={result.pngUrl}
-                  alt="PNG render"
-                  className="h-auto w-full rounded object-contain"
-                  style={{ maxHeight: 400 }}
-                />
-                <figcaption className="mt-2 text-center text-xs text-[var(--muted)]">
-                  PNG · {formatBytes(result.pngSize)}
-                </figcaption>
-              </figure>
-            </div>
-            <p className="mt-2 text-xs text-[var(--muted)]">
-              Note: HEIC itself does not render in most browsers — that&apos;s why you only see JPG
-              and PNG previews above.
-            </p>
-          </div>
-
-          <button
-            type="button"
-            onClick={handleClear}
-            className="text-sm text-[var(--muted)] hover:text-[var(--foreground)]"
-          >
-            Clear and try another file
-          </button>
-        </div>
-      )}
+        <Link
+          href="/tools/heic-to-jpg"
+          className="inline-flex items-center gap-1 text-sm font-medium text-[var(--accent)] hover:underline"
+        >
+          Open HEIC to JPG converter →
+        </Link>
+      </div>
     </div>
   )
 }
-
-export const HeicCompareWidget = dynamic(() => Promise.resolve(HeicCompareInner), {
-  ssr: false,
-  loading: () => (
-    <div className="py-8 text-center text-sm text-[var(--muted)]">Loading widget…</div>
-  ),
-})
