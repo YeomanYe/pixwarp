@@ -87,6 +87,26 @@ function HeicCompareInner() {
     setError(null)
   }, [result])
 
+  const loadSample = useCallback(
+    async (samplePath: string) => {
+      setBusy(true)
+      setError(null)
+      try {
+        const res = await fetch(samplePath)
+        if (!res.ok) throw new Error(`Failed to load sample (${res.status})`)
+        const blob = await res.blob()
+        const fileName = samplePath.split("/").pop() ?? "sample.heic"
+        const file = new File([blob], fileName, { type: "image/heic" })
+        await processFile(file)
+      } catch (err) {
+        console.error(err)
+        setError(err instanceof Error ? err.message : "Failed to load sample")
+        setBusy(false)
+      }
+    },
+    [processFile],
+  )
+
   return (
     <div className="space-y-4">
       <p className="text-sm text-[var(--muted)]">
@@ -114,6 +134,33 @@ function HeicCompareInner() {
           />
         </label>
       </div>
+
+      {/* Sample HEIC files for users without one */}
+      {!result && !busy && (
+        <div className="rounded-lg border bg-[var(--muted-bg)]/30 p-4">
+          <div className="mb-2 text-sm font-semibold">No HEIC handy? Try a sample:</div>
+          <div className="flex flex-wrap gap-2 text-xs">
+            {[
+              { path: "/samples/heic/winter-photo.heic", label: "Winter (242 KB)" },
+              { path: "/samples/heic/autumn-photo.heic", label: "Autumn (287 KB)" },
+              { path: "/samples/heic/iphone-portrait.heic", label: "Portrait (701 KB)" },
+              { path: "/samples/heic/live-photo.heic", label: "Live Photo (774 KB)" },
+            ].map((s) => (
+              <button
+                key={s.path}
+                type="button"
+                onClick={() => loadSample(s.path)}
+                className="rounded-md border bg-[var(--card)] px-3 py-1.5 transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
+              >
+                {s.label}
+              </button>
+            ))}
+          </div>
+          <p className="mt-2 text-xs text-[var(--muted)]">
+            Samples courtesy of nokiatech/heif and libheif test suite.
+          </p>
+        </div>
+      )}
 
       {busy && <p className="text-center text-sm text-[var(--muted)]">Converting and analyzing…</p>}
       {error && (
