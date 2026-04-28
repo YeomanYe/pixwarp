@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next"
 import { tools } from "@/tools/registry"
+import { formats } from "@/formats/registry"
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://pixwarp.app"
 
@@ -15,5 +16,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "weekly",
     priority: 0.8,
   }))
-  return [...staticEntries, ...toolEntries]
+  const formatEntries: MetadataRoute.Sitemap = formats.map((f) => ({
+    url: `${BASE_URL}/format/${f.slug}`,
+    lastModified: f.lastUpdated ? new Date(f.lastUpdated) : now,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }))
+  return [...staticEntries, ...toolEntries, ...formatEntries]
 }

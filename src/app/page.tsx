@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { tools, categoryLabels } from "@/tools/registry"
+import { formats, formatCategoryLabels } from "@/formats/registry"
 
 export default function HomePage() {
   return (
@@ -68,6 +69,51 @@ export default function HomePage() {
                     <p className="mt-1.5 line-clamp-2 text-sm text-[var(--muted)]">
                       {tool.description}
                     </p>
+                  </Link>
+                </li>
+              )
+            })}
+          </ul>
+        )}
+      </section>
+
+      {/* Formats grid */}
+      <section id="formats" className="mt-16 scroll-mt-20">
+        <div className="mb-6 flex items-end justify-between">
+          <div>
+            <h2 className="text-2xl font-semibold tracking-tight">File format guides</h2>
+            <p className="mt-1 text-sm text-[var(--muted)]">
+              Plain-English explanations + interactive comparisons.
+            </p>
+          </div>
+        </div>
+        {formats.length === 0 ? (
+          <p className="text-[var(--muted)]">No format guides yet.</p>
+        ) : (
+          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {formats.map((fmt) => {
+              const cat = formatCategoryLabels[fmt.category]
+              return (
+                <li key={fmt.slug}>
+                  <Link
+                    href={`/format/${fmt.slug}`}
+                    className="group block rounded-lg border bg-[var(--card)] p-5 transition hover:border-[var(--accent)] hover:shadow-sm"
+                  >
+                    <div className="mb-2 flex items-center justify-between">
+                      <span
+                        className="font-mono text-[10px] tracking-widest uppercase"
+                        style={{ color: cat?.accent }}
+                      >
+                        {cat?.label} format
+                      </span>
+                      <span className="font-mono text-[10px] text-[var(--muted)]">
+                        since {fmt.year}
+                      </span>
+                    </div>
+                    <div className="font-semibold tracking-tight transition group-hover:text-[var(--accent)]">
+                      .{fmt.extensions[0]} — {fmt.name}
+                    </div>
+                    <p className="mt-1.5 line-clamp-2 text-sm text-[var(--muted)]">{fmt.tagline}</p>
                   </Link>
                 </li>
               )

@@ -11,10 +11,16 @@ export function Nav() {
         </Link>
         <div className="flex items-center gap-1 text-sm">
           <Link
-            href="/"
+            href="/#tools"
             className="rounded-md px-3 py-1.5 text-[var(--muted)] transition hover:bg-[var(--muted-bg)] hover:text-[var(--foreground)]"
           >
             Tools
+          </Link>
+          <Link
+            href="/#formats"
+            className="rounded-md px-3 py-1.5 text-[var(--muted)] transition hover:bg-[var(--muted-bg)] hover:text-[var(--foreground)]"
+          >
+            Formats
           </Link>
           <Link
             href="/pricing"
