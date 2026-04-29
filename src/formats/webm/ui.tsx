@@ -11,6 +11,7 @@ interface VideoSample {
   mp4Name: string
   mp4Size: number
   useCase: string
+  source: string
 }
 
 const SAMPLES: VideoSample[] = [
@@ -19,84 +20,90 @@ const SAMPLES: VideoSample[] = [
     shape: "wide",
     label: "Wide landscape",
     dimensions: "854 × 480",
-    posterUrl: "/samples/webm/bbb-16x9-poster.jpg",
-    webmUrl: "/samples/webm/bbb-16x9.webm",
-    webmName: "bbb-16x9.webm",
+    posterUrl: "/samples/webm/bbb-burrow-16x9-poster.jpg",
+    webmUrl: "/samples/webm/bbb-burrow-16x9.webm",
+    webmName: "bbb-burrow-16x9.webm",
     webmSize: 58_073,
-    mp4Url: "/samples/webm/bbb-16x9.mp4",
-    mp4Name: "bbb-16x9.mp4",
+    mp4Url: "/samples/webm/bbb-burrow-16x9.mp4",
+    mp4Name: "bbb-burrow-16x9.mp4",
     mp4Size: 98_833,
     useCase: "Modern phone / monitor / video frame",
+    source: "Big Buck Bunny · Blender · CC BY 3.0",
   },
   {
     ratio: "1:1",
     shape: "square",
     label: "Square",
     dimensions: "480 × 480",
-    posterUrl: "/samples/webm/bbb-1x1-poster.jpg",
-    webmUrl: "/samples/webm/bbb-1x1.webm",
-    webmName: "bbb-1x1.webm",
-    webmSize: 115_374,
-    mp4Url: "/samples/webm/bbb-1x1.mp4",
-    mp4Name: "bbb-1x1.mp4",
-    mp4Size: 127_113,
+    posterUrl: "/samples/webm/vrkid-1x1-poster.jpg",
+    webmUrl: "/samples/webm/vrkid-1x1.webm",
+    webmName: "vrkid-1x1.webm",
+    webmSize: 172_823,
+    mp4Url: "/samples/webm/vrkid-1x1.mp4",
+    mp4Name: "vrkid-1x1.mp4",
+    mp4Size: 266_867,
     useCase: "Instagram post / profile / square video",
+    source: "Pexels #3209828 · free use",
   },
   {
     ratio: "4:5",
     shape: "portrait",
     label: "IG portrait",
     dimensions: "480 × 600",
-    posterUrl: "/samples/webm/bbb-4x5-poster.jpg",
-    webmUrl: "/samples/webm/bbb-4x5.webm",
-    webmName: "bbb-4x5.webm",
-    webmSize: 85_543,
-    mp4Url: "/samples/webm/bbb-4x5.mp4",
-    mp4Name: "bbb-4x5.mp4",
-    mp4Size: 153_600,
+    posterUrl: "/samples/webm/sintel-snow-4x5-poster.jpg",
+    webmUrl: "/samples/webm/sintel-snow-4x5.webm",
+    webmName: "sintel-snow-4x5.webm",
+    webmSize: 72_399,
+    mp4Url: "/samples/webm/sintel-snow-4x5.mp4",
+    mp4Name: "sintel-snow-4x5.mp4",
+    mp4Size: 143_480,
     useCase: "Instagram portrait video / feed-friendly",
+    source: "Sintel · Blender · CC BY 3.0",
   },
   {
     ratio: "3:4",
     shape: "portrait",
     label: "Portrait / tall",
     dimensions: "360 × 480",
-    posterUrl: "/samples/webm/bbb-3x4-poster.jpg",
-    webmUrl: "/samples/webm/bbb-3x4.webm",
-    webmName: "bbb-3x4.webm",
-    webmSize: 26_290,
-    mp4Url: "/samples/webm/bbb-3x4.mp4",
-    mp4Name: "bbb-3x4.mp4",
-    mp4Size: 48_430,
+    posterUrl: "/samples/webm/pond-reflection-3x4-poster.jpg",
+    webmUrl: "/samples/webm/pond-reflection-3x4.webm",
+    webmName: "pond-reflection-3x4.webm",
+    webmSize: 168_060,
+    mp4Url: "/samples/webm/pond-reflection-3x4.mp4",
+    mp4Name: "pond-reflection-3x4.mp4",
+    mp4Size: 372_985,
     useCase: "Phone-shot vertical / Xiaohongshu",
+    source: "Pexels #3196345 · free use",
   },
   {
     ratio: "2:3",
     shape: "portrait",
     label: "Pinterest pin",
     dimensions: "320 × 480",
-    posterUrl: "/samples/webm/bbb-2x3-poster.jpg",
-    webmUrl: "/samples/webm/bbb-2x3.webm",
-    webmName: "bbb-2x3.webm",
-    webmSize: 96_201,
-    mp4Url: "/samples/webm/bbb-2x3.mp4",
-    mp4Name: "bbb-2x3.mp4",
-    mp4Size: 146_631,
+    posterUrl: "/samples/webm/motorbike-2x3-poster.jpg",
+    webmUrl: "/samples/webm/motorbike-2x3.webm",
+    webmName: "motorbike-2x3.webm",
+    webmSize: 449_499,
+    mp4Url: "/samples/webm/motorbike-2x3.mp4",
+    mp4Name: "motorbike-2x3.mp4",
+    mp4Size: 542_706,
     useCase: "Pinterest pin / vertical poster",
+    source: "Pexels #2519660 · free use",
   },
   {
     ratio: "9:16",
     shape: "portrait",
     label: "Stories / Reels",
     dimensions: "270 × 480",
-    posterUrl: "/samples/webm/bbb-9x16-poster.jpg",
-    webmUrl: "/samples/webm/bbb-9x16.webm",
-    webmName: "bbb-9x16.webm",
-    webmSize: 33_611,
-    mp4Url: "/samples/webm/bbb-9x16.mp4",
-    mp4Name: "bbb-9x16.mp4",
-    mp4Size: 60_637,
+    posterUrl: "/samples/webm/jellyfish-9x16-poster.jpg",
+    webmUrl: "/samples/webm/jellyfish-9x16.webm",
+    webmName: "jellyfish-9x16.webm",
+    webmSize: 206_576,
+    mp4Url: "/samples/webm/jellyfish-9x16.mp4",
+    mp4Name: "jellyfish-9x16.mp4",
+    mp4Size: 276_081,
     useCase: "Stories / Reels / TikTok / phone wallpaper",
+    source: "Jellyfish · test-videos.co.uk",
   },
 ]
 
@@ -115,18 +122,10 @@ export function WebmCompareWidget() {
   return (
     <div className="space-y-5">
       <p className="text-sm text-[var(--muted)]">
-        Six 3-second clips from the{" "}
-        <a
-          href="https://peach.blender.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[var(--accent)] hover:underline"
-        >
-          Big Buck Bunny
-        </a>{" "}
-        trailer (CC BY 3.0, Blender Foundation), each cropped to a different aspect ratio and
-        encoded as both WebM (VP9 CRF 38) and MP4 (H.264 CRF 23) at perceptually-matched quality.
-        Click any video to play; click the download links to grab the file.
+        Six different videos at six standard aspect ratios — mixing Blender open movies (CC BY 3.0),
+        free Pexels stock footage, and an underwater test clip. Each is encoded as both WebM (VP9
+        CRF 38) and MP4 (H.264 CRF 23) at perceptually-matched quality. Click any video to play;
+        click the download links to grab the file.
       </p>
 
       <div className="space-y-3">
@@ -196,6 +195,7 @@ export function WebmCompareWidget() {
                   WebM is{" "}
                   <strong className="text-[var(--accent)]">{savings(s.webmSize, s.mp4Size)}</strong>
                 </div>
+                <div className="pt-0.5 text-[10px] text-[var(--muted)]/80">{s.source}</div>
               </figcaption>
             </figure>
           ))}
