@@ -63,7 +63,7 @@ export function FormatShell({ format }: FormatShellProps) {
       {/* Static demo: same photo across formats */}
       {Component && (
         <section className="mb-10 rounded-lg border bg-[var(--card)] p-6">
-          <h2 className="mb-4 text-xl font-semibold">See it: same photo, three formats</h2>
+          <h2 className="mb-4 text-xl font-semibold">Real-world samples & file sizes</h2>
           <Component />
         </section>
       )}

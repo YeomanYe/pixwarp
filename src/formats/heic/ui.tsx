@@ -134,49 +134,17 @@ function formatBytes(bytes: number): string {
 }
 
 export function HeicCompareWidget() {
-  const jpg = SAMPLE_ROWS[1]
-  const png = SAMPLE_ROWS[2]
-
   return (
     <div className="space-y-5">
       <p className="text-sm text-[var(--muted)]">
-        Below is the same photo in three formats — a winter landscape originally shot in HEIC. The
-        file sizes are real (just convert it yourself with{" "}
+        The same winter landscape, encoded as HEIC, JPG (quality 90), and PNG (lossless). File sizes
+        below are real — verify with{" "}
         <code className="rounded bg-[var(--muted-bg)] px-1 py-0.5 font-mono text-xs">sips</code> or
-        any HEIC tool to verify).
-      </p>
-
-      {/* Side-by-side preview */}
-      <div className="grid gap-3 sm:grid-cols-2">
-        <figure className="rounded-lg border bg-[var(--card)] p-2">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={jpg.preview!}
-            alt="Winter photo rendered as JPG"
-            className="h-auto w-full rounded object-contain"
-            style={{ maxHeight: 360 }}
-          />
-          <figcaption className="mt-2 text-center text-xs text-[var(--muted)]">
-            JPG · {formatBytes(jpg.size)}
-          </figcaption>
-        </figure>
-        <figure className="rounded-lg border bg-[var(--card)] p-2">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={png.preview!}
-            alt="Winter photo rendered as PNG"
-            className="h-auto w-full rounded object-contain"
-            style={{ maxHeight: 360 }}
-          />
-          <figcaption className="mt-2 text-center text-xs text-[var(--muted)]">
-            PNG · {formatBytes(png.size)}
-          </figcaption>
-        </figure>
-      </div>
-      <p className="text-xs text-[var(--muted)]">
-        The HEIC original is not previewed — most browsers (including Chrome and Firefox) can&apos;t
-        decode HEIC natively. That&apos;s the practical point: HEIC is smaller, but you usually have
-        to convert it before posting it anywhere outside Apple&apos;s ecosystem.
+        any HEIC tool. To see the actual rendered images side by side, open the{" "}
+        <Link href="/tools/heic-to-jpg" className="text-[var(--accent)] hover:underline">
+          HEIC converter
+        </Link>{" "}
+        and pick a sample under the Compare tab.
       </p>
 
       {/* Size comparison table */}
