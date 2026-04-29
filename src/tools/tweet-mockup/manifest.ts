@@ -1,23 +1,24 @@
 import type { ToolManifest } from "../types"
-import { TweetToImageUI } from "./ui"
+import { TweetMockupUI } from "./ui"
 
 export const manifest: ToolManifest = {
-  slug: "tweet-to-image",
+  slug: "tweet-mockup",
   category: "creator",
-  name: "Tweet to Image",
+  name: "Tweet Mockup",
   description:
-    "Turn any tweet (X post) into a clean, shareable PNG. Customize avatar, name, handle, content, likes & retweets — exported locally.",
-  longDescription: `Quoting a tweet in a blog post, slide deck, or LinkedIn carousel? A native screenshot looks low-rent — Twitter UI chrome, dark mode mismatch, low-res. This tool builds a clean tweet card you fully control: handle, avatar, content, engagement counts, theme.
+    "Compose a clean, shareable tweet card — set avatar, name, handle, content, likes & retweets — and export as PNG. All local.",
+  longDescription: `Need a tweet-shaped graphic for a blog hero, slide, or carousel? A native screenshot looks low-rent — Twitter UI chrome, dark mode mismatch, low-res. This tool builds a clean tweet mockup you fully control: handle, avatar, content, engagement counts, theme.
 
-Everything renders client-side. Your tweet content never touches our server.`,
+Everything renders client-side. Your content never touches our server.`,
   keywords: [
+    "tweet mockup",
+    "tweet mockup generator",
     "tweet to image",
     "x post to image",
     "tweet screenshot generator",
     "twitter card generator",
-    "quote tweet image",
+    "fake tweet generator",
     "tweet png",
-    "tweet to png",
   ],
   icon: "twitter",
   related: ["screenshot-mockup", "social-cover"],
@@ -38,5 +39,5 @@ Everything renders client-side. Your tweet content never touches our server.`,
     },
   ],
   lastUpdated: "2026-04-29",
-  Component: TweetToImageUI,
+  Component: TweetMockupUI,
 }

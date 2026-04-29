@@ -20,7 +20,7 @@ Renders fully in your browser. The exported PNG is high-resolution (2x) and read
     "instagram story cover",
   ],
   icon: "image",
-  related: ["screenshot-mockup", "tweet-to-image"],
+  related: ["screenshot-mockup", "tweet-mockup"],
   markets: ["global", "cn"],
   pro: { enabled: false, locked: [] },
   faq: [

@@ -1,7 +1,7 @@
 import type { ToolManifest } from "./types"
 import { manifest as heicToJpgManifest } from "./heic-to-jpg/manifest"
 import { manifest as screenshotMockupManifest } from "./screenshot-mockup/manifest"
-import { manifest as tweetToImageManifest } from "./tweet-to-image/manifest"
+import { manifest as tweetMockupManifest } from "./tweet-mockup/manifest"
 import { manifest as socialCoverManifest } from "./social-cover/manifest"
 import { manifest as mp4ToGifManifest } from "./mp4-to-gif/manifest"
 
@@ -17,7 +17,7 @@ import { manifest as mp4ToGifManifest } from "./mp4-to-gif/manifest"
 export const tools: ToolManifest[] = [
   heicToJpgManifest,
   screenshotMockupManifest,
-  tweetToImageManifest,
+  tweetMockupManifest,
   socialCoverManifest,
   mp4ToGifManifest,
 ]

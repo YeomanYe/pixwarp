@@ -364,7 +364,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
   )
 }
 
-export const TweetToImageUI = dynamic(() => Promise.resolve(TweetInner), {
+export const TweetMockupUI = dynamic(() => Promise.resolve(TweetInner), {
   ssr: false,
   loading: () => (
     <div className="py-12 text-center text-sm text-[var(--muted)]">Loading tweet composer…</div>
