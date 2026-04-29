@@ -3,6 +3,7 @@ interface VideoSample {
   shape: "wide" | "square" | "portrait"
   label: string
   dimensions: string
+  posterUrl: string
   webmUrl: string
   webmName: string
   webmSize: number
@@ -18,6 +19,7 @@ const SAMPLES: VideoSample[] = [
     shape: "wide",
     label: "Wide landscape",
     dimensions: "854 × 480",
+    posterUrl: "/samples/webm/bbb-16x9-poster.jpg",
     webmUrl: "/samples/webm/bbb-16x9.webm",
     webmName: "bbb-16x9.webm",
     webmSize: 58_073,
@@ -31,6 +33,7 @@ const SAMPLES: VideoSample[] = [
     shape: "square",
     label: "Square",
     dimensions: "480 × 480",
+    posterUrl: "/samples/webm/bbb-1x1-poster.jpg",
     webmUrl: "/samples/webm/bbb-1x1.webm",
     webmName: "bbb-1x1.webm",
     webmSize: 115_374,
@@ -44,6 +47,7 @@ const SAMPLES: VideoSample[] = [
     shape: "portrait",
     label: "IG portrait",
     dimensions: "480 × 600",
+    posterUrl: "/samples/webm/bbb-4x5-poster.jpg",
     webmUrl: "/samples/webm/bbb-4x5.webm",
     webmName: "bbb-4x5.webm",
     webmSize: 85_543,
@@ -57,6 +61,7 @@ const SAMPLES: VideoSample[] = [
     shape: "portrait",
     label: "Portrait / tall",
     dimensions: "360 × 480",
+    posterUrl: "/samples/webm/bbb-3x4-poster.jpg",
     webmUrl: "/samples/webm/bbb-3x4.webm",
     webmName: "bbb-3x4.webm",
     webmSize: 26_290,
@@ -70,6 +75,7 @@ const SAMPLES: VideoSample[] = [
     shape: "portrait",
     label: "Pinterest pin",
     dimensions: "320 × 480",
+    posterUrl: "/samples/webm/bbb-2x3-poster.jpg",
     webmUrl: "/samples/webm/bbb-2x3.webm",
     webmName: "bbb-2x3.webm",
     webmSize: 96_201,
@@ -83,6 +89,7 @@ const SAMPLES: VideoSample[] = [
     shape: "portrait",
     label: "Stories / Reels",
     dimensions: "270 × 480",
+    posterUrl: "/samples/webm/bbb-9x16-poster.jpg",
     webmUrl: "/samples/webm/bbb-9x16.webm",
     webmName: "bbb-9x16.webm",
     webmSize: 33_611,
@@ -140,11 +147,12 @@ export function WebmCompareWidget() {
               >
                 <video
                   src={s.webmUrl}
+                  poster={s.posterUrl}
                   controls
                   muted
                   loop
                   playsInline
-                  preload="metadata"
+                  preload="none"
                   className="h-full w-full object-contain"
                   aria-label={`${s.label} WebM sample at ${s.ratio}, ${s.dimensions}`}
                 />
