@@ -78,6 +78,18 @@ const ASPECT_SAMPLES: AspectSample[] = [
     useCase: "Instagram post / profile / album cover",
   },
   {
+    ratio: "4:5",
+    shape: "portrait",
+    label: "IG portrait",
+    dimensions: "800 × 1000",
+    preview: "/samples/heic/grassland-4x5.jpg",
+    heicUrl: "/samples/heic/grassland-4x5.heic",
+    heicName: "grassland-4x5.heic",
+    heicSize: 87_392,
+    jpgSize: 163_894,
+    useCase: "Instagram portrait post / feed-friendly crop",
+  },
+  {
     ratio: "3:4",
     shape: "portrait",
     label: "Portrait / tall",
@@ -88,6 +100,30 @@ const ASPECT_SAMPLES: AspectSample[] = [
     heicSize: 229_155,
     jpgSize: 422_253,
     useCase: "Phone photo / Xiaohongshu / portrait shoot",
+  },
+  {
+    ratio: "2:3",
+    shape: "portrait",
+    label: "Pinterest pin",
+    dimensions: "800 × 1200",
+    preview: "/samples/heic/dock-2x3.jpg",
+    heicUrl: "/samples/heic/dock-2x3.heic",
+    heicName: "dock-2x3.heic",
+    heicSize: 55_680,
+    jpgSize: 138_445,
+    useCase: "Pinterest pin / postcard / vertical poster",
+  },
+  {
+    ratio: "9:16",
+    shape: "portrait",
+    label: "Stories / Reels",
+    dimensions: "540 × 960",
+    preview: "/samples/heic/lighthouse-9x16.jpg",
+    heicUrl: "/samples/heic/lighthouse-9x16.heic",
+    heicName: "lighthouse-9x16.heic",
+    heicSize: 33_038,
+    jpgSize: 80_881,
+    useCase: "Stories / Reels / TikTok / phone wallpaper",
   },
 ]
 
@@ -192,8 +228,9 @@ export function HeicCompareWidget() {
         <div>
           <h3 className="text-base font-semibold">HEIC at common aspect ratios</h3>
           <p className="mt-1 text-sm text-[var(--muted)]">
-            Three different scenes at three standard aspect ratios — wide landscape (16:9), square
-            (1:1), and portrait (3:4). Each card is a separate HEIC file you can download.
+            Six different scenes at six standard aspect ratios — landscape, square, and the four
+            mobile / social ratios you actually upload (Stories 9:16, Pinterest 2:3, classic 3:4, IG
+            portrait 4:5). Each card is a separate HEIC file you can download.
           </p>
         </div>
         <div className="grid gap-4 md:grid-cols-3">
