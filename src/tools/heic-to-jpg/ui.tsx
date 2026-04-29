@@ -158,8 +158,8 @@ function HeicToJpgUIInner() {
   return (
     <div className="space-y-6">
       <p className="text-sm text-[var(--muted)]">
-        Drop a HEIC and see it as JPG and PNG side-by-side, with the real file sizes for that exact
-        photo. All decoding happens in your browser — your file is never uploaded.
+        Drop a HEIC and see your photo decoded in-browser, alongside JPG and PNG re-encodes with
+        real file sizes. All processing is local — your file is never uploaded.
       </p>
 
       {/* Drop zone */}
