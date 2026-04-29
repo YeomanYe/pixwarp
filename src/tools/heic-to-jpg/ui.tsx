@@ -217,54 +217,22 @@ function HeicToJpgUIInner() {
       {/* Result */}
       {result && (
         <div className="space-y-5">
-          {/* Side-by-side preview */}
-          <div>
-            <div className="mb-2 text-sm font-semibold">Side-by-side preview</div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              <figure className="rounded-lg border bg-[var(--card)] p-2">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={result.jpgUrl}
-                  alt={`${result.fileName} as JPG`}
-                  className="h-auto w-full rounded object-contain"
-                  style={{ maxHeight: 420 }}
-                />
-                <figcaption className="mt-2 flex items-center justify-between text-xs text-[var(--muted)]">
-                  <span>JPG · {formatBytes(result.jpgSize)}</span>
-                  <a
-                    href={result.jpgUrl}
-                    download={`${result.fileName}.jpg`}
-                    className="text-[var(--accent)] hover:underline"
-                  >
-                    Download .jpg
-                  </a>
-                </figcaption>
-              </figure>
-              <figure className="rounded-lg border bg-[var(--card)] p-2">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={result.pngUrl}
-                  alt={`${result.fileName} as PNG`}
-                  className="h-auto w-full rounded object-contain"
-                  style={{ maxHeight: 420 }}
-                />
-                <figcaption className="mt-2 flex items-center justify-between text-xs text-[var(--muted)]">
-                  <span>PNG · {formatBytes(result.pngSize)}</span>
-                  <a
-                    href={result.pngUrl}
-                    download={`${result.fileName}.png`}
-                    className="text-[var(--accent)] hover:underline"
-                  >
-                    Download .png
-                  </a>
-                </figcaption>
-              </figure>
-            </div>
-            <p className="mt-2 text-xs text-[var(--muted)]">
-              The HEIC original isn&apos;t shown — most browsers can&apos;t decode HEIC natively,
-              which is exactly why this tool exists.
-            </p>
-          </div>
+          {/* Main preview — uses PNG (lossless) so this is exactly the HEIC content */}
+          <figure className="overflow-hidden rounded-lg border bg-[var(--card)]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={result.pngUrl}
+              alt={`${result.fileName} HEIC content rendered`}
+              className="block h-auto w-full"
+              style={{ maxHeight: 560, objectFit: "contain" }}
+            />
+            <figcaption className="border-t bg-[var(--muted-bg)]/40 px-4 py-2 text-xs text-[var(--muted)]">
+              <strong className="text-[var(--foreground)]">{result.fileName}.heic</strong> · decoded
+              in your browser via WebAssembly. Browsers can&apos;t display HEIC bytes natively, but
+              the rendered pixels above are the exact original content (lossless PNG re-encode used
+              for display).
+            </figcaption>
+          </figure>
 
           {/* Size comparison table */}
           <div className="overflow-hidden rounded-lg border bg-[var(--card)]">
