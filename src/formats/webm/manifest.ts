@@ -1,4 +1,5 @@
 import type { FormatManifest } from "../types"
+import { WebmCompareWidget } from "./ui"
 
 export const manifest: FormatManifest = {
   slug: "webm",
@@ -121,4 +122,5 @@ The catch you hit in real workflows: Apple's Safari historically lagged on WebM 
     },
   ],
   lastUpdated: "2026-04-29",
+  Component: WebmCompareWidget,
 }
