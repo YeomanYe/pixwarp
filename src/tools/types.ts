@@ -39,12 +39,6 @@ export interface ToolManifest {
   /** Markets this tool is shown in. Defaults to ['global']. */
   markets?: ("global" | "cn")[]
 
-  /** Pro tier features locked behind paywall */
-  pro?: {
-    enabled: boolean
-    locked: string[]
-  }
-
   /** FAQ entries — each one becomes long-tail SEO content */
   faq?: { q: string; a: string }[]
 

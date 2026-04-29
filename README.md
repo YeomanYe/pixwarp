@@ -52,8 +52,8 @@ src/
 ├── app/                     Next.js App Router
 │   ├── layout.tsx           Root layout (Nav + Footer)
 │   ├── page.tsx             Home (tools index)
-│   ├── pricing/             Pricing page
 │   ├── tools/[slug]/        Dynamic tool route
+│   ├── format/[slug]/       Dynamic format guide route
 │   ├── sitemap.ts           Auto-generated sitemap
 │   └── robots.ts            robots.txt
 ├── components/              Shared UI
@@ -90,29 +90,6 @@ Set this env in Vercel:
 ```
 NEXT_PUBLIC_SITE_URL=https://pixwarp.app
 ```
-
-## Roadmap
-
-### Phase 1 (now) — single-tool MVP
-
-- [x] Engineering scaffolding
-- [x] Manifest-driven tool registry
-- [x] First tool: HEIC → JPG
-- [ ] 4 more tools: Screenshot Mockup, MP4→GIF, Tweet→Image, Social Cover
-- [ ] Real domain (`pixwarp.app`) hooked to Vercel
-
-### Phase 2 (3-6 months) — content + i18n + Pro
-
-- [ ] i18n: English + 中文 (next-intl, once Next 16 compat is verified)
-- [ ] Long-tail SEO content (blog + tutorials)
-- [ ] Pro tier (Lemon Squeezy)
-- [ ] API for the most-used tools
-
-### Phase 3 (6-12 months) — pSEO + global growth
-
-- [ ] Programmatic SEO (X-to-Y format matrix)
-- [ ] Discoverable tools directory
-- [ ] paypal.cn for CN payments
 
 ## License
 

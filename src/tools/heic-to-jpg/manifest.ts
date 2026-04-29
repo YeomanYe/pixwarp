@@ -25,10 +25,6 @@ That's it.`,
   icon: "image",
   related: [],
   markets: ["global", "cn"],
-  pro: {
-    enabled: false,
-    locked: [],
-  },
   faq: [
     {
       q: "Does my photo get uploaded to your server?",

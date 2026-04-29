@@ -22,7 +22,6 @@ Everything renders in your browser — your image never leaves your device.`,
   icon: "image",
   related: ["heic-to-jpg"],
   markets: ["global", "cn"],
-  pro: { enabled: false, locked: [] },
   faq: [
     {
       q: "Does my screenshot get uploaded?",
@@ -34,7 +33,7 @@ Everything renders in your browser — your image never leaves your device.`,
     },
     {
       q: "Can I add my own logo / watermark?",
-      a: "Pro feature — coming soon. For now you can compose the screenshot first, then add branding in your editor of choice.",
+      a: "Not yet. For now compose the screenshot here, then add branding in your editor of choice. If this is a feature you'd want, open an issue on GitHub.",
     },
   ],
   lastUpdated: "2026-04-29",

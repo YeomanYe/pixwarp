@@ -24,7 +24,6 @@ Best results: ≤ 10 seconds source clip, 480px wide, 12-15 fps. Larger sources 
   icon: "video",
   related: ["screenshot-mockup"],
   markets: ["global", "cn"],
-  pro: { enabled: false, locked: [] },
   faq: [
     {
       q: "What's the file size limit?",

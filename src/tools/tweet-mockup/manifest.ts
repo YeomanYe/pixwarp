@@ -23,7 +23,6 @@ Everything renders client-side. Your content never touches our server.`,
   icon: "twitter",
   related: ["screenshot-mockup", "social-cover"],
   markets: ["global", "cn"],
-  pro: { enabled: false, locked: [] },
   faq: [
     {
       q: "Do I need a real tweet URL?",

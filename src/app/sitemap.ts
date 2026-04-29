@@ -8,7 +8,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
   const staticEntries: MetadataRoute.Sitemap = [
     { url: `${BASE_URL}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
-    { url: `${BASE_URL}/pricing`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
   ]
   const toolEntries: MetadataRoute.Sitemap = tools.map((tool) => ({
     url: `${BASE_URL}/tools/${tool.slug}`,

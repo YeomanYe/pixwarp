@@ -19,19 +19,13 @@ export default function HomePage() {
           Free, fast, private. Convert, compress, and craft your media right in the browser. No
           upload, no signup, no watermark.
         </p>
-        <div className="mt-8 flex justify-center gap-3">
+        <div className="mt-8 flex justify-center">
           <a
             href="#tools"
             className="rounded-md bg-[var(--accent)] px-5 py-2.5 text-sm font-medium text-[var(--accent-fg)] transition hover:bg-[var(--accent-hover)]"
           >
             Browse tools
           </a>
-          <Link
-            href="/pricing"
-            className="rounded-md border px-5 py-2.5 text-sm font-medium transition hover:border-[var(--accent)]"
-          >
-            Pricing
-          </Link>
         </div>
       </section>
 
@@ -50,18 +44,13 @@ export default function HomePage() {
                     href={`/tools/${tool.slug}`}
                     className="group block rounded-lg border bg-[var(--card)] p-5 transition hover:border-[var(--accent)] hover:shadow-sm"
                   >
-                    <div className="mb-2 flex items-center justify-between">
+                    <div className="mb-2">
                       <span
                         className="font-mono text-[10px] tracking-widest uppercase"
                         style={{ color: cat?.accent }}
                       >
                         {cat?.label}
                       </span>
-                      {tool.pro?.enabled && (
-                        <span className="font-mono text-[10px] tracking-widest text-[var(--pro)] uppercase">
-                          Pro
-                        </span>
-                      )}
                     </div>
                     <div className="font-semibold tracking-tight transition group-hover:text-[var(--accent)]">
                       {tool.name}

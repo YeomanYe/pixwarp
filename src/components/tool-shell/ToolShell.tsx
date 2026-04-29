@@ -21,11 +21,6 @@ export function ToolShell({ tool }: ToolShellProps) {
           >
             {categoryMeta?.label}
           </span>
-          {tool.pro?.enabled && (
-            <span className="inline-flex items-center rounded-full bg-[var(--pro)]/10 px-2.5 py-0.5 font-mono text-xs tracking-wider text-[var(--pro)] uppercase">
-              Pro available
-            </span>
-          )}
         </div>
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{tool.name}</h1>
         <p className="mt-3 max-w-2xl text-base text-[var(--muted)] sm:text-lg">

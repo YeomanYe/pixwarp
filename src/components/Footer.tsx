@@ -22,11 +22,6 @@ export function Footer() {
                   All tools
                 </Link>
               </li>
-              <li>
-                <Link href="/pricing" className="hover:text-[var(--accent)]">
-                  Pricing
-                </Link>
-              </li>
             </ul>
           </div>
           <div>

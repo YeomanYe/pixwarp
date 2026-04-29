@@ -22,7 +22,6 @@ Renders fully in your browser. The exported PNG is high-resolution (2x) and read
   icon: "image",
   related: ["screenshot-mockup", "tweet-mockup"],
   markets: ["global", "cn"],
-  pro: { enabled: false, locked: [] },
   faq: [
     {
       q: "What aspect ratios are supported?",
@@ -30,7 +29,7 @@ Renders fully in your browser. The exported PNG is high-resolution (2x) and read
     },
     {
       q: "Can I upload a custom background?",
-      a: "Pro feature — coming soon. Current MVP uses curated gradients.",
+      a: "Not yet — current MVP uses curated gradients. If you have a strong use case, open a GitHub issue.",
     },
     {
       q: "What resolution is the export?",
