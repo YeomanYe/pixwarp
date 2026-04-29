@@ -39,6 +39,54 @@ const SAMPLE_ROWS: FormatRow[] = [
   },
 ]
 
+interface AspectSample {
+  label: string
+  shape: "wide" | "square" | "portrait"
+  dimensions: string
+  preview: string
+  heicUrl: string
+  heicName: string
+  heicSize: number
+  jpgSize: number
+  useCase: string
+}
+
+const ASPECT_SAMPLES: AspectSample[] = [
+  {
+    label: "Wide / Panorama",
+    shape: "wide",
+    dimensions: "1440 × 540",
+    preview: "/samples/heic/winter-wide.jpg",
+    heicUrl: "/samples/heic/winter-wide.heic",
+    heicName: "winter-wide.heic",
+    heicSize: 245_026,
+    jpgSize: 403_280,
+    useCase: "Banner / website hero / cinematic crop",
+  },
+  {
+    label: "Square",
+    shape: "square",
+    dimensions: "960 × 960",
+    preview: "/samples/heic/autumn-square.jpg",
+    heicUrl: "/samples/heic/autumn-square.heic",
+    heicName: "autumn-square.heic",
+    heicSize: 296_093,
+    jpgSize: 554_879,
+    useCase: "Instagram post / profile / album cover",
+  },
+  {
+    label: "Portrait / Tall",
+    shape: "portrait",
+    dimensions: "540 × 960",
+    preview: "/samples/heic/person-portrait.jpg",
+    heicUrl: "/samples/heic/person-portrait.heic",
+    heicName: "person-portrait.heic",
+    heicSize: 141_646,
+    jpgSize: 243_405,
+    useCase: "Story / Reels / phone wallpaper",
+  },
+]
+
 function formatBytes(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`
   if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`
@@ -133,6 +181,60 @@ export function HeicCompareWidget() {
             ))}
           </tbody>
         </table>
+      </div>
+
+      {/* Aspect ratio showcase */}
+      <div className="space-y-3 pt-2">
+        <div>
+          <h3 className="text-base font-semibold">HEIC works for any aspect ratio</h3>
+          <p className="mt-1 text-sm text-[var(--muted)]">
+            Wide panoramas, square social posts, tall portraits — same format, same compression
+            advantage. Each example below is a real HEIC file you can download.
+          </p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          {ASPECT_SAMPLES.map((s) => (
+            <figure key={s.label} className="flex flex-col rounded-lg border bg-[var(--card)] p-3">
+              <div
+                className={`flex items-center justify-center overflow-hidden rounded bg-[var(--muted-bg)]/40 ${
+                  s.shape === "portrait" ? "h-72" : s.shape === "square" ? "h-56" : "h-32"
+                }`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={s.preview}
+                  alt={`${s.label} HEIC sample, ${s.dimensions}`}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <figcaption className="mt-3 space-y-1.5">
+                <div className="flex items-baseline justify-between gap-2">
+                  <span className="text-sm font-medium">{s.label}</span>
+                  <span className="font-mono text-xs text-[var(--muted)]">{s.dimensions}</span>
+                </div>
+                <div className="text-xs text-[var(--muted)]">{s.useCase}</div>
+                <div className="flex items-center justify-between pt-1.5 text-xs">
+                  <span className="font-mono">
+                    HEIC{" "}
+                    <strong className="text-[var(--foreground)]">{formatBytes(s.heicSize)}</strong>{" "}
+                    <span className="text-[var(--muted)]">vs JPG {formatBytes(s.jpgSize)}</span>
+                  </span>
+                  <a
+                    href={s.heicUrl}
+                    download={s.heicName}
+                    className="text-[var(--accent)] hover:underline"
+                  >
+                    .heic ↓
+                  </a>
+                </div>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        <p className="text-xs text-[var(--muted)]">
+          The previews above are JPG renders (HEIC won&apos;t display in your browser). The download
+          is the real HEIC file — feed it to the converter to see how it decodes.
+        </p>
       </div>
 
       {/* CTA to interactive tool */}
