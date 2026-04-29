@@ -40,8 +40,9 @@ const SAMPLE_ROWS: FormatRow[] = [
 ]
 
 interface AspectSample {
-  label: string
+  ratio: string
   shape: "wide" | "square" | "portrait"
+  label: string
   dimensions: string
   preview: string
   heicUrl: string
@@ -53,37 +54,40 @@ interface AspectSample {
 
 const ASPECT_SAMPLES: AspectSample[] = [
   {
-    label: "Wide / Panorama",
+    ratio: "16:9",
     shape: "wide",
-    dimensions: "1440 × 540",
-    preview: "/samples/heic/winter-wide.jpg",
-    heicUrl: "/samples/heic/winter-wide.heic",
-    heicName: "winter-wide.heic",
-    heicSize: 245_026,
-    jpgSize: 403_280,
-    useCase: "Banner / website hero / cinematic crop",
+    label: "Wide landscape",
+    dimensions: "1440 × 810",
+    preview: "/samples/heic/winter-16x9.jpg",
+    heicUrl: "/samples/heic/winter-16x9.heic",
+    heicName: "winter-16x9.heic",
+    heicSize: 348_755,
+    jpgSize: 580_976,
+    useCase: "Modern phone / monitor / video frame",
   },
   {
-    label: "Square",
+    ratio: "1:1",
     shape: "square",
-    dimensions: "960 × 960",
-    preview: "/samples/heic/autumn-square.jpg",
-    heicUrl: "/samples/heic/autumn-square.heic",
-    heicName: "autumn-square.heic",
-    heicSize: 296_093,
-    jpgSize: 554_879,
+    label: "Square",
+    dimensions: "854 × 854",
+    preview: "/samples/heic/town-square-1x1.jpg",
+    heicUrl: "/samples/heic/town-square-1x1.heic",
+    heicName: "town-square-1x1.heic",
+    heicSize: 212_724,
+    jpgSize: 356_621,
     useCase: "Instagram post / profile / album cover",
   },
   {
-    label: "Portrait / Tall",
+    ratio: "3:4",
     shape: "portrait",
-    dimensions: "540 × 960",
-    preview: "/samples/heic/person-portrait.jpg",
-    heicUrl: "/samples/heic/person-portrait.heic",
-    heicName: "person-portrait.heic",
-    heicSize: 141_646,
-    jpgSize: 243_405,
-    useCase: "Story / Reels / phone wallpaper",
+    label: "Portrait / tall",
+    dimensions: "720 × 960",
+    preview: "/samples/heic/autumn-3x4.jpg",
+    heicUrl: "/samples/heic/autumn-3x4.heic",
+    heicName: "autumn-3x4.heic",
+    heicSize: 229_155,
+    jpgSize: 422_253,
+    useCase: "Phone photo / Xiaohongshu / portrait shoot",
   },
 ]
 
@@ -186,32 +190,35 @@ export function HeicCompareWidget() {
       {/* Aspect ratio showcase */}
       <div className="space-y-3 pt-2">
         <div>
-          <h3 className="text-base font-semibold">HEIC works for any aspect ratio</h3>
+          <h3 className="text-base font-semibold">HEIC at common aspect ratios</h3>
           <p className="mt-1 text-sm text-[var(--muted)]">
-            Wide panoramas, square social posts, tall portraits — same format, same compression
-            advantage. Each example below is a real HEIC file you can download.
+            Three different scenes at three standard aspect ratios — wide landscape (16:9), square
+            (1:1), and portrait (3:4). Each card is a separate HEIC file you can download.
           </p>
         </div>
         <div className="grid gap-4 md:grid-cols-3">
           {ASPECT_SAMPLES.map((s) => (
-            <figure key={s.label} className="flex flex-col rounded-lg border bg-[var(--card)] p-3">
+            <figure key={s.ratio} className="flex flex-col rounded-lg border bg-[var(--card)] p-3">
               <div
                 className={`flex items-center justify-center overflow-hidden rounded bg-[var(--muted-bg)]/40 ${
-                  s.shape === "portrait" ? "h-72" : s.shape === "square" ? "h-56" : "h-32"
+                  s.shape === "portrait" ? "h-80" : s.shape === "square" ? "h-60" : "h-36"
                 }`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={s.preview}
-                  alt={`${s.label} HEIC sample, ${s.dimensions}`}
+                  alt={`${s.label} HEIC sample at ${s.ratio}, ${s.dimensions}`}
                   className="h-full w-full object-cover"
                 />
               </div>
               <figcaption className="mt-3 space-y-1.5">
                 <div className="flex items-baseline justify-between gap-2">
-                  <span className="text-sm font-medium">{s.label}</span>
+                  <span className="rounded border border-[var(--accent)]/40 px-1.5 py-0.5 font-mono text-[11px] font-semibold text-[var(--accent)]">
+                    {s.ratio}
+                  </span>
                   <span className="font-mono text-xs text-[var(--muted)]">{s.dimensions}</span>
                 </div>
+                <div className="text-sm font-medium">{s.label}</div>
                 <div className="text-xs text-[var(--muted)]">{s.useCase}</div>
                 <div className="flex items-center justify-between pt-1.5 text-xs">
                   <span className="font-mono">
