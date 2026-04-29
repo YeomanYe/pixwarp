@@ -35,75 +35,45 @@ const SAMPLES: VideoSample[] = [
     shape: "square",
     label: "Square",
     dimensions: "480 × 480",
-    posterUrl: "/samples/webm/vrkid-1x1-poster.jpg",
-    webmUrl: "/samples/webm/vrkid-1x1.webm",
-    webmName: "vrkid-1x1.webm",
-    webmSize: 172_823,
-    mp4Url: "/samples/webm/vrkid-1x1.mp4",
-    mp4Name: "vrkid-1x1.mp4",
-    mp4Size: 266_867,
+    posterUrl: "/samples/webm/lunar-1x1-poster.jpg",
+    webmUrl: "/samples/webm/lunar-1x1.webm",
+    webmName: "lunar-1x1.webm",
+    webmSize: 137_337,
+    mp4Url: "/samples/webm/lunar-1x1.mp4",
+    mp4Name: "lunar-1x1.mp4",
+    mp4Size: 268_806,
     useCase: "Instagram post / profile / square video",
-    source: "Pexels #3209828 · free use",
+    source: "NASA SVS5023 Lunar Polar Wander · Public Domain",
   },
   {
     ratio: "4:5",
     shape: "portrait",
     label: "IG portrait",
     dimensions: "480 × 600",
-    posterUrl: "/samples/webm/sintel-snow-4x5-poster.jpg",
-    webmUrl: "/samples/webm/sintel-snow-4x5.webm",
-    webmName: "sintel-snow-4x5.webm",
-    webmSize: 72_399,
-    mp4Url: "/samples/webm/sintel-snow-4x5.mp4",
-    mp4Name: "sintel-snow-4x5.mp4",
-    mp4Size: 143_480,
+    posterUrl: "/samples/webm/rocket-4x5-poster.jpg",
+    webmUrl: "/samples/webm/rocket-4x5.webm",
+    webmName: "rocket-4x5.webm",
+    webmSize: 89_206,
+    mp4Url: "/samples/webm/rocket-4x5.mp4",
+    mp4Name: "rocket-4x5.mp4",
+    mp4Size: 184_418,
     useCase: "Instagram portrait video / feed-friendly",
-    source: "Sintel · Blender · CC BY 3.0",
-  },
-  {
-    ratio: "3:4",
-    shape: "portrait",
-    label: "Portrait / tall",
-    dimensions: "360 × 480",
-    posterUrl: "/samples/webm/pond-reflection-3x4-poster.jpg",
-    webmUrl: "/samples/webm/pond-reflection-3x4.webm",
-    webmName: "pond-reflection-3x4.webm",
-    webmSize: 168_060,
-    mp4Url: "/samples/webm/pond-reflection-3x4.mp4",
-    mp4Name: "pond-reflection-3x4.mp4",
-    mp4Size: 372_985,
-    useCase: "Phone-shot vertical / Xiaohongshu",
-    source: "Pexels #3196345 · free use",
-  },
-  {
-    ratio: "2:3",
-    shape: "portrait",
-    label: "Pinterest pin",
-    dimensions: "320 × 480",
-    posterUrl: "/samples/webm/motorbike-2x3-poster.jpg",
-    webmUrl: "/samples/webm/motorbike-2x3.webm",
-    webmName: "motorbike-2x3.webm",
-    webmSize: 449_499,
-    mp4Url: "/samples/webm/motorbike-2x3.mp4",
-    mp4Name: "motorbike-2x3.mp4",
-    mp4Size: 542_706,
-    useCase: "Pinterest pin / vertical poster",
-    source: "Pexels #2519660 · free use",
+    source: "Sound of All Human Knowledge · Wikimedia · CC BY-SA 4.0",
   },
   {
     ratio: "9:16",
     shape: "portrait",
     label: "Stories / Reels",
     dimensions: "270 × 480",
-    posterUrl: "/samples/webm/jellyfish-9x16-poster.jpg",
-    webmUrl: "/samples/webm/jellyfish-9x16.webm",
-    webmName: "jellyfish-9x16.webm",
-    webmSize: 206_576,
-    mp4Url: "/samples/webm/jellyfish-9x16.mp4",
-    mp4Name: "jellyfish-9x16.mp4",
-    mp4Size: 276_081,
+    posterUrl: "/samples/webm/freddy-9x16-poster.jpg",
+    webmUrl: "/samples/webm/freddy-9x16.webm",
+    webmName: "freddy-9x16.webm",
+    webmSize: 314_503,
+    mp4Url: "/samples/webm/freddy-9x16.mp4",
+    mp4Name: "freddy-9x16.mp4",
+    mp4Size: 336_287,
     useCase: "Stories / Reels / TikTok / phone wallpaper",
-    source: "Jellyfish · test-videos.co.uk",
+    source: "NASA SVS14312 Tropical Cyclone Freddy · Public Domain",
   },
 ]
 
@@ -122,21 +92,22 @@ export function WebmCompareWidget() {
   return (
     <div className="space-y-5">
       <p className="text-sm text-[var(--muted)]">
-        Six different videos at six standard aspect ratios — mixing Blender open movies (CC BY 3.0),
-        free Pexels stock footage, and an underwater test clip. Each is encoded as both WebM (VP9
-        CRF 38) and MP4 (H.264 CRF 23) at perceptually-matched quality. Click any video to play;
-        click the download links to grab the file.
+        Four real videos at four standard web-video aspect ratios — each shot or rendered{" "}
+        <em>natively</em> at its target aspect, no cropping. Sources: Blender open movie (CC BY
+        3.0), NASA visualizations (Public Domain), Wikimedia film (CC BY-SA 4.0). Each is encoded as
+        both WebM (VP9 CRF 38) and MP4 (H.264 CRF 23) at perceptually-matched quality. Click any
+        video to play; click the download links to grab the file.
       </p>
 
       <div className="space-y-3">
         <h3 className="text-base font-semibold">WebM at common aspect ratios</h3>
         <p className="text-sm text-[var(--muted)]">
-          Six different scenes at six standard aspect ratios — landscape, square, and the four
-          mobile / social ratios (Stories 9:16, Pinterest 2:3, classic 3:4, IG portrait 4:5). Each
-          card is a real WebM file with its MP4 counterpart for direct comparison.
+          The four canonical web-video aspects — landscape (16:9), square (1:1), IG portrait (4:5),
+          and Stories / Reels (9:16). Each card is a real WebM file with its MP4 counterpart for
+          direct comparison.
         </p>
 
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {SAMPLES.map((s) => (
             <figure key={s.ratio} className="flex flex-col rounded-lg border bg-[var(--card)] p-3">
               <div
