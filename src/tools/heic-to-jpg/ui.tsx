@@ -46,6 +46,36 @@ async function loadHeic2Any(): Promise<Heic2Any> {
   return (mod.default as unknown as Heic2Any) ?? (mod as unknown as Heic2Any)
 }
 
+// Re-encode JPG from the lossless PNG pixel data without re-decoding HEIC
+async function reencodeJpg(
+  sourceUrl: string,
+  quality: number,
+): Promise<{ blob: Blob; url: string }> {
+  const img = new Image()
+  img.src = sourceUrl
+  await new Promise<void>((resolve, reject) => {
+    if (img.complete && img.naturalWidth > 0) resolve()
+    else {
+      img.onload = () => resolve()
+      img.onerror = () => reject(new Error("Failed to load source image"))
+    }
+  })
+  const canvas = document.createElement("canvas")
+  canvas.width = img.naturalWidth
+  canvas.height = img.naturalHeight
+  const ctx = canvas.getContext("2d")
+  if (!ctx) throw new Error("Canvas 2D context unavailable")
+  ctx.drawImage(img, 0, 0)
+  const blob = await new Promise<Blob>((resolve, reject) => {
+    canvas.toBlob(
+      (b) => (b ? resolve(b) : reject(new Error("JPG encode failed"))),
+      "image/jpeg",
+      quality / 100,
+    )
+  })
+  return { blob, url: URL.createObjectURL(blob) }
+}
+
 function HeicToJpgUIInner() {
   const [status, setStatus] = useState<Status>("idle")
   const [error, setError] = useState<string | null>(null)
@@ -156,6 +186,27 @@ function HeicToJpgUIInner() {
     })
   }, [])
 
+  const adjustJpgQuality = useCallback(
+    async (id: string, quality: number) => {
+      const target = results.find((r) => r.id === id)
+      if (!target) return
+      try {
+        const { blob, url } = await reencodeJpg(target.pngUrl, quality)
+        setResults((prev) =>
+          prev.map((r) => {
+            if (r.id !== id) return r
+            URL.revokeObjectURL(r.jpgUrl)
+            return { ...r, jpgUrl: url, jpgSize: blob.size, jpgQuality: quality }
+          }),
+        )
+      } catch (err) {
+        console.error(err)
+        setError(err instanceof Error ? err.message : "Re-encode failed")
+      }
+    },
+    [results],
+  )
+
   const handleClear = useCallback(() => {
     results.forEach((r) => {
       URL.revokeObjectURL(r.heicUrl)
@@ -215,7 +266,7 @@ function HeicToJpgUIInner() {
         </label>
         <span className="text-xs text-[var(--muted)]">PNG is lossless — no quality setting</span>
         <span className="ml-auto text-xs text-[var(--muted)]">
-          Applies to new conversions; existing results below keep their quality.
+          Default for new conversions. Each result below has its own slider too.
         </span>
       </div>
 
@@ -261,7 +312,12 @@ function HeicToJpgUIInner() {
             </button>
           </div>
           {results.map((r) => (
-            <ResultBlock key={r.id} result={r} onRemove={() => removeResult(r.id)} />
+            <ResultBlock
+              key={r.id}
+              result={r}
+              onRemove={() => removeResult(r.id)}
+              onJpgQualityChange={(q) => adjustJpgQuality(r.id, q)}
+            />
           ))}
         </div>
       )}
@@ -269,7 +325,29 @@ function HeicToJpgUIInner() {
   )
 }
 
-function ResultBlock({ result, onRemove }: { result: ConversionResult; onRemove: () => void }) {
+function ResultBlock({
+  result,
+  onRemove,
+  onJpgQualityChange,
+}: {
+  result: ConversionResult
+  onRemove: () => void
+  onJpgQualityChange: (quality: number) => void
+}) {
+  // Local slider value for instant UI feedback; commits to parent debounced.
+  // When local diverges from result.jpgQuality, a re-encode is pending.
+  const [localQuality, setLocalQuality] = useState(result.jpgQuality)
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const pending = localQuality !== result.jpgQuality
+
+  const handleSliderChange = (q: number) => {
+    setLocalQuality(q)
+    if (debounceRef.current) clearTimeout(debounceRef.current)
+    debounceRef.current = setTimeout(() => {
+      onJpgQualityChange(q)
+    }, 200)
+  }
+
   return (
     <section className="space-y-3 rounded-lg border bg-[var(--card)]/30 p-4">
       <div className="flex items-center justify-between gap-3">
@@ -295,7 +373,7 @@ function ResultBlock({ result, onRemove }: { result: ConversionResult; onRemove:
           note="Decoded in-browser via WebAssembly"
         />
         <FormatCard
-          badge={`Quality ${result.jpgQuality}`}
+          badge={`Quality ${localQuality}${pending ? "…" : ""}`}
           format="JPG"
           previewUrl={result.jpgUrl}
           previewAlt={`${result.fileName} as JPG`}
@@ -303,7 +381,22 @@ function ResultBlock({ result, onRemove }: { result: ConversionResult; onRemove:
           ratioLabel={ratio(result.jpgSize, result.heicSize)}
           downloadUrl={result.jpgUrl}
           downloadName={`${result.fileName}.jpg`}
-          note="Lossy · universal compatibility"
+          note="Lossy · drag the slider to re-encode"
+          extra={
+            <label className="flex items-center gap-2 text-xs">
+              <span className="text-[var(--muted)]">Q</span>
+              <input
+                type="range"
+                min={50}
+                max={100}
+                step={1}
+                value={localQuality}
+                onChange={(e) => handleSliderChange(Number(e.target.value))}
+                className="flex-1 accent-[var(--accent)]"
+              />
+              <span className="w-7 text-right font-mono">{localQuality}</span>
+            </label>
+          }
         />
         <FormatCard
           badge="Lossless"
@@ -331,6 +424,7 @@ interface FormatCardProps {
   downloadUrl: string
   downloadName: string
   note: string
+  extra?: React.ReactNode
 }
 
 function FormatCard({
@@ -343,6 +437,7 @@ function FormatCard({
   downloadUrl,
   downloadName,
   note,
+  extra,
 }: FormatCardProps) {
   return (
     <figure className="flex flex-col overflow-hidden rounded-lg border bg-[var(--card)]">
@@ -362,6 +457,7 @@ function FormatCard({
           <span className="text-xs text-[var(--muted)]">{ratioLabel}</span>
         </div>
         <div className="text-xs text-[var(--muted)]">{note}</div>
+        {extra}
         <a
           href={downloadUrl}
           download={downloadName}
