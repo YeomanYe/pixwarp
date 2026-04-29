@@ -216,93 +216,47 @@ function HeicToJpgUIInner() {
 
       {/* Result */}
       {result && (
-        <div className="space-y-5">
-          {/* Main preview — uses PNG (lossless) so this is exactly the HEIC content */}
-          <figure className="overflow-hidden rounded-lg border bg-[var(--card)]">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={result.pngUrl}
-              alt={`${result.fileName} HEIC content rendered`}
-              className="block h-auto w-full"
-              style={{ maxHeight: 560, objectFit: "contain" }}
+        <div className="space-y-4">
+          <div className="grid gap-3 md:grid-cols-3">
+            <FormatCard
+              badge="Original"
+              format="HEIC"
+              previewUrl={result.pngUrl}
+              previewAlt={`${result.fileName} HEIC content (decoded in browser)`}
+              size={result.heicSize}
+              ratioLabel="baseline"
+              downloadUrl={result.heicUrl}
+              downloadName={`${result.fileName}.heic`}
+              note="Decoded in-browser via WebAssembly"
             />
-            <figcaption className="border-t bg-[var(--muted-bg)]/40 px-4 py-2 text-xs text-[var(--muted)]">
-              <strong className="text-[var(--foreground)]">{result.fileName}.heic</strong> · decoded
-              in your browser via WebAssembly. Browsers can&apos;t display HEIC bytes natively, but
-              the rendered pixels above are the exact original content (lossless PNG re-encode used
-              for display).
-            </figcaption>
-          </figure>
-
-          {/* Size comparison table */}
-          <div className="overflow-hidden rounded-lg border bg-[var(--card)]">
-            <table className="w-full text-sm">
-              <thead className="bg-[var(--muted-bg)]/50 text-left">
-                <tr>
-                  <th className="px-4 py-2 font-mono text-xs tracking-wider text-[var(--muted)] uppercase">
-                    Format
-                  </th>
-                  <th className="px-4 py-2 font-mono text-xs tracking-wider text-[var(--muted)] uppercase">
-                    Size
-                  </th>
-                  <th className="px-4 py-2 font-mono text-xs tracking-wider text-[var(--muted)] uppercase">
-                    vs HEIC
-                  </th>
-                  <th className="px-4 py-2 font-mono text-xs tracking-wider text-[var(--muted)] uppercase">
-                    Download
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="px-4 py-3 font-medium">HEIC (original)</td>
-                  <td className="px-4 py-3 font-mono">{formatBytes(result.heicSize)}</td>
-                  <td className="px-4 py-3 text-[var(--muted)]">baseline</td>
-                  <td className="px-4 py-3">
-                    <a
-                      href={result.heicUrl}
-                      download={`${result.fileName}.heic`}
-                      className="text-[var(--accent)] hover:underline"
-                    >
-                      .heic ↓
-                    </a>
-                  </td>
-                </tr>
-                <tr className="border-t">
-                  <td className="px-4 py-3 font-medium">JPG (quality 90)</td>
-                  <td className="px-4 py-3 font-mono">{formatBytes(result.jpgSize)}</td>
-                  <td className="px-4 py-3 text-[var(--muted)]">
-                    {ratio(result.jpgSize, result.heicSize)}
-                  </td>
-                  <td className="px-4 py-3">
-                    <a
-                      href={result.jpgUrl}
-                      download={`${result.fileName}.jpg`}
-                      className="text-[var(--accent)] hover:underline"
-                    >
-                      .jpg ↓
-                    </a>
-                  </td>
-                </tr>
-                <tr className="border-t">
-                  <td className="px-4 py-3 font-medium">PNG (lossless)</td>
-                  <td className="px-4 py-3 font-mono">{formatBytes(result.pngSize)}</td>
-                  <td className="px-4 py-3 text-[var(--muted)]">
-                    {ratio(result.pngSize, result.heicSize)}
-                  </td>
-                  <td className="px-4 py-3">
-                    <a
-                      href={result.pngUrl}
-                      download={`${result.fileName}.png`}
-                      className="text-[var(--accent)] hover:underline"
-                    >
-                      .png ↓
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <FormatCard
+              badge="Quality 90"
+              format="JPG"
+              previewUrl={result.jpgUrl}
+              previewAlt={`${result.fileName} as JPG`}
+              size={result.jpgSize}
+              ratioLabel={ratio(result.jpgSize, result.heicSize)}
+              downloadUrl={result.jpgUrl}
+              downloadName={`${result.fileName}.jpg`}
+              note="Lossy · universal compatibility"
+            />
+            <FormatCard
+              badge="Lossless"
+              format="PNG"
+              previewUrl={result.pngUrl}
+              previewAlt={`${result.fileName} as PNG`}
+              size={result.pngSize}
+              ratioLabel={ratio(result.pngSize, result.heicSize)}
+              downloadUrl={result.pngUrl}
+              downloadName={`${result.fileName}.png`}
+              note="Identical to HEIC pixel-for-pixel"
+            />
           </div>
+          <p className="text-xs text-[var(--muted)]">
+            HEIC and PNG show the exact same pixels (PNG is lossless). JPG at q90 is visually almost
+            identical with slight compression. The size differences are the interesting part — note
+            how PNG can be many times larger than HEIC.
+          </p>
 
           <button
             type="button"
@@ -314,6 +268,59 @@ function HeicToJpgUIInner() {
         </div>
       )}
     </div>
+  )
+}
+
+interface FormatCardProps {
+  badge: string
+  format: string
+  previewUrl: string
+  previewAlt: string
+  size: number
+  ratioLabel: string
+  downloadUrl: string
+  downloadName: string
+  note: string
+}
+
+function FormatCard({
+  badge,
+  format,
+  previewUrl,
+  previewAlt,
+  size,
+  ratioLabel,
+  downloadUrl,
+  downloadName,
+  note,
+}: FormatCardProps) {
+  return (
+    <figure className="flex flex-col overflow-hidden rounded-lg border bg-[var(--card)]">
+      <div className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-[var(--muted-bg)]/40">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={previewUrl} alt={previewAlt} className="h-full w-full object-contain" />
+      </div>
+      <figcaption className="flex flex-col gap-2 border-t p-3">
+        <div className="flex items-center justify-between">
+          <span className="text-base font-semibold">{format}</span>
+          <span className="rounded border border-[var(--border)] px-1.5 py-0.5 font-mono text-[10px] tracking-wider text-[var(--muted)] uppercase">
+            {badge}
+          </span>
+        </div>
+        <div className="flex items-baseline justify-between gap-2 text-sm">
+          <span className="font-mono">{formatBytes(size)}</span>
+          <span className="text-xs text-[var(--muted)]">{ratioLabel}</span>
+        </div>
+        <div className="text-xs text-[var(--muted)]">{note}</div>
+        <a
+          href={downloadUrl}
+          download={downloadName}
+          className="mt-1 rounded-md border border-[var(--accent)]/40 px-3 py-1.5 text-center text-xs font-medium text-[var(--accent)] transition hover:bg-[var(--accent)]/10"
+        >
+          Download .{downloadName.split(".").pop()}
+        </a>
+      </figcaption>
+    </figure>
   )
 }
 
