@@ -1,4 +1,6 @@
 import Link from "next/link"
+import { tools } from "@/tools/registry"
+import { formats } from "@/formats/registry"
 
 export function Footer() {
   const year = new Date().getFullYear()
@@ -17,28 +19,27 @@ export function Footer() {
               Tools
             </div>
             <ul className="mt-3 space-y-1.5 text-sm">
-              <li>
-                <Link href="/" className="hover:text-[var(--accent)]">
-                  All tools
-                </Link>
-              </li>
+              {tools.map((tool) => (
+                <li key={tool.slug}>
+                  <Link href={`/tools/${tool.slug}`} className="hover:text-[var(--accent)]">
+                    {tool.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div>
             <div className="text-sm font-semibold tracking-wide text-[var(--muted)] uppercase">
-              Company
+              Formats
             </div>
             <ul className="mt-3 space-y-1.5 text-sm">
-              <li>
-                <Link href="/privacy" className="hover:text-[var(--accent)]">
-                  Privacy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="hover:text-[var(--accent)]">
-                  Terms
-                </Link>
-              </li>
+              {formats.map((fmt) => (
+                <li key={fmt.slug}>
+                  <Link href={`/format/${fmt.slug}`} className="hover:text-[var(--accent)]">
+                    .{fmt.extensions[0]} — {fmt.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div>
