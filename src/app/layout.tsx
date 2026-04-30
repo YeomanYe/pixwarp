@@ -17,20 +17,21 @@ const geistMono = Geist_Mono({
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://pixwarp.app"
 const SITE_NAME = "PixWarp"
 const SITE_DESCRIPTION =
-  "Browser-local media tools for creators. Convert, compress, and craft media without uploading. Free, fast, private."
+  "Fast, friendly media tools. Convert, compress, and create — drop a file in your browser, get the result instantly. No signup, no waiting."
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — Browser-local media tools`,
+    default: `${SITE_NAME} — Fast media tools, no signup`,
     template: `%s · ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
   keywords: [
     "media tools",
-    "browser local processing",
-    "no upload converter",
-    "privacy first tools",
+    "fast image converter",
+    "no signup converter",
+    "browser media tools",
+    "instant file converter",
     "HEIC converter",
     "MP4 to GIF",
     "screenshot mockup",

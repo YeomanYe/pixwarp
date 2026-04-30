@@ -9,7 +9,7 @@ export function Footer() {
           <div>
             <div className="font-semibold">PixWarp</div>
             <p className="mt-2 text-sm text-[var(--muted)]">
-              Browser-local media tools. No upload, no signup, no nonsense.
+              Fast, friendly media tools. Drop a file, get the result — no signup, no waiting.
             </p>
           </div>
           <div>
@@ -61,7 +61,7 @@ export function Footer() {
         </div>
         <div className="mt-8 flex items-center justify-between border-t pt-6 text-xs text-[var(--muted)]">
           <span>© {year} PixWarp. All rights reserved.</span>
-          <span>Made with care, no upload.</span>
+          <span>Made with care.</span>
         </div>
       </div>
     </footer>

@@ -6,7 +6,7 @@ export const manifest: ToolManifest = {
   category: "video",
   name: "MP4 to GIF Converter",
   description:
-    "Convert short MP4 / WebM clips to optimized GIF in your browser. FPS, width, palette — all tunable. Local FFmpeg.wasm, no upload.",
+    "Drop a short MP4 or WebM, get a polished GIF in seconds. FPS, width, and palette all tunable, FFmpeg.wasm runs right in your browser.",
   longDescription: `Need a GIF for a README, a Slack reaction, a tweet? Online converters are free until your video has anything sensitive in it (it doesn't matter that they "promise" not to keep it — you can't audit them).
 
 This tool runs a real FFmpeg compiled to WebAssembly inside your browser. The video is read from your disk into memory, processed locally, and the GIF is downloaded — never uploaded.

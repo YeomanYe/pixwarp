@@ -6,7 +6,7 @@ export const manifest: ToolManifest = {
   category: "screenshot",
   name: "Screenshot Mockup Generator",
   description:
-    "Drop any screenshot, get a beautiful version with browser frame, gradient background, and shadow. All rendered locally — never uploaded.",
+    "Drop any screenshot, get a polished version with browser frame, gradient background, and soft shadow — ready for blog hero, OG image, or X post.",
   longDescription: `Plain screenshots look amateur. A screenshot wrapped in a browser frame, sitting on a colorful gradient background with a soft drop shadow, looks shipped. Use this to dress up your blog hero images, X / Twitter posts, OG images, and product launch announcements.
 
 Everything renders in your browser — your image never leaves your device.`,

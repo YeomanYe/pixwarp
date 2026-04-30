@@ -8,16 +8,16 @@ export default function HomePage() {
       {/* Hero */}
       <section className="mb-16 text-center">
         <div className="inline-flex items-center rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/10 px-3 py-1 font-mono text-xs tracking-widest text-[var(--accent)] uppercase">
-          Browser-local · No upload
+          Drop · click · done
         </div>
         <h1 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
           Media tools that
           <br />
-          <span className="text-[var(--accent)]">stay on your device</span>
+          <span className="text-[var(--accent)]">just work</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-base text-[var(--muted)] sm:text-lg">
-          Free, fast, private. Convert, compress, and craft your media right in the browser. No
-          upload, no signup, no watermark.
+          Fast, friendly, no friction. Convert, compress, and create directly in your browser — drop
+          a file, get the result. No signup, no waiting.
         </p>
         <div className="mt-8 flex justify-center">
           <a

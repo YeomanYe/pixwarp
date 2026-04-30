@@ -6,7 +6,7 @@ export const manifest: ToolManifest = {
   category: "image",
   name: "HEIC to JPG Converter",
   description:
-    "Convert iPhone HEIC photos to JPG (or PNG) directly in your browser. No upload, no signup, no watermark.",
+    "Drop a HEIC, get JPG and PNG instantly — with a side-by-side preview and tunable quality. No signup, no waiting.",
   longDescription: `iPhone takes photos in HEIC format by default — great for storage, terrible for compatibility.
 This converter runs entirely in your browser using WebAssembly. Your photos never leave your device.
 

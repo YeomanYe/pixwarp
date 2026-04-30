@@ -6,7 +6,7 @@ export const manifest: ToolManifest = {
   category: "creator",
   name: "Social Media Cover Generator",
   description:
-    "Generate a clean cover image for blog posts, X posts, Xiaohongshu, OG images. Multiple aspect ratios, gradient themes, locally rendered.",
+    "Generate a polished cover image for blog posts, X posts, Xiaohongshu, or OG images — pick aspect ratio, type your title, download.",
   longDescription: `Writing a blog post or thread, but the cover image is "draft me an asset in Figma" away from being done? Generate one in 30 seconds. Pick aspect ratio (3:4 for Xiaohongshu, 9:16 for Stories, 16:9 for OG / blog hero), type your title and subtitle, choose a gradient — done.
 
 Renders fully in your browser. The exported PNG is high-resolution (2x) and ready to upload.`,
