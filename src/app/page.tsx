@@ -16,8 +16,9 @@ export default function HomePage() {
           <span className="text-[var(--accent)]">just work</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-base text-[var(--muted)] sm:text-lg">
-          Fast, friendly, no friction. Convert, compress, and create directly in your browser — drop
-          a file, get the result. No signup, no waiting.
+          Fast, friendly, and calm by design. Convert, compress, and create directly in your browser
+          — every interaction tuned to feel human. Drop a file, get the result. No signup, no
+          waiting.
         </p>
         <div className="mt-8 flex justify-center">
           <a
