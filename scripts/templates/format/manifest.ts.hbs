@@ -1,15 +1,15 @@
 import type { FormatManifest } from "../types"
 
 export const manifest: FormatManifest = {
-  slug: "{{slug}}",
-  category: "{{category}}",
-  name: "{{name}}",
-  fullName: "{{fullName}}",
+  slug: {{{json slug}}},
+  category: {{{json category}}},
+  name: {{{json name}}},
+  fullName: {{{json fullName}}},
   year: {{year}},
-  extensions: ["{{slug}}"],
+  extensions: [{{{json slug}}}],
   mimeTypes: [],
   standard: "",
-  tagline: "{{tagline}}",
+  tagline: {{{json tagline}}},
   description: "",
   pros: [],
   cons: [],
@@ -19,9 +19,9 @@ export const manifest: FormatManifest = {
     browsers: [],
     apps: [],
   },
-  keywords: ["{{slug}}"],
+  keywords: [{{{json slug}}}],
   relatedTools: [],
   relatedFormats: [],
   faq: [],
-  lastUpdated: "{{today}}",
+  lastUpdated: {{{json today}}},
 }

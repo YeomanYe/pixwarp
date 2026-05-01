@@ -2,17 +2,15 @@ import type { ToolManifest } from "../types"
 import { {{pascalCase slug}}UI } from "./ui"
 
 export const manifest: ToolManifest = {
-  slug: "{{slug}}",
-  category: "{{category}}",
-  name: "{{name}}",
-  description: "{{description}}",
-  keywords: [
-    "{{slug}}",
-  ],
-  icon: "{{icon}}",
+  slug: {{{json slug}}},
+  category: {{{json category}}},
+  name: {{{json name}}},
+  description: {{{json description}}},
+  keywords: [{{{json slug}}}],
+  icon: {{{json icon}}},
   related: [],
   markets: ["global"],
   faq: [],
-  lastUpdated: "{{today}}",
+  lastUpdated: {{{json today}}},
   Component: {{pascalCase slug}}UI,
 }
