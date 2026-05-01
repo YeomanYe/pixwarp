@@ -9,9 +9,34 @@ type Stage = "idle" | "loading-core" | "ready" | "converting" | "done" | "error"
 const FFMPEG_CORE_VERSION = "0.12.10"
 const CORE_BASE_URL = `https://unpkg.com/@ffmpeg/core@${FFMPEG_CORE_VERSION}/dist/umd`
 
+async function fetchAsBlobUrl(
+  url: string,
+  mime: string,
+  onProgress: (received: number, total: number | null) => void,
+): Promise<string> {
+  const res = await fetch(url)
+  if (!res.ok || !res.body) throw new Error(`Failed to fetch ${url}: ${res.status}`)
+  const totalHeader = res.headers.get("content-length")
+  const total = totalHeader ? Number(totalHeader) : null
+  const reader = res.body.getReader()
+  const chunks: Uint8Array[] = []
+  let received = 0
+  while (true) {
+    const { done, value } = await reader.read()
+    if (done) break
+    chunks.push(value)
+    received += value.length
+    onProgress(received, total)
+  }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const blob = new Blob(chunks as any, { type: mime })
+  return URL.createObjectURL(blob)
+}
+
 function Mp4ToGifInner() {
   const [stage, setStage] = useState<Stage>("idle")
   const [progress, setProgress] = useState(0)
+  const [coreLoadPct, setCoreLoadPct] = useState<number | null>(null)
   const [log, setLog] = useState<string>("")
   const [file, setFile] = useState<File | null>(null)
   const [previewUrl, setPreviewUrl] = useState<string | null>(null)
@@ -42,10 +67,10 @@ function Mp4ToGifInner() {
     if (ffmpegRef.current) return ffmpegRef.current
 
     setStage("loading-core")
-    setLog("Loading FFmpeg WebAssembly core (~30 MB, first time only)…")
+    setCoreLoadPct(null)
+    setLog("Loading converter (~30 MB, one-time download)…")
 
     const { FFmpeg } = await import("@ffmpeg/ffmpeg")
-    const { toBlobURL } = await import("@ffmpeg/util")
     const ffmpeg = new FFmpeg()
 
     ffmpeg.on("log", ({ message }: { message: string }) => {
@@ -55,13 +80,40 @@ function Mp4ToGifInner() {
       setProgress(Math.max(0, Math.min(1, progress)))
     })
 
-    await ffmpeg.load({
-      coreURL: await toBlobURL(`${CORE_BASE_URL}/ffmpeg-core.js`, "text/javascript"),
-      wasmURL: await toBlobURL(`${CORE_BASE_URL}/ffmpeg-core.wasm`, "application/wasm"),
-    })
+    // Track combined download progress across the two files (.js + .wasm).
+    // wasm dominates size, so weighting is approximate but visually fair.
+    const filesProgress: { received: number; total: number | null }[] = [
+      { received: 0, total: null },
+      { received: 0, total: null },
+    ]
+    const reportCombined = () => {
+      const haveAllTotals = filesProgress.every((f) => f.total !== null && f.total > 0)
+      if (!haveAllTotals) {
+        setCoreLoadPct(null)
+        return
+      }
+      const total = filesProgress.reduce((s, f) => s + (f.total ?? 0), 0)
+      const received = filesProgress.reduce((s, f) => s + f.received, 0)
+      setCoreLoadPct(total === 0 ? null : received / total)
+    }
+
+    const [coreURL, wasmURL] = await Promise.all([
+      fetchAsBlobUrl(`${CORE_BASE_URL}/ffmpeg-core.js`, "text/javascript", (r, t) => {
+        filesProgress[0] = { received: r, total: t }
+        reportCombined()
+      }),
+      fetchAsBlobUrl(`${CORE_BASE_URL}/ffmpeg-core.wasm`, "application/wasm", (r, t) => {
+        filesProgress[1] = { received: r, total: t }
+        reportCombined()
+      }),
+    ])
+
+    setLog("Initializing converter…")
+    await ffmpeg.load({ coreURL, wasmURL })
 
     ffmpegRef.current = ffmpeg
     setStage("ready")
+    setCoreLoadPct(null)
     setLog("Core loaded.")
     return ffmpeg
   }, [])
@@ -299,14 +351,40 @@ function Mp4ToGifInner() {
               )}
             </div>
 
-            {(stage === "loading-core" || stage === "converting") && (
+            {stage === "loading-core" && (
+              <div>
+                <div className="mb-2 flex items-center gap-2 text-sm">
+                  <span
+                    className="inline-block h-3 w-3 animate-spin rounded-full border-2 border-[var(--accent)] border-t-transparent"
+                    aria-hidden
+                  />
+                  <span className="font-medium">
+                    {coreLoadPct !== null
+                      ? `Loading converter — ${Math.round(coreLoadPct * 100)}%`
+                      : "Loading converter…"}
+                  </span>
+                  <span className="text-xs text-[var(--muted)]">~30 MB, one-time download</span>
+                </div>
+                <div className="h-1.5 overflow-hidden rounded-full bg-[var(--muted-bg)]">
+                  {coreLoadPct !== null ? (
+                    <div
+                      className="h-full bg-[var(--accent)] transition-all"
+                      style={{ width: `${Math.round(coreLoadPct * 100)}%` }}
+                    />
+                  ) : (
+                    <div className="h-full w-1/3 animate-pulse rounded-full bg-[var(--accent)]" />
+                  )}
+                </div>
+                <p className="mt-2 truncate font-mono text-xs text-[var(--muted)]">{log}</p>
+              </div>
+            )}
+
+            {stage === "converting" && (
               <div>
                 <div className="h-1.5 overflow-hidden rounded-full bg-[var(--muted-bg)]">
                   <div
                     className="h-full bg-[var(--accent)] transition-all"
-                    style={{
-                      width: stage === "loading-core" ? "30%" : `${Math.round(progress * 100)}%`,
-                    }}
+                    style={{ width: `${Math.round(progress * 100)}%` }}
                   />
                 </div>
                 <p className="mt-2 truncate font-mono text-xs text-[var(--muted)]">{log}</p>
