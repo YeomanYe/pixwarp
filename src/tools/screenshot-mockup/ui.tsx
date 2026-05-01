@@ -129,8 +129,8 @@ function MockupInner() {
             or press <kbd className="rounded border px-1 font-mono">⌘V</kbd> /{" "}
             <kbd className="rounded border px-1 font-mono">Ctrl+V</kbd> to paste
           </p>
-          <div className="flex flex-col items-center gap-2">
-            <label className="cursor-pointer rounded-md bg-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--accent-fg)] transition hover:bg-[var(--accent-hover)]">
+          <div className="flex w-full flex-col gap-2 min-[580px]:w-auto min-[580px]:flex-row min-[580px]:items-center min-[580px]:justify-center">
+            <label className="w-full cursor-pointer rounded-md bg-[var(--accent)] px-4 py-2 text-center text-sm font-medium text-[var(--accent-fg)] transition hover:bg-[var(--accent-hover)] min-[580px]:w-auto">
               Choose image
               <input
                 type="file"
@@ -145,7 +145,7 @@ function MockupInner() {
             <button
               type="button"
               onClick={handlePasteButton}
-              className="rounded-md border px-4 py-2 text-sm font-medium transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
+              className="w-full rounded-md border px-4 py-2 text-sm font-medium transition hover:border-[var(--accent)] hover:text-[var(--accent)] min-[580px]:w-auto"
             >
               Paste image
             </button>
