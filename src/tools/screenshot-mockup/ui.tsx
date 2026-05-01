@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback, useRef } from "react"
+import { useState, useCallback, useRef, useEffect } from "react"
 import dynamic from "next/dynamic"
 
 type FrameStyle = "browser-light" | "browser-dark" | "device-mac" | "none"
@@ -44,6 +44,52 @@ function MockupInner() {
     [imageUrl],
   )
 
+  useEffect(() => {
+    if (imageUrl) return
+    const onPaste = (e: ClipboardEvent) => {
+      const target = e.target as HTMLElement | null
+      if (target?.matches("input, textarea, [contenteditable='true']")) return
+      const items = e.clipboardData?.items
+      if (!items) return
+      for (const item of items) {
+        if (item.type.startsWith("image/")) {
+          const file = item.getAsFile()
+          if (file) {
+            e.preventDefault()
+            handleFile(file)
+            break
+          }
+        }
+      }
+    }
+    document.addEventListener("paste", onPaste)
+    return () => document.removeEventListener("paste", onPaste)
+  }, [imageUrl, handleFile])
+
+  const handlePasteButton = useCallback(async () => {
+    try {
+      if (!navigator.clipboard?.read) {
+        setError("Clipboard not available — paste with Cmd/Ctrl+V instead.")
+        return
+      }
+      const items = await navigator.clipboard.read()
+      for (const item of items) {
+        const imageType = item.types.find((t) => t.startsWith("image/"))
+        if (imageType) {
+          const blob = await item.getType(imageType)
+          const file = new File([blob], `pasted.${imageType.split("/")[1] || "png"}`, {
+            type: imageType,
+          })
+          handleFile(file)
+          return
+        }
+      }
+      setError("No image found in clipboard.")
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to read clipboard")
+    }
+  }, [handleFile])
+
   const handleExport = useCallback(async () => {
     if (!stageRef.current) return
     setBusy(true)
@@ -78,19 +124,32 @@ function MockupInner() {
           className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-[var(--border)] bg-[var(--muted-bg)]/40 px-6 py-16 text-center"
         >
           <p className="mb-1 text-base font-medium">Drop a screenshot here</p>
-          <p className="mb-4 text-sm text-[var(--muted)]">PNG / JPG / WebP — processed locally</p>
-          <label className="cursor-pointer rounded-md bg-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--accent-fg)] transition hover:bg-[var(--accent-hover)]">
-            Choose image
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => {
-                const f = e.target.files?.[0]
-                if (f) handleFile(f)
-              }}
-              className="hidden"
-            />
-          </label>
+          <p className="mb-1 text-sm text-[var(--muted)]">PNG / JPG / WebP — processed locally</p>
+          <p className="mb-4 text-xs text-[var(--muted)]">
+            or press <kbd className="rounded border px-1 font-mono">⌘V</kbd> /{" "}
+            <kbd className="rounded border px-1 font-mono">Ctrl+V</kbd> to paste
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            <label className="cursor-pointer rounded-md bg-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--accent-fg)] transition hover:bg-[var(--accent-hover)]">
+              Choose image
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => {
+                  const f = e.target.files?.[0]
+                  if (f) handleFile(f)
+                }}
+                className="hidden"
+              />
+            </label>
+            <button
+              type="button"
+              onClick={handlePasteButton}
+              className="rounded-md border px-4 py-2 text-sm font-medium transition hover:border-[var(--accent)] hover:text-[var(--accent)]"
+            >
+              Paste image
+            </button>
+          </div>
         </div>
       ) : (
         <>
