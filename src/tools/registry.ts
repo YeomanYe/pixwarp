@@ -4,6 +4,7 @@ import { manifest as screenshotMockupManifest } from "./screenshot-mockup/manife
 import { manifest as tweetMockupManifest } from "./tweet-mockup/manifest"
 import { manifest as socialCoverManifest } from "./social-cover/manifest"
 import { manifest as mp4ToGifManifest } from "./mp4-to-gif/manifest"
+import { manifest as pdfCompressManifest } from "./pdf-compress/manifest"
 import { manifest as pdfSplitManifest } from "./pdf-split/manifest"
 import { manifest as pdfMergeManifest } from "./pdf-merge/manifest"
 import { manifest as imageCompressorManifest } from "./image-compressor/manifest"
@@ -24,6 +25,7 @@ export const tools: ToolManifest[] = [
   tweetMockupManifest,
   socialCoverManifest,
   mp4ToGifManifest,
+  pdfCompressManifest,
   pdfSplitManifest,
   pdfMergeManifest,
   imageCompressorManifest,
