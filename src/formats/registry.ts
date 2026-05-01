@@ -1,8 +1,9 @@
 import type { FormatManifest } from "./types"
 import { manifest as heicManifest } from "./heic/manifest"
 import { manifest as webmManifest } from "./webm/manifest"
+import { manifest as webpManifest } from "./webp/manifest"
 
-export const formats: FormatManifest[] = [heicManifest, webmManifest]
+export const formats: FormatManifest[] = [heicManifest, webmManifest, webpManifest]
 
 export const formatsBySlug = Object.fromEntries(formats.map((f) => [f.slug, f]))
 
