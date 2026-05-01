@@ -14,7 +14,7 @@ const useCases: { title: string; blurb: string; slugs: string[] }[] = [
     slugs: ["tweet-mockup", "social-cover"],
   },
   {
-    title: "For 小红书 / Pinterest",
+    title: "For Xiaohongshu / Pinterest",
     blurb: "3:4 covers tuned for vertical-feed platforms.",
     slugs: ["social-cover"],
   },
