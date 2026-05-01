@@ -267,7 +267,7 @@ function HeicToJpgUIInner() {
           <span className="text-[var(--muted)]">JPG quality</span>
           <input
             type="range"
-            min={50}
+            min={10}
             max={100}
             step={1}
             value={jpgQuality}
@@ -399,7 +399,7 @@ function ResultBlock({
               <span className="text-[var(--muted)]">Q</span>
               <input
                 type="range"
-                min={50}
+                min={10}
                 max={100}
                 step={1}
                 value={localQuality}
@@ -457,7 +457,7 @@ function FormatCard({
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={previewUrl} alt={previewAlt} className="h-full w-full object-contain" />
       </div>
-      <figcaption className="flex flex-col gap-2 border-t p-3">
+      <figcaption className="flex flex-1 flex-col gap-2 border-t p-3">
         <div className="flex items-center justify-between">
           <span className="text-base font-semibold">{format}</span>
           <span className="rounded border border-[var(--border)] px-1.5 py-0.5 font-mono text-[10px] tracking-wider text-[var(--muted)] uppercase">
@@ -473,7 +473,7 @@ function FormatCard({
         <a
           href={downloadUrl}
           download={downloadName}
-          className="mt-1 rounded-md border border-[var(--accent)]/40 px-3 py-1.5 text-center text-xs font-medium text-[var(--accent)] transition hover:bg-[var(--accent)]/10"
+          className="mt-auto rounded-md border border-[var(--accent)]/40 px-3 py-1.5 text-center text-xs font-medium text-[var(--accent)] transition hover:bg-[var(--accent)]/10"
         >
           Download .{downloadName.split(".").pop()}
         </a>
