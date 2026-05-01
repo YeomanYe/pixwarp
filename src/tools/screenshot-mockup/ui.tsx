@@ -129,7 +129,7 @@ function MockupInner() {
             or press <kbd className="rounded border px-1 font-mono">⌘V</kbd> /{" "}
             <kbd className="rounded border px-1 font-mono">Ctrl+V</kbd> to paste
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-2">
+          <div className="flex flex-col items-center gap-2">
             <label className="cursor-pointer rounded-md bg-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--accent-fg)] transition hover:bg-[var(--accent-hover)]">
               Choose image
               <input
