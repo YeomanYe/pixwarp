@@ -16,7 +16,7 @@ type Theme = {
 
 const RATIOS: Ratio[] = [
   { id: "16x9", label: "16:9", w: 1200, h: 675, note: "Blog / OG / YouTube" },
-  { id: "3x4", label: "3:4", w: 750, h: 1000, note: "Xiaohongshu / Pinterest" },
+  { id: "3x4", label: "3:4", w: 750, h: 1000, note: "RedNote / Pinterest" },
   { id: "9x16", label: "9:16", w: 675, h: 1200, note: "IG / TikTok Story" },
 ]
 

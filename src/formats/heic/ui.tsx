@@ -99,7 +99,7 @@ const ASPECT_SAMPLES: AspectSample[] = [
     heicName: "autumn-3x4.heic",
     heicSize: 229_155,
     jpgSize: 422_253,
-    useCase: "Phone photo / Xiaohongshu / portrait shoot",
+    useCase: "Phone photo / RedNote / portrait shoot",
   },
   {
     ratio: "2:3",
