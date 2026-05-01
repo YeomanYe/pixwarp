@@ -6,6 +6,7 @@ export type ToolSlug =
   | "mp4-to-gif"
   | "tweet-mockup"
   | "social-cover"
+  | "qr-code"
 
 type ToolOpenProps = { tool_slug: ToolSlug }
 

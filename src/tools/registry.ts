@@ -4,6 +4,7 @@ import { manifest as screenshotMockupManifest } from "./screenshot-mockup/manife
 import { manifest as tweetMockupManifest } from "./tweet-mockup/manifest"
 import { manifest as socialCoverManifest } from "./social-cover/manifest"
 import { manifest as mp4ToGifManifest } from "./mp4-to-gif/manifest"
+import { manifest as qrCodeManifest } from "./qr-code/manifest"
 
 /**
  * Central registry of all tools.
@@ -20,6 +21,7 @@ export const tools: ToolManifest[] = [
   tweetMockupManifest,
   socialCoverManifest,
   mp4ToGifManifest,
+  qrCodeManifest,
 ]
 
 export const toolsBySlug = Object.fromEntries(tools.map((t) => [t.slug, t]))
