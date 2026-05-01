@@ -7,6 +7,10 @@ export type ToolSlug =
   | "tweet-mockup"
   | "social-cover"
   | "qr-code"
+  | "image-compressor"
+  | "pdf-merge"
+  | "pdf-split"
+  | "pdf-compress"
 
 type ToolOpenProps = { tool_slug: ToolSlug }
 

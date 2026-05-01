@@ -4,6 +4,7 @@ import { manifest as screenshotMockupManifest } from "./screenshot-mockup/manife
 import { manifest as tweetMockupManifest } from "./tweet-mockup/manifest"
 import { manifest as socialCoverManifest } from "./social-cover/manifest"
 import { manifest as mp4ToGifManifest } from "./mp4-to-gif/manifest"
+import { manifest as imageCompressorManifest } from "./image-compressor/manifest"
 import { manifest as qrCodeManifest } from "./qr-code/manifest"
 
 /**
@@ -21,6 +22,7 @@ export const tools: ToolManifest[] = [
   tweetMockupManifest,
   socialCoverManifest,
   mp4ToGifManifest,
+  imageCompressorManifest,
   qrCodeManifest,
 ]
 
