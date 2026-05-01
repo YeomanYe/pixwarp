@@ -1,6 +1,29 @@
 import Link from "next/link"
-import { tools, categoryLabels } from "@/tools/registry"
+import { tools, toolsBySlug, categoryLabels } from "@/tools/registry"
 import { formats, formatCategoryLabels } from "@/formats/registry"
+
+const useCases: { title: string; blurb: string; slugs: string[] }[] = [
+  {
+    title: "For your blog / OG image",
+    blurb: "Hero images and social cards that look shipped.",
+    slugs: ["screenshot-mockup", "social-cover"],
+  },
+  {
+    title: "For Twitter / X",
+    blurb: "Threads, screenshots, and link previews that get clicks.",
+    slugs: ["tweet-mockup", "social-cover"],
+  },
+  {
+    title: "For 小红书 / Pinterest",
+    blurb: "3:4 covers tuned for vertical-feed platforms.",
+    slugs: ["social-cover"],
+  },
+  {
+    title: "General utility",
+    blurb: "Quick conversions when you just need the file.",
+    slugs: ["heic-to-jpg", "mp4-to-gif"],
+  },
+]
 
 export default function HomePage() {
   return (
@@ -28,6 +51,46 @@ export default function HomePage() {
             Browse tools
           </a>
         </div>
+      </section>
+
+      {/* By use case */}
+      <section id="use-cases" className="mb-16 scroll-mt-20">
+        <div className="mb-6">
+          <h2 className="text-2xl font-semibold tracking-tight">By use case</h2>
+          <p className="mt-1 text-sm text-[var(--muted)]">
+            Tools grouped by where the result is going. One tool can fit several jobs.
+          </p>
+        </div>
+        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {useCases.map((uc) => (
+            <li
+              key={uc.title}
+              className="rounded-lg border bg-[var(--card)] p-5 transition hover:border-[var(--accent)] hover:shadow-sm"
+            >
+              <div className="font-semibold tracking-tight">{uc.title}</div>
+              <p className="mt-1.5 text-sm text-[var(--muted)]">{uc.blurb}</p>
+              <ul className="mt-4 space-y-1.5 text-sm">
+                {uc.slugs.map((slug) => {
+                  const tool = toolsBySlug[slug]
+                  if (!tool) return null
+                  return (
+                    <li key={slug}>
+                      <Link
+                        href={`/tools/${slug}`}
+                        className="inline-flex items-center gap-1 text-[var(--foreground)] hover:text-[var(--accent)]"
+                      >
+                        <span aria-hidden="true" className="text-[var(--muted)]">
+                          →
+                        </span>
+                        {tool.name}
+                      </Link>
+                    </li>
+                  )
+                })}
+              </ul>
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* Tools grid */}
