@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from "react"
 import dynamic from "next/dynamic"
+import { track, trackError } from "@/lib/analytics"
 
 type Stage = "idle" | "loading-core" | "ready" | "converting" | "done" | "error"
 
@@ -29,6 +30,7 @@ function Mp4ToGifInner() {
   const ffmpegRef = useRef<any>(null)
 
   useEffect(() => {
+    track("tool_open", { tool_slug: "mp4-to-gif" })
     return () => {
       if (previewUrl) URL.revokeObjectURL(previewUrl)
       if (gifUrl) URL.revokeObjectURL(gifUrl)
@@ -71,6 +73,11 @@ function Mp4ToGifInner() {
         return
       }
       setError(null)
+      track("file_dropped", {
+        tool_slug: "mp4-to-gif",
+        file_type: f.type,
+        file_size_kb: Math.round(f.size / 1024),
+      })
       setGifUrl(null)
       if (previewUrl) URL.revokeObjectURL(previewUrl)
       setPreviewUrl(URL.createObjectURL(f))
@@ -136,6 +143,7 @@ function Mp4ToGifInner() {
       setGifUrl(url)
       setGifSize(blob.size)
       setStage("done")
+      track("convert_success", { tool_slug: "mp4-to-gif" })
 
       // cleanup
       try {
@@ -149,6 +157,7 @@ function Mp4ToGifInner() {
       console.error(err)
       setStage("error")
       setError(err instanceof Error ? err.message : "Conversion failed")
+      trackError("mp4-to-gif", err)
     }
   }, [file, loadCore, fps, width, trimStart, duration, gifUrl])
 

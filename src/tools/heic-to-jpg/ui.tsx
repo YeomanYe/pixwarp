@@ -1,7 +1,8 @@
 "use client"
 
-import { useState, useCallback, useRef } from "react"
+import { useState, useCallback, useRef, useEffect } from "react"
 import dynamic from "next/dynamic"
+import { track, trackError } from "@/lib/analytics"
 
 // heic2any uses browser-only APIs (Worker/canvas), load lazily on the client
 type Heic2Any = (opts: { blob: Blob; toType: string; quality?: number }) => Promise<Blob | Blob[]>
@@ -83,10 +84,19 @@ function HeicToJpgUIInner() {
   const [jpgQuality, setJpgQuality] = useState(90)
   const dropRef = useRef<HTMLDivElement | null>(null)
 
+  useEffect(() => {
+    track("tool_open", { tool_slug: "heic-to-jpg" })
+  }, [])
+
   const convertFile = useCallback(
     async (file: File) => {
       setStatus("converting")
       setError(null)
+      track("file_dropped", {
+        tool_slug: "heic-to-jpg",
+        file_type: file.type || "image/heic",
+        file_size_kb: Math.round(file.size / 1024),
+      })
       try {
         const heic2any = await loadHeic2Any()
         const q = jpgQuality / 100
@@ -108,10 +118,12 @@ function HeicToJpgUIInner() {
         }
         setResults((prev) => [...prev, newResult])
         setStatus("done")
+        track("convert_success", { tool_slug: "heic-to-jpg" })
       } catch (err) {
         console.error(err)
         setError(err instanceof Error ? err.message : "Conversion failed")
         setStatus("error")
+        trackError("heic-to-jpg", err)
       }
     },
     [jpgQuality],

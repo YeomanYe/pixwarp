@@ -1,7 +1,8 @@
 "use client"
 
-import { useState, useRef, useCallback } from "react"
+import { useState, useRef, useCallback, useEffect } from "react"
 import dynamic from "next/dynamic"
+import { track, trackError } from "@/lib/analytics"
 
 type Theme = "light" | "dim" | "dark"
 
@@ -58,6 +59,10 @@ function TweetInner() {
   const [error, setError] = useState<string | null>(null)
   const cardRef = useRef<HTMLDivElement | null>(null)
 
+  useEffect(() => {
+    track("tool_open", { tool_slug: "tweet-mockup" })
+  }, [])
+
   const t = THEME[theme]
 
   const handleAvatar = useCallback(
@@ -88,9 +93,11 @@ function TweetInner() {
       link.download = `tweet-${handle || "export"}.png`
       link.href = dataUrl
       link.click()
+      track("convert_success", { tool_slug: "tweet-mockup" })
     } catch (err) {
       console.error(err)
       setError(err instanceof Error ? err.message : "Export failed")
+      trackError("tweet-mockup", err)
     } finally {
       setBusy(false)
     }

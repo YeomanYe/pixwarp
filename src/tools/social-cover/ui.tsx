@@ -1,7 +1,8 @@
 "use client"
 
-import { useState, useRef, useCallback } from "react"
+import { useState, useRef, useCallback, useEffect } from "react"
 import dynamic from "next/dynamic"
+import { track, trackError } from "@/lib/analytics"
 
 type Ratio = { id: string; label: string; w: number; h: number; note: string }
 type Theme = {
@@ -83,6 +84,10 @@ function CoverInner() {
   const [error, setError] = useState<string | null>(null)
   const stageRef = useRef<HTMLDivElement | null>(null)
 
+  useEffect(() => {
+    track("tool_open", { tool_slug: "social-cover" })
+  }, [])
+
   const handleExport = useCallback(async () => {
     if (!stageRef.current) return
     setBusy(true)
@@ -99,9 +104,11 @@ function CoverInner() {
       link.download = `cover-${ratio.id}-${theme.id}.png`
       link.href = dataUrl
       link.click()
+      track("convert_success", { tool_slug: "social-cover" })
     } catch (err) {
       console.error(err)
       setError(err instanceof Error ? err.message : "Export failed")
+      trackError("social-cover", err)
     } finally {
       setBusy(false)
     }

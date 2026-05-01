@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useRef, useEffect } from "react"
 import dynamic from "next/dynamic"
+import { track, trackError } from "@/lib/analytics"
 
 type FrameStyle = "browser-light" | "browser-dark" | "device-mac" | "none"
 type Background = {
@@ -30,6 +31,10 @@ function MockupInner() {
   const [error, setError] = useState<string | null>(null)
   const stageRef = useRef<HTMLDivElement | null>(null)
 
+  useEffect(() => {
+    track("tool_open", { tool_slug: "screenshot-mockup" })
+  }, [])
+
   const handleFile = useCallback(
     (file: File) => {
       if (!file.type.startsWith("image/")) {
@@ -37,6 +42,11 @@ function MockupInner() {
         return
       }
       setError(null)
+      track("file_dropped", {
+        tool_slug: "screenshot-mockup",
+        file_type: file.type,
+        file_size_kb: Math.round(file.size / 1024),
+      })
       setImageName(file.name.replace(/\.[^/.]+$/, ""))
       if (imageUrl) URL.revokeObjectURL(imageUrl)
       setImageUrl(URL.createObjectURL(file))
@@ -103,9 +113,11 @@ function MockupInner() {
       link.download = `${imageName}-mockup.png`
       link.href = dataUrl
       link.click()
+      track("convert_success", { tool_slug: "screenshot-mockup" })
     } catch (err) {
       console.error(err)
       setError(err instanceof Error ? err.message : "Export failed")
+      trackError("screenshot-mockup", err)
     } finally {
       setBusy(false)
     }
