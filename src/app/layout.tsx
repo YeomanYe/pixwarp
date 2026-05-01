@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Nav } from "@/components/Nav"
 import { Footer } from "@/components/Footer"
+import { PostHogProvider } from "@/components/PostHogProvider"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -80,10 +81,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
-        <Nav />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <Analytics />
+        <PostHogProvider>
+          <Nav />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <Analytics />
+        </PostHogProvider>
       </body>
     </html>
   )

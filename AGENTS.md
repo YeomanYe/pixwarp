@@ -25,10 +25,27 @@ Browser-local media tools site. Each tool self-contained under `src/tools/<slug>
 
 ## Adding a new tool
 
-1. Create `src/tools/<slug>/manifest.ts` (see `heic-to-jpg/manifest.ts` as reference).
-2. Create `src/tools/<slug>/ui.tsx` exporting a React component (often `dynamic` ssr:false).
-3. Register in `src/tools/registry.ts`.
-4. SEO metadata, sitemap entry, related tools cross-link are auto-generated.
+Use the scaffold:
+
+```bash
+pnpm new:tool <slug> "<Display Name>" "<one-line description>" <category> <icon>
+```
+
+Then:
+
+1. Flesh out `src/tools/<slug>/manifest.ts` with `longDescription`, real `keywords`, `faq`, `related`.
+2. Implement the UI in `src/tools/<slug>/ui.tsx`. Use `dynamic(() => Promise.resolve(Inner), { ssr: false })` if it touches browser-only APIs.
+3. Add the slug to `ToolSlug` in `src/lib/analytics.ts` so events typecheck.
+4. Use `track("tool_open" | "file_dropped" | "convert_success", ...)` and `trackError(slug, err)` from `@/lib/analytics`. They fan out to **both** Vercel Web Analytics and PostHog automatically — never call PostHog or Vercel directly.
+
+SEO metadata, sitemap entry, registry registration, and related-tools cross-link are auto-generated.
+
+## Analytics convention
+
+- Single source: `@/lib/analytics`. `track()` fan-outs to Vercel + PostHog.
+- PostHog is proxied through `/ingest` (see `next.config.ts`) to bypass ad-blockers and CN networks.
+- No PostHog key in env → tool keeps working, only Vercel events are sent (no errors thrown).
+- Add new events by extending `EventMap` in `src/lib/analytics.ts` — keep names snake_case for cross-platform consistency.
 
 ## Style conventions
 

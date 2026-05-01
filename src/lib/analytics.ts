@@ -1,4 +1,5 @@
 import { track as vercelTrack } from "@vercel/analytics"
+import posthog from "posthog-js"
 
 export type ToolSlug =
   | "screenshot-mockup"
@@ -35,7 +36,11 @@ type EventMap = {
 }
 
 export function track<E extends keyof EventMap>(event: E, props: EventMap[E]) {
-  vercelTrack(event, props as Record<string, string | number | boolean | null>)
+  const payload = props as Record<string, string | number | boolean | null>
+  vercelTrack(event, payload)
+  if (typeof window !== "undefined" && posthog.__loaded) {
+    posthog.capture(event, payload)
+  }
 }
 
 export function trackError(slug: ToolSlug, err: unknown) {
