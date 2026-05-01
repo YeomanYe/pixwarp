@@ -14,6 +14,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "tsc --noEmit",
+    "new:tool": "plop tool",
+    "new:format": "plop format",
     "prepare": "husky"
   },
   "lint-staged": {
@@ -47,6 +49,7 @@
     "eslint-config-next": "16.2.4",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
+    "plop": "^4.0.5",
     "prettier": "^3.8.3",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "tailwindcss": "^4",
