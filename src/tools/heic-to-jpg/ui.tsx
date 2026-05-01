@@ -116,7 +116,7 @@ function HeicToJpgUIInner() {
           pngUrl: URL.createObjectURL(pngBlob),
           jpgQuality,
         }
-        setResults((prev) => [...prev, newResult])
+        setResults((prev) => [newResult, ...prev])
         setStatus("done")
         track("convert_success", { tool_slug: "heic-to-jpg" })
       } catch (err) {
