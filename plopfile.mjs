@@ -24,7 +24,7 @@ const TOOL_CATEGORIES = [
 
 const FORMAT_CATEGORIES = ["image", "video", "audio", "document", "data", "archive", "font", "3d"]
 
-export default function (plop) {
+export default function plopConfig(plop) {
   // Safely escape user input as a JS/TS string literal (handles &, ", \, newlines, etc.).
   // Use {{json field}} in templates instead of "{{field}}" to prevent Handlebars
   // HTML-escaping and to keep TS strings well-formed for any input.

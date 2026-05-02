@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react"
 import dynamic from "next/dynamic"
 import { track, trackError } from "@/lib/analytics"
+import { useConfirm } from "@/components/ConfirmProvider"
 
 type OutFormat = "auto" | "image/jpeg" | "image/webp" | "image/png"
 
@@ -77,6 +78,7 @@ function ImageCompressorInner() {
   const [format, setFormat] = useState<OutFormat>("auto")
   const [quality, setQuality] = useState(80)
   const [batchBusy, setBatchBusy] = useState(false)
+  const confirm = useConfirm()
 
   useEffect(() => {
     track("tool_open", { tool_slug: "image-compressor" })
@@ -318,7 +320,16 @@ function ImageCompressorInner() {
                     )}
                     <button
                       type="button"
-                      onClick={() => removeJob(j.id)}
+                      onClick={() =>
+                        confirm({
+                          title: "Remove image?",
+                          description:
+                            "This will remove the image and any compressed results from the list.",
+                          confirmText: "Remove",
+                          isDanger: true,
+                          onConfirm: () => removeJob(j.id),
+                        })
+                      }
                       className="rounded-md px-2 py-1.5 text-xs text-[var(--muted)] transition hover:text-red-600"
                       aria-label="Remove"
                     >

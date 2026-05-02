@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { Nav } from "@/components/Nav"
 import { Footer } from "@/components/Footer"
 import { PostHogProvider } from "@/components/PostHogProvider"
+import { ConfirmProvider } from "@/components/ConfirmProvider"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -82,10 +83,12 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
         <PostHogProvider>
-          <Nav />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <Analytics />
+          <ConfirmProvider>
+            <Nav />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <Analytics />
+          </ConfirmProvider>
         </PostHogProvider>
       </body>
     </html>

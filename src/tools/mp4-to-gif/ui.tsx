@@ -3,6 +3,7 @@
 import { useState, useRef, useCallback, useEffect } from "react"
 import dynamic from "next/dynamic"
 import { track, trackError } from "@/lib/analytics"
+import { useConfirm } from "@/components/ConfirmProvider"
 
 type Stage = "idle" | "loading-core" | "ready" | "converting" | "done" | "error"
 
@@ -43,6 +44,7 @@ function Mp4ToGifInner() {
   const [gifUrl, setGifUrl] = useState<string | null>(null)
   const [gifSize, setGifSize] = useState<number>(0)
   const [error, setError] = useState<string | null>(null)
+  const confirm = useConfirm()
 
   // Settings
   const [fps, setFps] = useState(12)
@@ -326,16 +328,24 @@ function Mp4ToGifInner() {
               </button>
               <button
                 type="button"
-                onClick={() => {
-                  if (previewUrl) URL.revokeObjectURL(previewUrl)
-                  if (gifUrl) URL.revokeObjectURL(gifUrl)
-                  setFile(null)
-                  setPreviewUrl(null)
-                  setGifUrl(null)
-                  setStage("ready")
-                  setProgress(0)
-                  setError(null)
-                }}
+                onClick={() =>
+                  confirm({
+                    title: "Choose another video?",
+                    description: "This will clear your current video and any conversion results.",
+                    confirmText: "Clear and start over",
+                    isDanger: true,
+                    onConfirm: () => {
+                      if (previewUrl) URL.revokeObjectURL(previewUrl)
+                      if (gifUrl) URL.revokeObjectURL(gifUrl)
+                      setFile(null)
+                      setPreviewUrl(null)
+                      setGifUrl(null)
+                      setStage("ready")
+                      setProgress(0)
+                      setError(null)
+                    },
+                  })
+                }
                 className="text-sm text-[var(--muted)] hover:text-[var(--foreground)]"
               >
                 Choose another

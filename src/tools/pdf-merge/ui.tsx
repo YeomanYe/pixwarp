@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react"
 import dynamic from "next/dynamic"
 import { track, trackError } from "@/lib/analytics"
+import { useConfirm } from "@/components/ConfirmProvider"
 
 interface PdfItem {
   id: string
@@ -23,6 +24,7 @@ function PdfMergeInner() {
   const [error, setError] = useState<string | null>(null)
   const [outUrl, setOutUrl] = useState<string | null>(null)
   const [outSize, setOutSize] = useState(0)
+  const confirm = useConfirm()
 
   useEffect(() => {
     track("tool_open", { tool_slug: "pdf-merge" })
@@ -190,7 +192,15 @@ function PdfMergeInner() {
                   </button>
                   <button
                     type="button"
-                    onClick={() => remove(it.id)}
+                    onClick={() =>
+                      confirm({
+                        title: "Remove PDF?",
+                        description: "This will remove this PDF from the merge list.",
+                        confirmText: "Remove",
+                        isDanger: true,
+                        onConfirm: () => remove(it.id),
+                      })
+                    }
                     aria-label="Remove"
                     className="rounded-md px-2 py-1 text-xs text-[var(--muted)] transition hover:text-red-600"
                   >

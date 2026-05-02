@@ -3,6 +3,7 @@
 import { useState, useCallback, useRef, useEffect } from "react"
 import dynamic from "next/dynamic"
 import { track, trackError } from "@/lib/analytics"
+import { useConfirm } from "@/components/ConfirmProvider"
 
 // heic2any uses browser-only APIs (Worker/canvas), load lazily on the client
 type Heic2Any = (opts: { blob: Blob; toType: string; quality?: number }) => Promise<Blob | Blob[]>
@@ -83,6 +84,7 @@ function HeicToJpgUIInner() {
   const [results, setResults] = useState<ConversionResult[]>([])
   const [jpgQuality, setJpgQuality] = useState(90)
   const dropRef = useRef<HTMLDivElement | null>(null)
+  const confirm = useConfirm()
 
   useEffect(() => {
     track("tool_open", { tool_slug: "heic-to-jpg" })
@@ -317,7 +319,15 @@ function HeicToJpgUIInner() {
             <h2 className="text-lg font-semibold">Converted ({results.length})</h2>
             <button
               type="button"
-              onClick={handleClear}
+              onClick={() =>
+                confirm({
+                  title: "Clear all results?",
+                  description: "This will remove all converted results from the list.",
+                  confirmText: "Clear all",
+                  isDanger: true,
+                  onConfirm: handleClear,
+                })
+              }
               className="text-sm text-[var(--muted)] hover:text-[var(--foreground)]"
             >
               Clear all
@@ -327,7 +337,15 @@ function HeicToJpgUIInner() {
             <ResultBlock
               key={r.id}
               result={r}
-              onRemove={() => removeResult(r.id)}
+              onRemove={() =>
+                confirm({
+                  title: "Remove result?",
+                  description: "This will remove this conversion result from the list.",
+                  confirmText: "Remove",
+                  isDanger: true,
+                  onConfirm: () => removeResult(r.id),
+                })
+              }
               onJpgQualityChange={(q) => adjustJpgQuality(r.id, q)}
             />
           ))}

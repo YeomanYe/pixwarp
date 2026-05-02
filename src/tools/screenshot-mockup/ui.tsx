@@ -3,6 +3,7 @@
 import { useState, useCallback, useRef, useEffect } from "react"
 import dynamic from "next/dynamic"
 import { track, trackError } from "@/lib/analytics"
+import { useConfirm } from "@/components/ConfirmProvider"
 
 type FrameStyle = "browser-light" | "browser-dark" | "device-mac" | "none"
 type Background = {
@@ -29,6 +30,7 @@ function MockupInner() {
   const [radius, setRadius] = useState(12)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const confirm = useConfirm()
   const stageRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
@@ -291,11 +293,19 @@ function MockupInner() {
             </button>
             <button
               type="button"
-              onClick={() => {
-                if (imageUrl) URL.revokeObjectURL(imageUrl)
-                setImageUrl(null)
-                setError(null)
-              }}
+              onClick={() =>
+                confirm({
+                  title: "Choose another image?",
+                  description: "This will clear your current screenshot and mockup settings.",
+                  confirmText: "Clear and start over",
+                  isDanger: true,
+                  onConfirm: () => {
+                    if (imageUrl) URL.revokeObjectURL(imageUrl)
+                    setImageUrl(null)
+                    setError(null)
+                  },
+                })
+              }
               className="text-sm text-[var(--muted)] hover:text-[var(--foreground)]"
             >
               Choose another image
