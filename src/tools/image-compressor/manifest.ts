@@ -6,10 +6,10 @@ export const manifest: ToolManifest = {
   category: "image",
   name: "Image Compressor",
   description:
-    "Shrink JPG, PNG, and WebP images right in your browser — adjustable quality, instant before/after comparison.",
+    "Shrink JPG, PNG, and WebP images right in your browser — adjustable quality, side-by-side comparison.",
   longDescription: `Drop one or many images and tune the quality slider. The tool re-encodes each image with HTML Canvas right in your browser — your files never leave the device.
 
-Best results: JPG and WebP at 70–85% quality typically halve the file size with no visible difference. PNG with transparency is re-encoded as PNG (lossless) or as WebP (much smaller).`,
+Best results: JPG and WebP at 70–85% quality typically halve the file size with no visible difference. PNG supports both lossless optimization and lossy palette quantization while staying in .png.`,
   keywords: [
     "image compressor",
     "compress image online",
@@ -29,12 +29,12 @@ Best results: JPG and WebP at 70–85% quality typically halve the file size wit
       a: "No. Compression runs in your browser via the HTML Canvas API. Your file never leaves your device.",
     },
     {
-      q: "Which format should I pick?",
-      a: "WebP usually wins for both photos and graphics — typically 25-35% smaller than JPG at the same visual quality, and it supports transparency. JPG is best for maximum compatibility (older email clients, some legacy CMSes). PNG is for cases where you must keep lossless transparency.",
+      q: "How does the quality slider work?",
+      a: "For JPG and WebP, the quality slider controls the compression level. In PNG lossy mode it reduces the palette with controlled quality loss while keeping a PNG output. In PNG lossless mode the slider is disabled because the image data stays visually identical.",
     },
     {
       q: "Why is my PNG barely smaller?",
-      a: "PNG is lossless — quality is fixed. Real shrink for PNG comes from converting to JPG or WebP. If your PNG has transparency, switch to WebP to keep the alpha channel and still get a big size cut.",
+      a: "PNG size depends heavily on how many unique colors and transparent edges the image has. Flat graphics usually shrink well in PNG lossy mode, while already-optimized screenshots may only see a small reduction unless you switch away from lossless mode.",
     },
     {
       q: "What's the file size limit?",
