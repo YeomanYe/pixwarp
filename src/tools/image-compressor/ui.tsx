@@ -4,8 +4,9 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import dynamic from "next/dynamic"
 import { track, trackError } from "@/lib/analytics"
 import { useConfirm } from "@/components/ConfirmProvider"
-import { optimise } from "@jsquash/oxipng"
-import { Imagequant, ImagequantImage } from "imagequant"
+import type { Imagequant, ImagequantImage } from "imagequant/imagequant_bg.js"
+import { loadImagequant } from "./imagequant-loader"
+import { optimise as oxipngOptimise } from "./oxipng-loader"
 
 interface Job {
   id: string
@@ -53,9 +54,11 @@ async function compressFile(file: File, quality: number, isLossless: boolean): P
 
   if (file.type === "image/png") {
     if (isLossless) {
-      const optimised = await optimise(arrayBuffer, { level: 2 })
+      const optimised = await oxipngOptimise(arrayBuffer, { level: 2 })
       return new Blob([optimised], { type: "image/png" })
     }
+
+    const { Imagequant: IQ, ImagequantImage: IQImage } = await loadImagequant()
 
     let iq: Imagequant | undefined
     let iqImg: ImagequantImage | undefined
@@ -79,15 +82,15 @@ async function compressFile(file: File, quality: number, isLossless: boolean): P
         URL.revokeObjectURL(url)
       }
 
-      iq = new Imagequant()
+      iq = new IQ()
       iq.set_quality(0, quality)
 
       const pixels = new Uint8Array(imageData.data.buffer.slice(0))
-      iqImg = new ImagequantImage(pixels, imageData.width, imageData.height, 0)
+      iqImg = new IQImage(pixels, imageData.width, imageData.height, 0)
 
       const quantizedPng = iq.process(iqImg)
       iqImg = undefined
-      const polished = await optimise(toExactArrayBuffer(quantizedPng), { level: 1 })
+      const polished = await oxipngOptimise(toExactArrayBuffer(quantizedPng), { level: 1 })
 
       return new Blob([polished], { type: "image/png" })
     } finally {
