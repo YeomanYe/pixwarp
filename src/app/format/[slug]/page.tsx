@@ -25,6 +25,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     keywords: format.keywords,
     alternates: {
       canonical: `/format/${format.slug}`,
+      languages: {
+        en: `/format/${format.slug}`,
+        zh: `/zh/format/${format.slug}`,
+      },
     },
     openGraph: {
       title,

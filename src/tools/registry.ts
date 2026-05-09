@@ -9,6 +9,7 @@ import { manifest as pdfSplitManifest } from "./pdf-split/manifest"
 import { manifest as pdfMergeManifest } from "./pdf-merge/manifest"
 import { manifest as imageCompressorManifest } from "./image-compressor/manifest"
 import { manifest as qrCodeManifest } from "./qr-code/manifest"
+import { manifest as webpToPngManifest } from "./webp-to-png/manifest"
 
 /**
  * Central registry of all tools.
@@ -29,6 +30,7 @@ export const tools: ToolManifest[] = [
   pdfSplitManifest,
   pdfMergeManifest,
   imageCompressorManifest,
+  webpToPngManifest,
   qrCodeManifest,
 ]
 

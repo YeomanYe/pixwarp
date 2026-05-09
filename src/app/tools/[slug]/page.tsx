@@ -22,6 +22,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     keywords: tool.keywords,
     alternates: {
       canonical: `/tools/${tool.slug}`,
+      languages: {
+        en: `/tools/${tool.slug}`,
+        zh: `/zh/tools/${tool.slug}`,
+      },
     },
     openGraph: {
       title: tool.name,
@@ -45,12 +49,44 @@ export default async function ToolPage({ params }: PageProps) {
   // JSON-LD WebApplication schema for SEO
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: tool.name,
-    description: tool.description,
-    applicationCategory: "MultimediaApplication",
-    operatingSystem: "Any (browser)",
-    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        name: tool.name,
+        description: tool.description,
+        applicationCategory: "MultimediaApplication",
+        operatingSystem: "Any (browser)",
+        offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      },
+      ...(tool.howToUse
+        ? [
+            {
+              "@type": "HowTo",
+              name: `How to use ${tool.name}`,
+              step: tool.howToUse.map((step, index) => ({
+                "@type": "HowToStep",
+                position: index + 1,
+                text: step,
+              })),
+            },
+          ]
+        : []),
+      ...(tool.faq
+        ? [
+            {
+              "@type": "FAQPage",
+              mainEntity: tool.faq.map((item) => ({
+                "@type": "Question",
+                name: item.q,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: item.a,
+                },
+              })),
+            },
+          ]
+        : []),
+    ],
   }
 
   return (

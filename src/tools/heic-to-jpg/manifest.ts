@@ -12,6 +12,17 @@ This converter runs entirely in your browser using WebAssembly. Your photos neve
 
 Drop one or more .heic files, pick the output format and quality, hit convert, download the result.
 That's it.`,
+  howToUse: [
+    "Drop one or more .heic or .heif files into the upload area.",
+    "Review the JPG and PNG previews generated in your browser.",
+    "Adjust JPG quality if you want a smaller file or cleaner output.",
+    "Download the converted image that fits your target app or workflow.",
+  ],
+  outputDetails: [
+    "Creates JPG for broad compatibility and PNG for lossless sharing.",
+    "Shows real source and output file sizes after conversion.",
+    "JPG quality can be tuned per image without uploading the source file.",
+  ],
   keywords: [
     "heic to jpg",
     "heic to jpeg online",

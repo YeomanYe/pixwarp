@@ -27,6 +27,12 @@ export interface ToolManifest {
   /** Long-form description for tool page hero (supports markdown-lite) */
   longDescription?: string
 
+  /** Step-by-step usage instructions for the tool page and HowTo schema */
+  howToUse?: string[]
+
+  /** Short facts about generated output, formats, or quality behavior */
+  outputDetails?: string[]
+
   /** SEO keywords array — first one is primary */
   keywords: string[]
 

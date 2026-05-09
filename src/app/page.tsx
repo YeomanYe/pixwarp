@@ -1,6 +1,8 @@
 import Link from "next/link"
 import { tools, toolsBySlug, categoryLabels } from "@/tools/registry"
 import { formats, formatCategoryLabels } from "@/formats/registry"
+import { ToolSearch } from "@/components/ToolSearch"
+import { getCatalogSearchItems } from "@/lib/catalog"
 
 const useCases: { title: string; blurb: string; slugs: string[] }[] = [
   {
@@ -26,6 +28,8 @@ const useCases: { title: string; blurb: string; slugs: string[] }[] = [
 ]
 
 export default function HomePage() {
+  const searchItems = getCatalogSearchItems("en")
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
       {/* Hero */}
@@ -52,6 +56,8 @@ export default function HomePage() {
           </a>
         </div>
       </section>
+
+      <ToolSearch items={searchItems} />
 
       {/* By use case */}
       <section id="use-cases" className="mb-16 scroll-mt-20">

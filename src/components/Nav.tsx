@@ -22,6 +22,12 @@ export function Nav() {
           >
             Formats
           </Link>
+          <Link
+            href="/zh"
+            className="rounded-md px-3 py-1.5 text-[var(--muted)] transition hover:bg-[var(--muted-bg)] hover:text-[var(--foreground)]"
+          >
+            中文
+          </Link>
           <a
             href="https://github.com/YeomanYe/pixwarp"
             target="_blank"

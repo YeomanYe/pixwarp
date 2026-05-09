@@ -21,7 +21,7 @@ Best results: JPG and WebP at 70–85% quality typically halve the file size wit
     "在线压缩 图片",
   ],
   icon: "image",
-  related: ["heic-to-jpg"],
+  related: ["webp-to-png", "heic-to-jpg"],
   markets: ["global"],
   faq: [
     {

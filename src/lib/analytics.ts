@@ -12,6 +12,7 @@ export type ToolSlug =
   | "pdf-merge"
   | "pdf-split"
   | "pdf-compress"
+  | "webp-to-png"
 
 type ToolOpenProps = { tool_slug: ToolSlug }
 
@@ -21,7 +22,12 @@ type FileDroppedProps = {
   file_size_kb: number
 }
 
-type ConvertSuccessProps = { tool_slug: ToolSlug }
+type ConvertSuccessProps = {
+  tool_slug: ToolSlug
+  count?: number
+  kind?: string
+  type?: string
+}
 
 type ConvertErrorProps = {
   tool_slug: ToolSlug
