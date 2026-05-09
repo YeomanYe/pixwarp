@@ -22,7 +22,7 @@ Best results: ≤ 10 seconds source clip, 480px wide, 12-15 fps. Larger sources 
     "webm to gif",
   ],
   icon: "video",
-  related: ["screenshot-mockup"],
+  related: ["video-compress", "audio-extract", "screenshot-mockup"],
   markets: ["global", "cn"],
   faq: [
     {

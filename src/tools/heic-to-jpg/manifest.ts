@@ -34,7 +34,7 @@ That's it.`,
     "HEIC 转 JPG 在线",
   ],
   icon: "image",
-  related: [],
+  related: ["webp-to-png", "webp-to-jpg", "image-compressor"],
   markets: ["global", "cn"],
   faq: [
     {

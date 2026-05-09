@@ -5,6 +5,8 @@ import { Nav } from "@/components/Nav"
 import { Footer } from "@/components/Footer"
 import { PostHogProvider } from "@/components/PostHogProvider"
 import { ConfirmProvider } from "@/components/ConfirmProvider"
+import { LanguagePrompt } from "@/components/LanguagePrompt"
+import { PwaRegister } from "@/components/PwaRegister"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -65,6 +67,12 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: SITE_NAME,
+    statusBarStyle: "default",
+  },
 }
 
 export const viewport: Viewport = {
@@ -84,9 +92,11 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col">
         <PostHogProvider>
           <ConfirmProvider>
+            <LanguagePrompt />
             <Nav />
             <main className="flex-1">{children}</main>
             <Footer />
+            <PwaRegister />
             <Analytics />
           </ConfirmProvider>
         </PostHogProvider>

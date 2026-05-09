@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import dynamic from "next/dynamic"
 import { FileDropzone } from "@/components/tool-shell/FileDropzone"
 import { ProcessingPanel } from "@/components/tool-shell/ProcessingPanel"
+import { recordHistory } from "@/lib/history"
 import { track, trackError } from "@/lib/analytics"
 import { useConfirm } from "@/components/ConfirmProvider"
 
@@ -114,7 +115,15 @@ function WebpToPngUIInner() {
         file_size_kb: Math.round(file.size / 1024),
       })
       try {
-        converted.push(await convertWebpToPng(file))
+        const result = await convertWebpToPng(file)
+        converted.push(result)
+        recordHistory({
+          tool: "webp-to-png",
+          fileName: file.name,
+          outputName: `${result.fileName}.png`,
+          inputBytes: file.size,
+          outputBytes: result.outputSize,
+        })
       } catch (conversionError) {
         trackError("webp-to-png", conversionError)
         setError(conversionError instanceof Error ? conversionError.message : "Conversion failed.")

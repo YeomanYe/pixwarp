@@ -20,7 +20,7 @@ Best for image-heavy or scanned PDFs, where compression delivers real savings (o
     "在线压缩 pdf",
   ],
   icon: "file-archive",
-  related: ["pdf-merge", "pdf-split"],
+  related: ["pdf-merge", "pdf-split", "pdf-to-images"],
   markets: ["global"],
   faq: [
     {

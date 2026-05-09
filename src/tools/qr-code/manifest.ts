@@ -21,7 +21,7 @@ Everything runs in your browser. The text you encode and the images you decode n
     "qr 码 解码",
   ],
   icon: "qr-code",
-  related: [],
+  related: ["svg-optimizer", "social-cover"],
   markets: ["global"],
   faq: [
     {

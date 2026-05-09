@@ -20,7 +20,7 @@ Everything renders in your browser — your image never leaves your device.`,
     "twitter screenshot",
   ],
   icon: "image",
-  related: ["heic-to-jpg"],
+  related: ["social-cover", "tweet-mockup", "image-resize"],
   markets: ["global", "cn"],
   faq: [
     {

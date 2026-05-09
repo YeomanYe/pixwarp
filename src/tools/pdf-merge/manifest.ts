@@ -20,7 +20,7 @@ Common cases: combine scanned pages into one report, stitch chapters into a sing
     "在线合并 pdf",
   ],
   icon: "file-stack",
-  related: ["pdf-split", "pdf-compress"],
+  related: ["pdf-split", "pdf-compress", "images-to-pdf"],
   markets: ["global"],
   faq: [
     {

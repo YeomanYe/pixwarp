@@ -30,7 +30,7 @@ This converter decodes WebP in your browser, redraws it on Canvas, and exports a
     "WebP 图片转换",
   ],
   icon: "image",
-  related: ["image-compressor", "heic-to-jpg"],
+  related: ["webp-to-jpg", "image-compressor", "image-resize"],
   markets: ["global", "cn"],
   faq: [
     {

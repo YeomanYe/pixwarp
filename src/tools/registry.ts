@@ -10,6 +10,14 @@ import { manifest as pdfMergeManifest } from "./pdf-merge/manifest"
 import { manifest as imageCompressorManifest } from "./image-compressor/manifest"
 import { manifest as qrCodeManifest } from "./qr-code/manifest"
 import { manifest as webpToPngManifest } from "./webp-to-png/manifest"
+import { manifest as webpToJpgManifest } from "./webp-to-jpg/manifest"
+import { manifest as imageResizeManifest } from "./image-resize/manifest"
+import { manifest as removeExifManifest } from "./remove-exif/manifest"
+import { manifest as imagesToPdfManifest } from "./images-to-pdf/manifest"
+import { manifest as pdfToImagesManifest } from "./pdf-to-images/manifest"
+import { manifest as svgOptimizerManifest } from "./svg-optimizer/manifest"
+import { manifest as videoCompressManifest } from "./video-compress/manifest"
+import { manifest as audioExtractManifest } from "./audio-extract/manifest"
 
 /**
  * Central registry of all tools.
@@ -31,6 +39,14 @@ export const tools: ToolManifest[] = [
   pdfMergeManifest,
   imageCompressorManifest,
   webpToPngManifest,
+  webpToJpgManifest,
+  imageResizeManifest,
+  removeExifManifest,
+  imagesToPdfManifest,
+  pdfToImagesManifest,
+  svgOptimizerManifest,
+  videoCompressManifest,
+  audioExtractManifest,
   qrCodeManifest,
 ]
 

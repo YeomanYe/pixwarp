@@ -20,7 +20,7 @@ Common cases: pull one chapter out of a long report, extract a single signed pag
     "pdf 提取页面",
   ],
   icon: "scissors",
-  related: ["pdf-merge", "pdf-compress"],
+  related: ["pdf-merge", "pdf-compress", "pdf-to-images"],
   markets: ["global"],
   faq: [
     {

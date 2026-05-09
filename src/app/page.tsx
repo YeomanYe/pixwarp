@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { tools, toolsBySlug, categoryLabels } from "@/tools/registry"
 import { formats, formatCategoryLabels } from "@/formats/registry"
+import { RecentHistory } from "@/components/RecentHistory"
 import { ToolSearch } from "@/components/ToolSearch"
 import { getCatalogSearchItems } from "@/lib/catalog"
 
@@ -180,6 +181,8 @@ export default function HomePage() {
           </ul>
         )}
       </section>
+
+      <RecentHistory />
     </div>
   )
 }

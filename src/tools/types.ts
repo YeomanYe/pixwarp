@@ -20,18 +20,27 @@ export interface ToolManifest {
 
   /** Display name */
   name: string
+  nameZh?: string
 
   /** One-line description for SEO + cards */
   description: string
+  descriptionZh?: string
 
   /** Long-form description for tool page hero (supports markdown-lite) */
   longDescription?: string
+  longDescriptionZh?: string
 
   /** Step-by-step usage instructions for the tool page and HowTo schema */
   howToUse?: string[]
+  howToUseZh?: string[]
 
   /** Short facts about generated output, formats, or quality behavior */
   outputDetails?: string[]
+  outputDetailsZh?: string[]
+
+  /** Comparison rows for PixWarp vs upload-heavy tools */
+  comparison?: { feature: string; pixwarp: string; others: string }[]
+  comparisonZh?: { feature: string; pixwarp: string; others: string }[]
 
   /** SEO keywords array — first one is primary */
   keywords: string[]
@@ -47,6 +56,7 @@ export interface ToolManifest {
 
   /** FAQ entries — each one becomes long-tail SEO content */
   faq?: { q: string; a: string }[]
+  faqZh?: { q: string; a: string }[]
 
   /** When was this tool last meaningfully updated (ISO date) */
   lastUpdated?: string

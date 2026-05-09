@@ -1,6 +1,8 @@
 import Link from "next/link"
+import { RecentHistory } from "@/components/RecentHistory"
 import { ToolSearch } from "@/components/ToolSearch"
 import { getCatalogSearchItems } from "@/lib/catalog"
+import { getLocalizedTool } from "@/lib/tools"
 import { tools, categoryLabels } from "@/tools/registry"
 import { formats, formatCategoryLabels } from "@/formats/registry"
 
@@ -54,6 +56,7 @@ export default function ZhHomePage() {
         <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {tools.map((tool) => {
             const cat = categoryLabels[tool.category]
+            const localized = getLocalizedTool(tool, "zh")
             return (
               <li key={tool.slug}>
                 <Link
@@ -69,10 +72,10 @@ export default function ZhHomePage() {
                     </span>
                   </div>
                   <div className="font-semibold tracking-tight transition group-hover:text-[var(--accent)]">
-                    {tool.name}
+                    {localized.name}
                   </div>
                   <p className="mt-1.5 line-clamp-2 text-sm text-[var(--muted)]">
-                    {tool.description}
+                    {localized.description}
                   </p>
                 </Link>
               </li>
@@ -115,6 +118,8 @@ export default function ZhHomePage() {
           })}
         </ul>
       </section>
+
+      <RecentHistory />
     </div>
   )
 }

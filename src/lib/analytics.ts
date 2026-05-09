@@ -13,6 +13,14 @@ export type ToolSlug =
   | "pdf-split"
   | "pdf-compress"
   | "webp-to-png"
+  | "webp-to-jpg"
+  | "image-resize"
+  | "remove-exif"
+  | "images-to-pdf"
+  | "pdf-to-images"
+  | "svg-optimizer"
+  | "video-compress"
+  | "audio-extract"
 
 type ToolOpenProps = { tool_slug: ToolSlug }
 
