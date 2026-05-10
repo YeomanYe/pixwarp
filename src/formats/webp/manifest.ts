@@ -1,4 +1,5 @@
 import type { FormatManifest } from "../types"
+import { WebpSamplesWidget } from "./ui"
 
 export const manifest: FormatManifest = {
   slug: "webp",
@@ -35,38 +36,7 @@ The friction left in real workflows: legacy CMSes and image editors are still ca
     "Most email clients don't render WebP — fall back to JPG/PNG for embedded images",
     "Print workflows still expect JPG/TIFF — WebP is web-first",
   ],
-  comparison: [
-    {
-      vs: "JPG",
-      sizeRatio: "JPG ≈ 1.3-1.5x larger",
-      quality: "Equal at typical settings",
-      note: "JPG is universally supported (every tool ever made). WebP is smaller and supports transparency. Use JPG for email and legacy upload forms; use WebP for everything web.",
-    },
-    {
-      vs: "PNG",
-      sizeRatio: "PNG ≈ 1.3x larger (lossless WebP)",
-      quality: "Equal — both lossless",
-      note: "PNG is the safe choice for screenshots, logos, and assets needing pixel-perfect transparency. WebP lossless is a smaller drop-in if your tooling supports it.",
-    },
-    {
-      vs: "AVIF",
-      sizeRatio: "AVIF ≈ 0.7x (smaller)",
-      quality: "AVIF slightly better at low bitrates",
-      note: "AVIF is the modern successor — even smaller files, better at very low bitrates. WebP wins on compatibility today; AVIF wins on compression. Many sites ship both with <picture>.",
-    },
-    {
-      vs: "HEIC",
-      sizeRatio: "Roughly equal",
-      quality: "Equal at typical settings",
-      note: "HEIC dominates Apple's photo pipeline; WebP dominates the web. They're peers technically — WebP wins on browser support, HEIC wins on iOS/macOS native integration.",
-    },
-    {
-      vs: "GIF",
-      sizeRatio: "GIF ≈ 5-20x larger (animation)",
-      quality: "GIF is 256 colors; WebP is full color",
-      note: "For animation, WebP is a strict upgrade — full color, alpha, way smaller. GIF still wins on universal email / Slack support.",
-    },
-  ],
+  comparison: [],
   support: {
     os: [
       "macOS 11+ ✅ (Big Sur, native Preview support)",
@@ -105,8 +75,8 @@ The friction left in real workflows: legacy CMSes and image editors are still ca
     "webp 格式",
     "webp 是什么",
   ],
-  relatedTools: ["image-compressor", "heic-to-jpg"],
-  relatedFormats: ["heic"],
+  relatedTools: ["webp-to-png", "webp-to-jpg", "image-compressor"],
+  relatedFormats: ["heic", "webm"],
   faq: [
     {
       q: "Why is WebP smaller than JPG at the same quality?",
@@ -130,4 +100,5 @@ The friction left in real workflows: legacy CMSes and image editors are still ca
     },
   ],
   lastUpdated: "2026-05-01",
+  Component: WebpSamplesWidget,
 }
