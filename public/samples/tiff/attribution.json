@@ -11,32 +11,32 @@
   },
   {
     "file": "tiff-100x100-sample.tiff",
-    "preview": "samplefile-tiff-preview.png",
+    "preview": "tiff-100x100-sample-preview.jpg",
     "title": "tiff_100x100_sample_file_79KB.tiff",
     "sourceUrl": "https://www.samplefile.com/samples/image/tiff/",
     "creator": "SampleFile.com",
     "license": "Free sample file",
     "originalDimensions": "100 x 100",
-    "processing": "Downloaded as TIFF and stored locally without resizing or cropping; preview image downloaded from SampleFile.com."
+    "processing": "Downloaded as TIFF and stored locally without resizing or cropping; preview image rendered from the downloaded TIFF."
   },
   {
-    "file": "tiff-500x300-sample.tiff",
-    "preview": "samplefile-tiff-preview.png",
-    "title": "tiff_500x300_sample_file_1.1MB.tiff",
+    "file": "tiff-archival-scan-sample.tiff",
+    "preview": "tiff-archival-scan-sample-preview.jpg",
+    "title": "tiff_archival_scan_sample.tiff",
     "sourceUrl": "https://www.samplefile.com/samples/image/tiff/",
     "creator": "SampleFile.com",
     "license": "Free sample file",
-    "originalDimensions": "500 x 300",
-    "processing": "Downloaded as TIFF and stored locally without resizing or cropping; preview image downloaded from SampleFile.com."
+    "originalDimensions": "1200 x 1600",
+    "processing": "Downloaded as TIFF and stored locally without resizing or cropping; preview image rendered from the downloaded TIFF."
   },
   {
-    "file": "tiff-1000x600-sample.tiff",
-    "preview": "samplefile-tiff-preview.png",
-    "title": "tiff_1000x600_sample_file_4.6MB.tiff",
+    "file": "tiff-fax-noise-sample.tiff",
+    "preview": "tiff-fax-noise-sample-preview.jpg",
+    "title": "tiff_fax_noise_sample.tiff",
     "sourceUrl": "https://www.samplefile.com/samples/image/tiff/",
     "creator": "SampleFile.com",
     "license": "Free sample file",
-    "originalDimensions": "1000 x 600",
-    "processing": "Downloaded as TIFF and stored locally without resizing or cropping; preview image downloaded from SampleFile.com."
+    "originalDimensions": "1200 x 1600",
+    "processing": "Downloaded as TIFF and stored locally without resizing or cropping; preview image rendered from the downloaded TIFF."
   }
 ]
