@@ -1,0 +1,29 @@
+[
+  {
+    "file": "public-domain-symbol-256.svg",
+    "title": "Public-domain-symbol.svg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Public-domain-symbol.svg",
+    "creator": "Wikimedia Commons contributors",
+    "license": "Public domain",
+    "originalDimensions": "256 x 256",
+    "processing": "Downloaded as SVG and stored locally without resizing or cropping."
+  },
+  {
+    "file": "public-domain-map-logo-500.svg",
+    "title": "Public Domain Map logo.svg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Public_Domain_Map_logo.svg",
+    "creator": "Wikimedia Commons contributors",
+    "license": "Public domain",
+    "originalDimensions": "500 x 500",
+    "processing": "Downloaded as SVG and stored locally without resizing or cropping."
+  },
+  {
+    "file": "pd-no-rights-749x259.svg",
+    "title": "PD no rights reserved new.svg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:PD_no_rights_reserved_new.svg",
+    "creator": "Wikimedia Commons contributors",
+    "license": "Public domain",
+    "originalDimensions": "749 x 259",
+    "processing": "Downloaded as SVG and stored locally without resizing or cropping."
+  }
+]

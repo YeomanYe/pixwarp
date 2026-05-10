@@ -1,0 +1,38 @@
+[
+  {
+    "file": "hato-3082x2048.avif",
+    "title": "hato.profile0.8bpc.yuv420.avif",
+    "sourceUrl": "https://github.com/link-u/avif-sample-images",
+    "creator": "Kaede Fujisaki",
+    "license": "CC BY-SA 4.0",
+    "originalDimensions": "3082 x 2048",
+    "processing": "Downloaded from link-u/avif-sample-images and stored locally without resizing or cropping."
+  },
+  {
+    "file": "fox-1204x800.avif",
+    "title": "fox.profile0.8bpc.yuv420.avif",
+    "sourceUrl": "https://github.com/link-u/avif-sample-images",
+    "creator": "Kaede Fujisaki",
+    "license": "CC BY-SA 4.0",
+    "originalDimensions": "1204 x 800",
+    "processing": "Downloaded from link-u/avif-sample-images and stored locally without resizing or cropping."
+  },
+  {
+    "file": "kimono-722x1024.avif",
+    "title": "kimono.avif",
+    "sourceUrl": "https://github.com/link-u/avif-sample-images",
+    "creator": "Momiji Jinzamomi and Kaede Fujisaki",
+    "license": "CC BY-SA 4.0",
+    "originalDimensions": "722 x 1024",
+    "processing": "Downloaded from link-u/avif-sample-images and stored locally without resizing or cropping."
+  },
+  {
+    "file": "plum-blossom-2048x2048-alpha.avif",
+    "title": "plum-blossom-large.profile0.8bpc.yuv420.alpha-limited.avif",
+    "sourceUrl": "https://github.com/link-u/avif-sample-images",
+    "creator": "link-u/avif-sample-images contributors",
+    "license": "CC BY-SA 4.0",
+    "originalDimensions": "2048 x 2048",
+    "processing": "Downloaded from link-u/avif-sample-images and stored locally without resizing or cropping."
+  }
+]

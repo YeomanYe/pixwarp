@@ -1,0 +1,38 @@
+[
+  {
+    "file": "coffee-128x128.ico",
+    "title": "coffee-128x128px-ico.ico",
+    "sourceUrl": "https://convertico.com/samples/ico/",
+    "creator": "ConvertICO",
+    "license": "Free sample file",
+    "originalDimensions": "128, 64, 48, 32, 16",
+    "processing": "Downloaded as ICO and stored locally without resizing or cropping."
+  },
+  {
+    "file": "colors-64x64.ico",
+    "title": "colors-64x64px-ico.ico",
+    "sourceUrl": "https://convertico.com/samples/ico/",
+    "creator": "ConvertICO",
+    "license": "Free sample file",
+    "originalDimensions": "64, 32, 16",
+    "processing": "Downloaded as ICO and stored locally without resizing or cropping."
+  },
+  {
+    "file": "funky-cluck-48x48.ico",
+    "title": "funky-cluck-48x48px-ico.ico",
+    "sourceUrl": "https://convertico.com/samples/ico/",
+    "creator": "ConvertICO",
+    "license": "Free sample file",
+    "originalDimensions": "48, 40, 32, 24, 20, 16",
+    "processing": "Downloaded as ICO and stored locally without resizing or cropping."
+  },
+  {
+    "file": "ico-sample.ico",
+    "title": "ico-sample.ico",
+    "sourceUrl": "https://convertico.com/samples/ico/",
+    "creator": "ConvertICO",
+    "license": "Free sample file",
+    "originalDimensions": "256, 128, 64, 48, 32, 24, 16",
+    "processing": "Downloaded as ICO and stored locally without resizing or cropping."
+  }
+]

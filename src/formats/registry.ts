@@ -1,9 +1,21 @@
 import type { FormatManifest } from "./types"
+import { manifest as avifManifest } from "./avif/manifest"
 import { manifest as heicManifest } from "./heic/manifest"
+import { manifest as icoManifest } from "./ico/manifest"
+import { manifest as svgManifest } from "./svg/manifest"
+import { manifest as tiffManifest } from "./tiff/manifest"
 import { manifest as webmManifest } from "./webm/manifest"
 import { manifest as webpManifest } from "./webp/manifest"
 
-export const formats: FormatManifest[] = [heicManifest, webmManifest, webpManifest]
+export const formats: FormatManifest[] = [
+  heicManifest,
+  webmManifest,
+  webpManifest,
+  avifManifest,
+  svgManifest,
+  tiffManifest,
+  icoManifest,
+]
 
 export const formatsBySlug = Object.fromEntries(formats.map((f) => [f.slug, f]))
 
