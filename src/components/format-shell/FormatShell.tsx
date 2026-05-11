@@ -183,6 +183,28 @@ export function FormatShell({ format }: FormatShellProps) {
         </section>
       )}
 
+      {/* Sources */}
+      {format.sources && format.sources.length > 0 && (
+        <section className="mb-10">
+          <h2 className="mb-3 text-xl font-semibold">Sources</h2>
+          <ul className="space-y-2 text-sm">
+            {format.sources.map((source) => (
+              <li key={source.url}>
+                <a
+                  href={source.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-medium text-[var(--accent)] hover:underline"
+                >
+                  {source.title}
+                </a>
+                <span className="text-[var(--muted)]"> - {source.note}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {/* Related formats */}
       {related.length > 0 && (
         <section className="border-t pt-8">

@@ -1,6 +1,17 @@
 import Link from "next/link"
-import { tools } from "@/tools/registry"
 import { formats } from "@/formats/registry"
+import { toolsBySlug } from "@/tools/registry"
+
+const footerToolSlugs = [
+  "png-to-jpg",
+  "image-compressor",
+  "heic-to-jpg",
+  "pdf-compress",
+  "screenshot-mockup",
+  "favicon-generator",
+]
+
+const footerTools = footerToolSlugs.map((slug) => toolsBySlug[slug]).filter(Boolean)
 
 export function Footer() {
   const year = new Date().getFullYear()
@@ -11,15 +22,15 @@ export function Footer() {
           <div>
             <div className="font-semibold">PixWarp</div>
             <p className="mt-2 text-sm text-[var(--muted)]">
-              Fast, friendly media tools. Drop a file, get the result — no signup, no waiting.
+              Fast, friendly media tools. Drop a file, get the result, no signup and no waiting.
             </p>
           </div>
           <div>
             <div className="text-sm font-semibold tracking-wide text-[var(--muted)] uppercase">
-              Tools
+              Popular tools
             </div>
             <ul className="mt-3 space-y-1.5 text-sm">
-              {tools.map((tool) => (
+              {footerTools.map((tool) => (
                 <li key={tool.slug}>
                   <Link href={`/tools/${tool.slug}`} className="hover:text-[var(--accent)]">
                     {tool.name}
@@ -30,13 +41,28 @@ export function Footer() {
           </div>
           <div>
             <div className="text-sm font-semibold tracking-wide text-[var(--muted)] uppercase">
-              Formats
+              Browse
             </div>
             <ul className="mt-3 space-y-1.5 text-sm">
-              {formats.map((fmt) => (
+              <li>
+                <Link href="/#tools" className="hover:text-[var(--accent)]">
+                  Tools by task
+                </Link>
+              </li>
+              <li>
+                <Link href="/#all-tools" className="hover:text-[var(--accent)]">
+                  All tool categories
+                </Link>
+              </li>
+              <li>
+                <Link href="/#formats" className="hover:text-[var(--accent)]">
+                  File format guides
+                </Link>
+              </li>
+              {formats.slice(0, 3).map((fmt) => (
                 <li key={fmt.slug}>
                   <Link href={`/format/${fmt.slug}`} className="hover:text-[var(--accent)]">
-                    .{fmt.extensions[0]} — {fmt.name}
+                    .{fmt.extensions[0]} to {fmt.name}
                   </Link>
                 </li>
               ))}

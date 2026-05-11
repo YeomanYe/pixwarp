@@ -40,6 +40,14 @@ Then:
 
 SEO metadata, sitemap entry, registry registration, and related-tools cross-link are auto-generated.
 
+## Adding a new format guide
+
+Follow `docs/format-guide-authoring.md`.
+
+Format pages must be researched from current online sources, include traceable sample assets, cover
+the most common sizes or settings for that format, and provide a visible preview whenever the format
+has a visual, audio, document, or structured-data representation.
+
 ## Analytics convention
 
 - Single source: `@/lib/analytics`. `track()` fan-outs to Vercel + PostHog.

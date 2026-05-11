@@ -27,6 +27,12 @@ export interface FormatSupport {
   apps: string[]
 }
 
+export interface FormatSource {
+  title: string
+  url: string
+  note: string
+}
+
 export interface FormatManifest {
   slug: string
   category: FormatCategory
@@ -62,6 +68,8 @@ export interface FormatManifest {
   relatedFormats?: string[]
   /** FAQ */
   faq?: { q: string; a: string }[]
+  /** Online references used to verify this guide */
+  sources?: FormatSource[]
   /** Last updated ISO date */
   lastUpdated?: string
   /** Optional custom interactive component (e.g. demo / compare widget) */

@@ -6,6 +6,7 @@ import { manifest as svgManifest } from "./svg/manifest"
 import { manifest as tiffManifest } from "./tiff/manifest"
 import { manifest as webmManifest } from "./webm/manifest"
 import { manifest as webpManifest } from "./webp/manifest"
+import { longTailFormats } from "./long-tail"
 
 export const formats: FormatManifest[] = [
   heicManifest,
@@ -15,6 +16,7 @@ export const formats: FormatManifest[] = [
   svgManifest,
   tiffManifest,
   icoManifest,
+  ...longTailFormats,
 ]
 
 export const formatsBySlug = Object.fromEntries(formats.map((f) => [f.slug, f]))
