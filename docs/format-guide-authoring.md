@@ -57,8 +57,10 @@ needs a preview.
 Every format guide should include visible proof whenever possible:
 
 - Image formats: show rendered previews and downloadable original samples.
-- Video formats: show a playable or poster-backed preview plus file size, duration, and dimensions.
-- Audio formats: show an audio player or waveform-style preview plus bitrate, duration, and size.
+- Video formats: show a playable preview with a real poster/cover image plus file size, duration,
+  codec/container notes, and dimensions. Do not ship a bare black player rectangle.
+- Audio formats: show an audio player or waveform-style preview plus a cover image/card, bitrate,
+  duration, sample rate, channel count, and size. Do not ship bare audio controls without a cover.
 - Document formats: show page thumbnails, page size, page count, and a downloadable sample.
 - Data/archive formats: show a structured preview such as a file tree, first rows, schema, or
   extracted metadata.
@@ -102,6 +104,14 @@ Cover practical platform sizes:
 - `1:1` at `1080 x 1080`
 - `4:5` at `1080 x 1350`
 
+Each video sample must include a cover image:
+
+- use a real `poster` frame for playable `<video>` samples;
+- use a traceable online still, public-domain frame, or generated cover when the original format
+  cannot play directly in the browser;
+- keep the cover visually representative of the sample, not a generic gradient or empty placeholder;
+- document the cover source or generation note beside the sample attribution.
+
 Include duration, codec/container notes, and a real file size for each sample.
 
 ### Audio Formats
@@ -112,6 +122,14 @@ Cover common listening/export settings:
 - music sample;
 - at least two bitrates or quality settings when the format is lossy;
 - duration, bitrate, sample rate, channel count, and file size.
+
+Each audio sample must include a cover image or cover card:
+
+- prefer real album-art-style, podcast-art-style, waveform-poster, or source-specific artwork;
+- if generated, make it clearly tied to the sample type, such as voice, music, field recording, or
+  lossless archive;
+- keep the cover visible next to the player on desktop and above the player on mobile;
+- document the cover source or generation note beside the sample attribution.
 
 ### Document Formats
 
