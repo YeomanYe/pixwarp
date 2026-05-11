@@ -59,6 +59,30 @@ const zhFallbacks: Record<string, { name: string; description: string }> = {
     name: "WebP 转 PNG",
     description: "在浏览器内把 WebP 图片转换为 PNG。",
   },
+  "png-to-jpg": {
+    name: "PNG 转 JPG",
+    description: "在浏览器内把 PNG 图片转换为更小的 JPG 文件。",
+  },
+  "jpg-to-png": {
+    name: "JPG 转 PNG",
+    description: "在浏览器内把 JPG/JPEG 图片转换为 PNG。",
+  },
+  "jpg-to-webp": {
+    name: "JPG 转 WebP",
+    description: "在浏览器内把 JPG 图片转换为适合网页使用的 WebP。",
+  },
+  "png-to-webp": {
+    name: "PNG 转 WebP",
+    description: "在浏览器内把 PNG 截图和素材转换为 WebP。",
+  },
+  "svg-to-png": {
+    name: "SVG 转 PNG",
+    description: "在浏览器内把 SVG 图标、Logo 和插图渲染为 PNG。",
+  },
+  "favicon-generator": {
+    name: "Favicon 生成器",
+    description: "从一张图片本地生成 favicon.ico 和常用 PNG 图标尺寸。",
+  },
 }
 
 export function getLocalizedTool(tool: ToolManifest, locale: Locale) {
