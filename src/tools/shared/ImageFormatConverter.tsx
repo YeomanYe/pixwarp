@@ -89,7 +89,7 @@ async function convertImage(
 function ImageFormatConverterInner({ config }: { config: ImageFormatConverterConfig }) {
   const [status, setStatus] = useState<Status>("idle")
   const [error, setError] = useState<string | null>(null)
-  const [quality, setQuality] = useState(config.defaultQuality ?? 0.9)
+  const [quality, setQuality] = useState(Math.round((config.defaultQuality ?? 0.9) * 100))
   const [results, setResults] = useState<ConversionResult[]>([])
   const resultsRef = useRef<ConversionResult[]>([])
   const hasQuality = config.outputMime !== "image/png"
@@ -131,7 +131,7 @@ function ImageFormatConverterInner({ config }: { config: ImageFormatConverterCon
             file_type: file.type,
             file_size_kb: Math.round(file.size / 1024),
           })
-          const result = await convertImage(file, config, quality)
+          const result = await convertImage(file, config, quality / 100)
           converted.push(result)
           recordHistory({
             tool: config.toolSlug,
@@ -168,18 +168,18 @@ function ImageFormatConverterInner({ config }: { config: ImageFormatConverterCon
         onFiles={handleFiles}
       >
         {hasQuality ? (
-          <label className="mb-4 block text-left text-sm">
-            Quality
+          <label className="mb-4 flex items-center justify-center gap-3 text-sm">
+            <span className="text-[var(--muted)]">{config.outputLabel} quality</span>
             <input
               type="range"
-              min={0.4}
-              max={1}
-              step={0.05}
+              min={40}
+              max={100}
+              step={5}
               value={quality}
               onChange={(event) => setQuality(Number(event.target.value))}
-              className="mt-2 w-full"
+              className="w-40 accent-[var(--accent)]"
             />
-            <span className="text-xs text-[var(--muted)]">{Math.round(quality * 100)}%</span>
+            <span className="w-8 text-right font-mono text-xs">{quality}%</span>
           </label>
         ) : null}
         <ProcessingPanel
