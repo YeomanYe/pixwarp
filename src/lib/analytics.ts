@@ -32,6 +32,7 @@ export type ToolSlug =
   | "svg-optimizer"
   | "svg-to-png"
   | "svg-to-jpg"
+  | "svg-to-webp"
   | "favicon-generator"
   | "video-compress"
   | "audio-extract"
