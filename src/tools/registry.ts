@@ -28,6 +28,7 @@ import { manifest as imagesToPdfManifest } from "./images-to-pdf/manifest"
 import { manifest as pdfToImagesManifest } from "./pdf-to-images/manifest"
 import { manifest as svgOptimizerManifest } from "./svg-optimizer/manifest"
 import { manifest as svgToPngManifest } from "./svg-to-png/manifest"
+import { manifest as svgToJpgManifest } from "./svg-to-jpg/manifest"
 import { manifest as faviconGeneratorManifest } from "./favicon-generator/manifest"
 import { manifest as videoCompressManifest } from "./video-compress/manifest"
 import { manifest as audioExtractManifest } from "./audio-extract/manifest"
@@ -71,6 +72,7 @@ export const tools: ToolManifest[] = [
   pdfToImagesManifest,
   svgOptimizerManifest,
   svgToPngManifest,
+  svgToJpgManifest,
   videoCompressManifest,
   audioExtractManifest,
   qrCodeManifest,

@@ -31,6 +31,7 @@ export type ToolSlug =
   | "pdf-to-images"
   | "svg-optimizer"
   | "svg-to-png"
+  | "svg-to-jpg"
   | "favicon-generator"
   | "video-compress"
   | "audio-extract"
