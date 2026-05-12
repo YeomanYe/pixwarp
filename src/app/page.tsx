@@ -10,7 +10,7 @@ const taskGroups: { title: string; blurb: string; slugs: string[]; cta: string }
   {
     title: "Convert an image",
     blurb: "Change PNG, JPG, WebP, SVG, HEIC, or favicon files without uploading.",
-    slugs: ["png-to-jpg", "jpg-to-png", "jpg-to-webp", "svg-to-png"],
+    slugs: ["png-to-jpg", "avif-to-jpg", "jpg-to-png", "jpg-to-webp"],
     cta: "Image converters",
   },
   {

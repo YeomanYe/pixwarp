@@ -18,6 +18,7 @@ export type ToolSlug =
   | "jpg-to-png"
   | "jpg-to-webp"
   | "png-to-webp"
+  | "avif-to-jpg"
   | "image-resize"
   | "remove-exif"
   | "images-to-pdf"

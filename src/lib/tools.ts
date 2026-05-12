@@ -75,6 +75,10 @@ const zhFallbacks: Record<string, { name: string; description: string }> = {
     name: "PNG 转 WebP",
     description: "在浏览器内把 PNG 截图和素材转换为 WebP。",
   },
+  "avif-to-jpg": {
+    name: "AVIF 转 JPG",
+    description: "在浏览器内把 AVIF 图片转换为更通用的 JPG 文件。",
+  },
   "svg-to-png": {
     name: "SVG 转 PNG",
     description: "在浏览器内把 SVG 图标、Logo 和插图渲染为 PNG。",

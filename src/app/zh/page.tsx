@@ -23,7 +23,7 @@ const taskGroups: { title: string; blurb: string; slugs: string[]; cta: string }
   {
     title: "转换图片格式",
     blurb: "处理 PNG、JPG、WebP、SVG、HEIC 和 favicon，不需要上传文件。",
-    slugs: ["png-to-jpg", "jpg-to-png", "jpg-to-webp", "svg-to-png"],
+    slugs: ["png-to-jpg", "avif-to-jpg", "jpg-to-png", "jpg-to-webp"],
     cta: "图片转换",
   },
   {

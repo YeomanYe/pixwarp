@@ -41,7 +41,7 @@ AVIF can carry lossy photos, lossless images, transparency, HDR color, and even 
     ],
   },
   keywords: ["avif format", "what is avif", "avif file", "avif image", "avif 格式"],
-  relatedTools: ["image-compressor"],
+  relatedTools: ["avif-to-jpg", "image-compressor"],
   relatedFormats: ["webp", "heic"],
   faq: [
     {
