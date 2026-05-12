@@ -17,6 +17,7 @@ import { manifest as jpgToWebpManifest } from "./jpg-to-webp/manifest"
 import { manifest as pngToWebpManifest } from "./png-to-webp/manifest"
 import { manifest as avifToJpgManifest } from "./avif-to-jpg/manifest"
 import { manifest as avifToPngManifest } from "./avif-to-png/manifest"
+import { manifest as tiffToJpgManifest } from "./tiff-to-jpg/manifest"
 import { manifest as imageResizeManifest } from "./image-resize/manifest"
 import { manifest as removeExifManifest } from "./remove-exif/manifest"
 import { manifest as imagesToPdfManifest } from "./images-to-pdf/manifest"
@@ -54,6 +55,7 @@ export const tools: ToolManifest[] = [
   pngToWebpManifest,
   avifToJpgManifest,
   avifToPngManifest,
+  tiffToJpgManifest,
   imageResizeManifest,
   removeExifManifest,
   faviconGeneratorManifest,

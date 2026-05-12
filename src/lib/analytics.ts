@@ -20,6 +20,7 @@ export type ToolSlug =
   | "png-to-webp"
   | "avif-to-jpg"
   | "avif-to-png"
+  | "tiff-to-jpg"
   | "image-resize"
   | "remove-exif"
   | "images-to-pdf"

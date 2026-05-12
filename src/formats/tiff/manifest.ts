@@ -34,7 +34,7 @@ The reason TIFF remains common is reliability in professional workflows. The rea
     apps: ["Photoshop ✅", "Affinity Photo ✅", "GIMP ✅", "ImageMagick ✅", "Preview ✅"],
   },
   keywords: ["tiff format", "tif file", "what is tiff", "open tiff", "tiff 格式"],
-  relatedTools: ["images-to-pdf", "image-compressor"],
+  relatedTools: ["tiff-to-jpg", "images-to-pdf", "image-compressor"],
   relatedFormats: ["avif", "webp"],
   faq: [
     {
