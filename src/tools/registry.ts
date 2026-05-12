@@ -18,6 +18,7 @@ import { manifest as pngToWebpManifest } from "./png-to-webp/manifest"
 import { manifest as avifToJpgManifest } from "./avif-to-jpg/manifest"
 import { manifest as avifToPngManifest } from "./avif-to-png/manifest"
 import { manifest as tiffToJpgManifest } from "./tiff-to-jpg/manifest"
+import { manifest as tiffToPngManifest } from "./tiff-to-png/manifest"
 import { manifest as bmpToPngManifest } from "./bmp-to-png/manifest"
 import { manifest as icoToPngManifest } from "./ico-to-png/manifest"
 import { manifest as imageResizeManifest } from "./image-resize/manifest"
@@ -58,6 +59,7 @@ export const tools: ToolManifest[] = [
   avifToJpgManifest,
   avifToPngManifest,
   tiffToJpgManifest,
+  tiffToPngManifest,
   bmpToPngManifest,
   icoToPngManifest,
   imageResizeManifest,
