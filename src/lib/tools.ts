@@ -79,6 +79,10 @@ const zhFallbacks: Record<string, { name: string; description: string }> = {
     name: "AVIF 转 JPG",
     description: "在浏览器内把 AVIF 图片转换为更通用的 JPG 文件。",
   },
+  "avif-to-png": {
+    name: "AVIF 转 PNG",
+    description: "在浏览器内把 AVIF 图片转换为 PNG，并尽量保留透明度。",
+  },
   "svg-to-png": {
     name: "SVG 转 PNG",
     description: "在浏览器内把 SVG 图标、Logo 和插图渲染为 PNG。",
