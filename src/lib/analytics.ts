@@ -22,6 +22,7 @@ export type ToolSlug =
   | "avif-to-png"
   | "tiff-to-jpg"
   | "bmp-to-png"
+  | "ico-to-png"
   | "image-resize"
   | "remove-exif"
   | "images-to-pdf"
