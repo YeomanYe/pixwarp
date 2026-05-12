@@ -349,15 +349,15 @@ function ResultBlock({
       </div>
       <div className="grid gap-3 md:grid-cols-2">
         <FormatCard
-          badge="Original"
-          format="TIFF source"
+          badge="Decoded"
+          format="TIFF decoded preview"
           previewUrl={result.outputUrl}
           previewAlt={`${result.sourceName} decoded preview`}
           size={result.sourceSize}
           ratioLabel="baseline"
           downloadUrl={result.sourceUrl}
           downloadName={result.sourceName}
-          note="Decoded locally from the TIFF pixels."
+          note="Preview generated from TIFF pixels; browsers do not render TIFF directly."
         />
         <FormatCard
           badge={`Quality ${localQuality}${pending ? "..." : ""}`}
