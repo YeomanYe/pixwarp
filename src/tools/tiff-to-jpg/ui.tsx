@@ -1,13 +1,14 @@
 "use client"
 
 import dynamic from "next/dynamic"
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react"
 import * as UTIF from "utif"
+import { useConfirm } from "@/components/ConfirmProvider"
 import { FileDropzone } from "@/components/tool-shell/FileDropzone"
 import { ProcessingPanel } from "@/components/tool-shell/ProcessingPanel"
 import { track, trackError } from "@/lib/analytics"
 import { recordHistory } from "@/lib/history"
-import { canvasToBlob, downloadUrl, formatBytes } from "../shared/image-utils"
+import { canvasToBlob, downloadUrl as saveUrl, formatBytes } from "../shared/image-utils"
 
 type Status = "idle" | "processing" | "success" | "error"
 
@@ -15,11 +16,14 @@ interface TiffResult {
   id: string
   sourceName: string
   outputName: string
+  sourceUrl: string
   outputUrl: string
+  sourceFile: File
   sourceSize: number
   outputSize: number
   width: number
   height: number
+  quality: number
 }
 
 function basename(fileName: string) {
@@ -29,6 +33,12 @@ function basename(fileName: string) {
 function isTiff(file: File) {
   const name = file.name.toLowerCase()
   return file.type === "image/tiff" || name.endsWith(".tif") || name.endsWith(".tiff")
+}
+
+function ratio(a: number, b: number): string {
+  if (b === 0) return "-"
+  const r = a / b
+  return r >= 1 ? `${r.toFixed(2)}x larger` : `${(1 / r).toFixed(2)}x smaller`
 }
 
 async function decodeTiffToJpg(file: File, quality: number): Promise<TiffResult> {
@@ -85,11 +95,14 @@ async function decodeTiffToJpg(file: File, quality: number): Promise<TiffResult>
     id: `${file.name}-${file.size}-${Math.random().toString(36).slice(2, 8)}`,
     sourceName: file.name,
     outputName,
+    sourceUrl: URL.createObjectURL(file),
     outputUrl: URL.createObjectURL(blob),
+    sourceFile: file,
     sourceSize: file.size,
     outputSize: blob.size,
     width: canvas.width,
     height: canvas.height,
+    quality: Math.round(quality * 100),
   }
 }
 
@@ -99,6 +112,7 @@ function TiffToJpgInner() {
   const [quality, setQuality] = useState(90)
   const [results, setResults] = useState<TiffResult[]>([])
   const resultsRef = useRef<TiffResult[]>([])
+  const confirm = useConfirm()
 
   useEffect(() => {
     track("tool_open", { tool_slug: "tiff-to-jpg" })
@@ -110,7 +124,10 @@ function TiffToJpgInner() {
 
   useEffect(() => {
     return () => {
-      resultsRef.current.forEach((result) => URL.revokeObjectURL(result.outputUrl))
+      resultsRef.current.forEach((result) => {
+        URL.revokeObjectURL(result.sourceUrl)
+        URL.revokeObjectURL(result.outputUrl)
+      })
     }
   }, [])
 
@@ -160,6 +177,54 @@ function TiffToJpgInner() {
     [quality],
   )
 
+  const removeResult = useCallback((id: string) => {
+    setResults((previous) => {
+      const target = previous.find((result) => result.id === id)
+      if (target) {
+        URL.revokeObjectURL(target.sourceUrl)
+        URL.revokeObjectURL(target.outputUrl)
+      }
+      return previous.filter((result) => result.id !== id)
+    })
+  }, [])
+
+  const clearResults = useCallback(() => {
+    results.forEach((result) => {
+      URL.revokeObjectURL(result.sourceUrl)
+      URL.revokeObjectURL(result.outputUrl)
+    })
+    setResults([])
+    setStatus("idle")
+    setError(null)
+  }, [results])
+
+  const adjustJpgQuality = useCallback(
+    async (id: string, nextQuality: number) => {
+      const target = results.find((result) => result.id === id)
+      if (!target) return
+      try {
+        const next = await decodeTiffToJpg(target.sourceFile, nextQuality / 100)
+        URL.revokeObjectURL(next.sourceUrl)
+        setResults((previous) =>
+          previous.map((result) => {
+            if (result.id !== id) return result
+            URL.revokeObjectURL(result.outputUrl)
+            return {
+              ...result,
+              outputUrl: next.outputUrl,
+              outputSize: next.outputSize,
+              quality: nextQuality,
+            }
+          }),
+        )
+      } catch (conversionError) {
+        setError(conversionError instanceof Error ? conversionError.message : "Re-encode failed.")
+        trackError("tiff-to-jpg", conversionError)
+      }
+    },
+    [results],
+  )
+
   return (
     <div className="space-y-6">
       <p className="text-sm text-[var(--muted)]">
@@ -173,19 +238,6 @@ function TiffToJpgInner() {
         accept=".tif,.tiff,image/tiff"
         onFiles={handleFiles}
       >
-        <label className="mb-4 flex items-center justify-center gap-3 text-sm">
-          <span className="text-[var(--muted)]">JPG output quality</span>
-          <input
-            type="range"
-            min={40}
-            max={100}
-            step={5}
-            value={quality}
-            onChange={(event) => setQuality(Number(event.target.value))}
-            className="w-40 accent-[var(--accent)]"
-          />
-          <span className="w-8 text-right font-mono text-xs">{quality}%</span>
-        </label>
         <ProcessingPanel
           state={status}
           idleText="Waiting for TIFF source images."
@@ -195,40 +247,202 @@ function TiffToJpgInner() {
         />
       </FileDropzone>
 
+      <div className="flex flex-wrap items-center gap-x-6 gap-y-3 rounded-lg border bg-[var(--card)] px-4 py-3 text-sm">
+        <label className="flex items-center gap-3">
+          <span className="text-[var(--muted)]">JPG output quality</span>
+          <input
+            type="range"
+            min={40}
+            max={100}
+            step={1}
+            value={quality}
+            onChange={(event) => setQuality(Number(event.target.value))}
+            className="w-40 accent-[var(--accent)]"
+          />
+          <span className="w-9 text-right font-mono text-xs">{quality}</span>
+        </label>
+        <span className="text-xs text-[var(--muted)]">
+          Default for new conversions. Each result below has its own slider too.
+        </span>
+      </div>
+
       {results.length > 0 ? (
-        <section className="grid gap-4">
-          <h2 className="text-lg font-semibold">Converted images ({results.length})</h2>
+        <section className="space-y-4">
+          <div className="flex items-center justify-between gap-3">
+            <h2 className="text-lg font-semibold">Converted ({results.length})</h2>
+            <button
+              type="button"
+              onClick={() =>
+                confirm({
+                  title: "Clear all conversions?",
+                  description: "This removes the generated JPG previews from this page.",
+                  confirmText: "Clear all",
+                  isDanger: true,
+                  onConfirm: clearResults,
+                })
+              }
+              className="text-sm text-[var(--muted)] hover:text-[var(--foreground)]"
+            >
+              Clear all
+            </button>
+          </div>
           {results.map((result) => (
-            <article key={result.id} className="rounded-lg border bg-[var(--card)] p-4">
-              <div className="mb-3 flex flex-wrap items-start justify-between gap-3">
-                <div>
-                  <h3 className="font-medium">{result.outputName}</h3>
-                  <p className="text-xs text-[var(--muted)]">
-                    {result.width} x {result.height} - {formatBytes(result.sourceSize)} to{" "}
-                    {formatBytes(result.outputSize)}
-                  </p>
-                </div>
-                <button
-                  className="rounded-md bg-[var(--accent)] px-3 py-1.5 text-sm font-medium text-[var(--accent-fg)]"
-                  onClick={() => downloadUrl(result.outputUrl, result.outputName)}
-                >
-                  Download
-                </button>
-              </div>
-              <div className="rounded-md border bg-[var(--muted-bg)] p-3">
-                <div className="mb-2 text-xs font-medium text-[var(--muted)]">JPG output</div>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={result.outputUrl}
-                  alt=""
-                  className="max-h-72 w-full rounded object-contain"
-                />
-              </div>
-            </article>
+            <ResultBlock
+              key={result.id}
+              result={result}
+              onRemove={() =>
+                confirm({
+                  title: "Remove conversion?",
+                  description: "This removes this result from the list.",
+                  confirmText: "Remove",
+                  isDanger: true,
+                  onConfirm: () => removeResult(result.id),
+                })
+              }
+              onQualityChange={(nextQuality) => adjustJpgQuality(result.id, nextQuality)}
+            />
           ))}
         </section>
       ) : null}
     </div>
+  )
+}
+
+function ResultBlock({
+  result,
+  onRemove,
+  onQualityChange,
+}: {
+  result: TiffResult
+  onRemove: () => void
+  onQualityChange: (quality: number) => void
+}) {
+  const [localQuality, setLocalQuality] = useState(result.quality)
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const pending = localQuality !== result.quality
+
+  const handleSliderChange = (nextQuality: number) => {
+    setLocalQuality(nextQuality)
+    if (debounceRef.current) clearTimeout(debounceRef.current)
+    debounceRef.current = setTimeout(() => {
+      onQualityChange(nextQuality)
+    }, 200)
+  }
+
+  return (
+    <section className="space-y-3 rounded-lg border bg-[var(--card)]/30 p-4">
+      <div className="flex items-center justify-between gap-3">
+        <div className="min-w-0">
+          <h3 className="truncate font-medium">{result.outputName}</h3>
+          <p className="text-xs text-[var(--muted)]">
+            {result.width} x {result.height} - {formatBytes(result.sourceSize)} to{" "}
+            {formatBytes(result.outputSize)}
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={onRemove}
+          className="text-xs text-[var(--muted)] hover:text-[var(--foreground)]"
+        >
+          Remove
+        </button>
+      </div>
+      <div className="grid gap-3 md:grid-cols-2">
+        <FormatCard
+          badge="Original"
+          format="TIFF source"
+          previewUrl={result.outputUrl}
+          previewAlt={`${result.sourceName} decoded preview`}
+          size={result.sourceSize}
+          ratioLabel="baseline"
+          downloadUrl={result.sourceUrl}
+          downloadName={result.sourceName}
+          note="Decoded locally from the TIFF pixels."
+        />
+        <FormatCard
+          badge={`Quality ${localQuality}${pending ? "..." : ""}`}
+          format="JPG output"
+          previewUrl={result.outputUrl}
+          previewAlt={result.outputName}
+          size={result.outputSize}
+          ratioLabel={ratio(result.outputSize, result.sourceSize)}
+          downloadUrl={result.outputUrl}
+          downloadName={result.outputName}
+          note="Lossy output. Drag the slider to re-encode."
+          extra={
+            <label className="flex items-center gap-2 text-xs">
+              <span className="text-[var(--muted)]">Q</span>
+              <input
+                type="range"
+                min={40}
+                max={100}
+                step={1}
+                value={localQuality}
+                onChange={(event) => handleSliderChange(Number(event.target.value))}
+                className="flex-1 accent-[var(--accent)]"
+              />
+              <span className="w-7 text-right font-mono">{localQuality}</span>
+            </label>
+          }
+        />
+      </div>
+    </section>
+  )
+}
+
+interface FormatCardProps {
+  badge: string
+  format: string
+  previewUrl: string
+  previewAlt: string
+  size: number
+  ratioLabel: string
+  downloadUrl: string
+  downloadName: string
+  note: string
+  extra?: ReactNode
+}
+
+function FormatCard({
+  badge,
+  format,
+  previewUrl,
+  previewAlt,
+  size,
+  ratioLabel,
+  downloadUrl,
+  downloadName,
+  note,
+  extra,
+}: FormatCardProps) {
+  return (
+    <figure className="flex flex-col overflow-hidden rounded-lg border bg-[var(--card)]">
+      <div className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-[var(--muted-bg)]/40">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={previewUrl} alt={previewAlt} className="h-full w-full object-contain" />
+      </div>
+      <figcaption className="flex flex-1 flex-col gap-2 border-t p-3">
+        <div className="flex items-center justify-between gap-3">
+          <span className="text-base font-semibold">{format}</span>
+          <span className="rounded border border-[var(--border)] px-1.5 py-0.5 font-mono text-[10px] tracking-wider text-[var(--muted)] uppercase">
+            {badge}
+          </span>
+        </div>
+        <div className="flex items-baseline justify-between gap-2 text-sm">
+          <span className="font-mono">{formatBytes(size)}</span>
+          <span className="text-xs text-[var(--muted)]">{ratioLabel}</span>
+        </div>
+        <div className="text-xs text-[var(--muted)]">{note}</div>
+        {extra}
+        <button
+          type="button"
+          onClick={() => saveUrl(downloadUrl, downloadName)}
+          className="mt-auto rounded-md border border-[var(--accent)]/40 px-3 py-1.5 text-center text-xs font-medium text-[var(--accent)] transition hover:bg-[var(--accent)]/10"
+        >
+          Download .{downloadName.split(".").pop()}
+        </button>
+      </figcaption>
+    </figure>
   )
 }
 

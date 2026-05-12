@@ -25,10 +25,10 @@ type Status = "idle" | "converting" | "done" | "error"
 const ACCEPTED_EXTENSIONS = [".heic", ".heif"]
 
 const SAMPLES = [
-  { path: "/samples/heic/winter-photo.heic", label: "Yosemite (242 KB)" },
-  { path: "/samples/heic/autumn-photo.heic", label: "Autumn pond (287 KB)" },
-  { path: "/samples/heic/iphone-portrait.heic", label: "Riverside town (701 KB)" },
-  { path: "/samples/heic/lighthouse-9x16.heic", label: "Lighthouse 9:16 (32 KB)" },
+  { path: "/samples/heic/great-point-lighthouse-1920x1080.heic", label: "Great Point (205 KB)" },
+  { path: "/samples/heic/carysfort-lighthouse-1920x1080.heic", label: "Carysfort (96 KB)" },
+  { path: "/samples/heic/rock-ptarmigan-1080x1080.heic", label: "Ptarmigan (88 KB)" },
+  { path: "/samples/heic/mugu-waterfall-1080x1920.heic", label: "Mugu waterfall (656 KB)" },
 ]
 
 function formatBytes(bytes: number): string {
