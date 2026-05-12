@@ -6,7 +6,9 @@ import { track, trackError } from "@/lib/analytics"
 import { useConfirm } from "@/components/ConfirmProvider"
 import type { Imagequant, ImagequantImage } from "imagequant/imagequant_bg.js"
 import { loadImagequant } from "./imagequant-loader"
+import { encodeJpeg } from "./mozjpeg-loader"
 import { optimise as oxipngOptimise } from "./oxipng-loader"
+import { encodeWebp } from "./webp-loader"
 
 interface Job {
   id: string
@@ -34,6 +36,14 @@ function extOf(mime: string): string {
   return mime.split("/")[1] || "img"
 }
 
+function canCompress(file: File): boolean {
+  return ["image/jpeg", "image/png", "image/webp"].includes(file.type)
+}
+
+function canUseLossless(file: File): boolean {
+  return file.type === "image/png" || file.type === "image/webp"
+}
+
 function loadImage(url: string): Promise<HTMLImageElement> {
   return new Promise((res, rej) => {
     const img = new Image()
@@ -47,6 +57,24 @@ function toExactArrayBuffer(bytes: Uint8Array): ArrayBuffer {
   const copy = new Uint8Array(bytes.byteLength)
   copy.set(bytes)
   return copy.buffer
+}
+
+async function decodeToImageData(file: File): Promise<ImageData> {
+  const url = URL.createObjectURL(file)
+  try {
+    const img = await loadImage(url)
+    const canvas = document.createElement("canvas")
+    canvas.width = img.naturalWidth
+    canvas.height = img.naturalHeight
+
+    const ctx = canvas.getContext("2d")
+    if (!ctx) throw new Error("Canvas context failed")
+
+    ctx.drawImage(img, 0, 0)
+    return ctx.getImageData(0, 0, canvas.width, canvas.height)
+  } finally {
+    URL.revokeObjectURL(url)
+  }
 }
 
 async function compressFile(file: File, quality: number, isLossless: boolean): Promise<Blob> {
@@ -64,23 +92,7 @@ async function compressFile(file: File, quality: number, isLossless: boolean): P
     let iqImg: ImagequantImage | undefined
 
     try {
-      const url = URL.createObjectURL(file)
-      let imageData: ImageData
-
-      try {
-        const img = await loadImage(url)
-        const canvas = document.createElement("canvas")
-        canvas.width = img.naturalWidth
-        canvas.height = img.naturalHeight
-
-        const ctx = canvas.getContext("2d")
-        if (!ctx) throw new Error("Canvas context failed")
-
-        ctx.drawImage(img, 0, 0)
-        imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
-      } finally {
-        URL.revokeObjectURL(url)
-      }
+      const imageData = await decodeToImageData(file)
 
       iq = new IQ()
       iq.set_quality(0, quality)
@@ -99,30 +111,15 @@ async function compressFile(file: File, quality: number, isLossless: boolean): P
     }
   }
 
-  const url = URL.createObjectURL(file)
-  try {
-    const img = await loadImage(url)
-    const canvas = document.createElement("canvas")
-    canvas.width = img.naturalWidth
-    canvas.height = img.naturalHeight
-    const ctx = canvas.getContext("2d")
-    if (!ctx) throw new Error("Canvas context failed")
-    ctx.drawImage(img, 0, 0)
+  const imageData = await decodeToImageData(file)
 
-    const targetType =
-      file.type === "image/jpeg" || file.type === "image/webp" ? file.type : "image/jpeg"
-    const effectiveQuality = isLossless ? 1.0 : quality / 100
-
-    return new Promise((res, rej) => {
-      canvas.toBlob(
-        (b) => (b ? res(b) : rej(new Error("Encoding failed"))),
-        targetType,
-        effectiveQuality,
-      )
-    })
-  } finally {
-    URL.revokeObjectURL(url)
+  if (file.type === "image/webp") {
+    const encoded = await encodeWebp(imageData, quality, isLossless)
+    return new Blob([encoded], { type: "image/webp" })
   }
+
+  const encoded = await encodeJpeg(imageData, isLossless ? 100 : quality)
+  return new Blob([encoded], { type: "image/jpeg" })
 }
 
 function ImageCompressorInner() {
@@ -211,7 +208,7 @@ function ImageCompressorInner() {
   const addFiles = useCallback(
     (fileList: FileList | File[] | null) => {
       if (!fileList) return
-      const incoming = Array.from(fileList).filter((f) => f.type.startsWith("image/"))
+      const incoming = Array.from(fileList).filter(canCompress)
       if (incoming.length === 0) return
 
       const newJobs: Job[] = incoming.map((file) => ({
@@ -221,7 +218,7 @@ function ImageCompressorInner() {
         origUrl: URL.createObjectURL(file),
         busy: true,
         quality: globalQuality,
-        isLossless: globalLossless && file.type !== "image/jpeg",
+        isLossless: globalLossless && canUseLossless(file),
       }))
 
       setJobs((prev) => [...newJobs, ...prev])
@@ -308,9 +305,8 @@ function ImageCompressorInner() {
   return (
     <div className="space-y-6">
       <p className="text-sm text-[var(--muted)]">
-        Professional image compression powered by Squoosh WASM codecs. Featuring oxipng for lossless
-        optimization and imagequant for lossy quantization. Processed locally — your files never
-        leave your computer.
+        Professional image compression powered by Squoosh WASM codecs: oxipng, imagequant, mozjpeg,
+        and libwebp. Processed locally — your files never leave your computer.
       </p>
 
       {/* Drop zone */}
@@ -461,9 +457,7 @@ function ResultBlock({
     }, 300)
   }
 
-  const ratioLabel = job.out
-    ? `${((1 - job.out.size / job.origSize) * 100).toFixed(1)}% smaller`
-    : "..."
+  const ratioLabel = job.out ? formatDelta(job.out.size, job.origSize) : "..."
 
   return (
     <section className="space-y-3 rounded-lg border bg-[var(--card)]/30 p-4">
@@ -500,10 +494,14 @@ function ResultBlock({
           downloadName={job.out ? `${job.file.name.replace(/\.[^.]+$/, "")}.${job.out.ext}` : ""}
           note={
             job.isLossless
-              ? "Lossless (oxipng WASM)"
+              ? isPng
+                ? "Lossless WASM (oxipng)"
+                : "Lossless WASM (libwebp)"
               : isPng
-                ? `Lossy WASM (imagequant)`
-                : `Quality ${localQuality}%`
+                ? "Lossy WASM (imagequant)"
+                : job.file.type === "image/webp"
+                  ? `Lossy WASM (libwebp) at ${localQuality}%`
+                  : `Lossy WASM (mozjpeg) at ${localQuality}%`
           }
           extra={
             <div className="space-y-2">
@@ -520,7 +518,7 @@ function ResultBlock({
                 </button>
                 <button
                   onClick={() => onModeChange(true)}
-                  disabled={job.file.type === "image/jpeg"}
+                  disabled={!canUseLossless(job.file)}
                   className={`rounded px-2 py-0.5 text-[10px] font-medium transition ${
                     job.isLossless
                       ? "bg-[var(--card)] text-[var(--accent)] shadow-sm"
@@ -552,6 +550,13 @@ function ResultBlock({
       {job.error && <p className="mt-2 text-xs text-[var(--error)]">Error: {job.error}</p>}
     </section>
   )
+}
+
+function formatDelta(outputSize: number, inputSize: number): string {
+  if (inputSize === 0) return "baseline"
+  const delta = (1 - outputSize / inputSize) * 100
+  if (delta >= 0) return `${delta.toFixed(1)}% smaller`
+  return `${Math.abs(delta).toFixed(1)}% larger`
 }
 
 interface FormatCardProps {
