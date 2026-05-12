@@ -1,0 +1,42 @@
+[
+  {
+    "file": "chardin-still-life-1440x810.psd",
+    "preview": "chardin-still-life-1440x810-preview.jpg",
+    "title": "Still life with a copper kettle, bottle, bowl with eggs and two leek plants",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jean-Baptiste_Sim%C3%A9on_Chardin_(2.11.1699_-_6.12.1779)_-_Still_life_with_a_copper_kettle,_bottle,_bowl_with_eggs_and_two_leek_plants_-_1669_-_Gem%C3%A4ldegalerie.jpg",
+    "creator": "Jean-Baptiste-Siméon Chardin",
+    "license": "Public domain",
+    "originalDimensions": "4000 x 2301",
+    "processing": "Freshly downloaded from Wikimedia Commons for the PSD guide, cropped to 16:9, resized to 1440 x 810, exported as PSD with macOS sips, and paired with a matching JPEG preview."
+  },
+  {
+    "file": "duncanson-still-life-1080x1080.psd",
+    "preview": "duncanson-still-life-1080x1080-preview.jpg",
+    "title": "Still Life",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Still_Life_LACMA_M.78.98.jpg",
+    "creator": "Robert S. Duncanson",
+    "license": "Public domain",
+    "originalDimensions": "2100 x 1672",
+    "processing": "Freshly downloaded from Wikimedia Commons for the PSD guide, cropped to 1:1, resized to 1080 x 1080, exported as PSD with macOS sips, and paired with a matching JPEG preview."
+  },
+  {
+    "file": "renoir-flowers-1080x1350.psd",
+    "preview": "renoir-flowers-1080x1350-preview.jpg",
+    "title": "Still Life: Flowers",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:GUGG_Still_Life_Flowers.jpg",
+    "creator": "Pierre-Auguste Renoir",
+    "license": "Public domain",
+    "originalDimensions": "2425 x 3000",
+    "processing": "Freshly downloaded from Wikimedia Commons for the PSD guide, cropped to 4:5, resized to 1080 x 1350, exported as PSD with macOS sips, and paired with a matching JPEG preview."
+  },
+  {
+    "file": "chicago-poster-1080x1920.psd",
+    "preview": "chicago-poster-1080x1920-preview.jpg",
+    "title": "Chicago world's fair, a century of progress, expo poster, 1933",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chicago_world%27s_fair,_a_century_of_progress,_expo_poster,_1933,_2.jpg",
+    "creator": "Weimer Pursell / Neely Printing Co.",
+    "license": "Public domain",
+    "originalDimensions": "2450 x 3660",
+    "processing": "Freshly downloaded from Wikimedia Commons for the PSD guide, cropped to 9:16, resized to 1080 x 1920, exported as PSD with macOS sips, and paired with a matching JPEG preview."
+  }
+]

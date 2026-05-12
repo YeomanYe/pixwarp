@@ -1,0 +1,38 @@
+[
+  {
+    "file": "bell-intercept-10s.aiff",
+    "cover": "bell-intercept-10s-cover.jpg",
+    "title": "Old Bell System intercept recording",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Old-bell-system-intercept-recording.ogg",
+    "license": "Public domain",
+    "processing": "Downloaded the source Ogg Vorbis file, converted 10 seconds to 16-bit big-endian PCM AIFF, and generated a spectrogram cover with FFmpeg."
+  },
+  {
+    "file": "steam-locomotive-20s.aiff",
+    "cover": "steam-locomotive-20s-cover.jpg",
+    "title": "WWS Steamlocomotive",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:WWS_Steamlocomotive.ogg",
+    "license": "CC BY 4.0",
+    "processing": "Downloaded the source Ogg Vorbis file, converted 20 seconds to 16-bit big-endian PCM AIFF, and generated a spectrogram cover with FFmpeg."
+  },
+  {
+    "file": "school-bell-20s.aiff",
+    "cover": "school-bell-20s-cover.jpg",
+    "title": "Old school bell 1",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Old_school_bell_1.ogg",
+    "license": "Public domain",
+    "processing": "Downloaded the source Ogg Vorbis file, converted 20 seconds to 16-bit big-endian PCM AIFF, and generated a spectrogram cover with FFmpeg."
+  },
+  {
+    "file": "organ-duo-24s.aiff",
+    "cover": "organ-duo-24s-cover.jpg",
+    "title": "Duo cors de chasse Dandrieu",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Duo_cors_de_chasse_Dandrieu.ogg",
+    "license": "Public domain",
+    "processing": "Downloaded the source Ogg Vorbis file, converted 24 seconds to 16-bit big-endian PCM AIFF, and generated a spectrogram cover with FFmpeg."
+  }
+]

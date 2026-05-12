@@ -47,7 +47,6 @@ export function SvgSamplesWidget() {
     <FormatSampleGallery
       intro="Three externally sourced SVG files stored locally: a small icon, a square logo, and a wide badge. SVG renders natively in the browser and can also be downloaded as the original vector file."
       samples={SAMPLES}
-      attributionPath="public/samples/svg/attribution.json"
     />
   )
 }

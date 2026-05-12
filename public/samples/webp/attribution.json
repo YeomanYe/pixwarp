@@ -1,56 +1,56 @@
 [
   {
-    "file": "allean-forest-loch-tummel.webp",
-    "title": "Allean forest loch tummel",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Allean_forest_loch_tummel.webp",
-    "creator": "Rowyn flowerdew",
-    "license": "CC0",
-    "originalDimensions": "1080 x 813",
-    "processing": "Downloaded as WebP and stored locally without resizing or cropping."
+    "file": "utah-dunes-1920x1080.webp",
+    "title": "Utah Dunes Landscape - West Desert District",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Utah_Dunes_Landscape_-_West_Desert_District.jpg",
+    "creator": "Bureau of Land Management - Utah / Bob Wick",
+    "license": "Public domain",
+    "originalDimensions": "4000 x 2628",
+    "processing": "Freshly downloaded from Wikimedia Commons for the WebP guide, cropped to 16:9, resized to 1920 x 1080, and converted to WebP with sharp-cli."
   },
   {
-    "file": "musandam-peninsula-aerial.webp",
-    "title": "Musandam Peninsula aerial",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Musandam_Peninsula_aerial.webp",
-    "creator": "Rita Willaert",
-    "license": "CC BY 2.5",
-    "originalDimensions": "2448 x 1632",
-    "processing": "Downloaded as WebP and stored locally without resizing or cropping."
-  },
-  {
-    "file": "lake-louise-square.webp",
-    "title": "Beautiful Landscape At Lake Louise",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Beautiful_Landscape_At_Lake_Louise.webp",
-    "creator": "Victor Smith",
+    "file": "rheinturm-1080x1080.webp",
+    "title": "Düsseldorf, Rheinturm -- 2015 -- 8127",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:D%C3%BCsseldorf,_Rheinturm_--_2015_--_8127.jpg",
+    "creator": "Dietmar Rabich",
     "license": "CC BY-SA 4.0",
-    "originalDimensions": "3000 x 3000",
-    "processing": "Downloaded as WebP and stored locally without resizing or cropping."
+    "originalDimensions": "3648 x 3648",
+    "processing": "Freshly downloaded from Wikimedia Commons for the WebP guide, resized to 1080 x 1080, and converted to WebP with sharp-cli."
   },
   {
-    "file": "tree-matrix-portrait.webp",
-    "title": "Amazing tree matrix at Gryteskog",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amazing_tree_matrix_at_Gryteskog.webp",
-    "creator": "Trakesh.photography",
-    "license": "CC BY-SA 4.0",
-    "originalDimensions": "3966 x 4958",
-    "processing": "Downloaded as WebP and stored locally without resizing or cropping."
+    "file": "okonjo-iweala-1080x1350.webp",
+    "title": "Okonjo-Iweala, Ngozi (2008 portrait)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Okonjo-Iweala,_Ngozi_(2008_portrait).jpg",
+    "creator": "International Monetary Fund",
+    "license": "Public domain",
+    "originalDimensions": "1500 x 2100",
+    "processing": "Freshly downloaded from Wikimedia Commons for the WebP guide, cropped to 4:5, resized to 1080 x 1350, and converted to WebP with sharp-cli."
   },
   {
-    "file": "transparent-gear.webp",
-    "title": "Gear-icon-transparent-background",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gear-icon-transparent-background.png",
-    "creator": "Kurt Kaiser",
-    "license": "CC0",
-    "originalDimensions": "512 x 512",
-    "processing": "Converted from the original transparent PNG to lossless WebP without resizing or cropping."
+    "file": "artemis-moonscape-1080x1920.webp",
+    "title": "Artemis Moonscape Vertical v2 Type",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Artemis_Moonscape_Vertical_v2_Type_(905749615641).jpg",
+    "creator": "NASA / Patricia Moore upload",
+    "license": "Public domain",
+    "originalDimensions": "2700 x 4000",
+    "processing": "Freshly downloaded from Wikimedia Commons for the WebP guide, cropped to 9:16, resized to 1080 x 1920, and converted to WebP with sharp-cli."
   },
   {
-    "file": "simple-animated-clock.webp",
-    "title": "Simple Animated Clock",
-    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Simple_Animated_Clock.webp",
-    "creator": "HFWMan",
-    "license": "CC BY-SA 4.0",
-    "originalDimensions": "211 x 211",
-    "processing": "Downloaded as animated WebP and stored locally without resizing or cropping."
+    "file": "chlosyne-butterfly-740x436-alpha.webp",
+    "title": "Chlosyne nycteis-transparent",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chlosyne_nycteis-transparent.png",
+    "creator": "Nature Study Publishing Company, Chicago",
+    "license": "Public domain",
+    "originalDimensions": "740 x 436",
+    "processing": "Freshly downloaded from Wikimedia Commons for the WebP guide and converted from PNG to WebP with alpha preserved."
+  },
+  {
+    "file": "pia02501-321x320-animated.webp",
+    "title": "PIA02501 (animated)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:PIA02501_(animated).gif",
+    "creator": "NASA/JPL/University of Arizona",
+    "license": "Public domain",
+    "originalDimensions": "321 x 320",
+    "processing": "Freshly downloaded from Wikimedia Commons for the WebP guide and converted from animated GIF to animated WebP with gif2webp."
   }
 ]

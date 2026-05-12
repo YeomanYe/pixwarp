@@ -13,12 +13,12 @@ export interface FormatGuideSample {
   previewUrl?: string
   previewNote?: string
   checkerboard?: boolean
+  aspectRatio?: string
 }
 
 interface FormatSampleGalleryProps {
   intro: string
   samples: FormatGuideSample[]
-  attributionPath: string
 }
 
 function formatBytes(bytes: number): string {
@@ -45,25 +45,31 @@ const checkerboardStyle = {
   backgroundSize: "16px 16px",
 }
 
-export function FormatSampleGallery({ intro, samples, attributionPath }: FormatSampleGalleryProps) {
+export function FormatSampleGallery({ intro, samples }: FormatSampleGalleryProps) {
   return (
     <div className="space-y-5">
       <p className="text-sm text-[var(--muted)]">{intro}</p>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="columns-1 gap-4 sm:columns-2">
         {samples.map((sample) => (
-          <figure key={sample.url} className="flex flex-col rounded-lg border bg-[var(--card)] p-3">
+          <figure
+            key={sample.url}
+            className="mb-4 flex break-inside-avoid flex-col rounded-lg border bg-[var(--card)] p-3"
+          >
             <div
-              className={`flex ${previewHeight(
-                sample.shape,
-              )} items-center justify-center overflow-hidden rounded border bg-[var(--muted-bg)]/35`}
-              style={sample.checkerboard ? checkerboardStyle : undefined}
+              className={`flex ${
+                sample.aspectRatio ? "w-full" : previewHeight(sample.shape)
+              } items-center justify-center overflow-hidden rounded border bg-[var(--muted-bg)]/35`}
+              style={{
+                ...(sample.checkerboard ? checkerboardStyle : undefined),
+                ...(sample.aspectRatio ? { aspectRatio: sample.aspectRatio } : undefined),
+              }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={sample.previewUrl ?? sample.url}
-                alt={`${sample.title} sample preview at ${sample.dimensions}`}
-                loading="lazy"
+                alt={`${sample.title} sample preview for ${sample.dimensions}`}
+                loading="eager"
                 className="h-full w-full object-contain"
               />
             </div>
@@ -112,14 +118,6 @@ export function FormatSampleGallery({ intro, samples, attributionPath }: FormatS
           </figure>
         ))}
       </div>
-
-      <p className="text-xs text-[var(--muted)]">
-        Attribution metadata is mirrored in{" "}
-        <code className="rounded bg-[var(--muted-bg)] px-1 py-0.5 font-mono">
-          {attributionPath}
-        </code>
-        .
-      </p>
     </div>
   )
 }

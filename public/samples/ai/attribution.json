@@ -1,0 +1,42 @@
+{
+  "format": "ai",
+  "updated": "2026-05-12",
+  "samples": [
+    {
+      "file": "concept-search.ai",
+      "cover": "concept-search-cover.jpg",
+      "title": "Internet Search AI",
+      "source": "Public Domain Vectors",
+      "sourceUrl": "https://publicdomainvectors.org/en/free-clipart/Concept-of-Internet-search/92512.html",
+      "license": "Public domain / CC0",
+      "processing": "Downloaded the original archive, extracted the real Adobe Illustrator file, and downloaded the source page preview as the visible cover."
+    },
+    {
+      "file": "time-management.ai",
+      "cover": "time-management-cover.jpg",
+      "title": "Time Management AI",
+      "source": "Public Domain Vectors",
+      "sourceUrl": "https://publicdomainvectors.org/en/free-clipart/Time-managment/92495.html",
+      "license": "Public domain / CC0",
+      "processing": "Downloaded the original archive, extracted the real Adobe Illustrator file, and downloaded the source page preview as the visible cover."
+    },
+    {
+      "file": "cleaning-rag.ai",
+      "cover": "cleaning-rag-cover.jpg",
+      "title": "Cleaning Rag AI",
+      "source": "Public Domain Vectors",
+      "sourceUrl": "https://publicdomainvectors.org/en/free-clipart/Hand-with-a-cleaning-rag/92524.html",
+      "license": "Public domain / CC0",
+      "processing": "Downloaded the original archive, extracted the real Adobe Illustrator file, and used the source-provided JPG as the visible cover."
+    },
+    {
+      "file": "automatic-hand.ai",
+      "cover": "automatic-hand-cover.jpg",
+      "title": "Automatic Hand AI",
+      "source": "Public Domain Vectors",
+      "sourceUrl": "https://publicdomainvectors.org/en/free-clipart/Automatic-hand/92380.html",
+      "license": "Public domain / CC0",
+      "processing": "Downloaded the original archive, extracted the real Adobe Illustrator file, and downloaded the source page preview as the visible cover."
+    }
+  ]
+}

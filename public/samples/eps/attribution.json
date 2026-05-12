@@ -1,0 +1,42 @@
+{
+  "format": "eps",
+  "updated": "2026-05-12",
+  "samples": [
+    {
+      "file": "download-files-concept.eps",
+      "cover": "download-files-concept-cover.jpg",
+      "title": "Download Files EPS",
+      "source": "Public Domain Vectors",
+      "sourceUrl": "https://publicdomainvectors.org/en/free-clipart/Download-files-concept/92540.html",
+      "license": "Public domain / CC0",
+      "processing": "Downloaded the original archive, extracted the real EPS file, and used the source-provided JPG as the visible cover."
+    },
+    {
+      "file": "hand-holding-book.eps",
+      "cover": "hand-holding-book-cover.jpg",
+      "title": "Hand Holding Book EPS",
+      "source": "Public Domain Vectors",
+      "sourceUrl": "https://publicdomainvectors.org/en/free-clipart/Hand-holding-a-big-book/92548.html",
+      "license": "Public domain / CC0",
+      "processing": "Downloaded the original archive, extracted the real EPS file, and used the source-provided JPG as the visible cover."
+    },
+    {
+      "file": "credit-card-payment.eps",
+      "cover": "credit-card-payment-cover.jpg",
+      "title": "Credit Card Payment EPS",
+      "source": "Public Domain Vectors",
+      "sourceUrl": "https://publicdomainvectors.org/en/free-clipart/Credit-card-payment-concept/92324.html",
+      "license": "Public domain / CC0",
+      "processing": "Downloaded the original archive, extracted the real EPS file, and downloaded the source page preview as the visible cover."
+    },
+    {
+      "file": "halftone-shape.eps",
+      "cover": "halftone-shape-cover.jpg",
+      "title": "Halftone Shape EPS",
+      "source": "Public Domain Vectors",
+      "sourceUrl": "https://publicdomainvectors.org/en/free-clipart/Halftone-vector-shape/1361.html",
+      "license": "Public domain / CC0",
+      "processing": "Downloaded the original archive, extracted the real EPS file, and downloaded the source page preview as the visible cover."
+    }
+  ]
+}

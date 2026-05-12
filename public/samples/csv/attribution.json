@@ -1,0 +1,42 @@
+{
+  "format": "csv",
+  "updated": "2026-05-12",
+  "samples": [
+    {
+      "file": "population.csv",
+      "cover": "population-cover.png",
+      "title": "World Population CSV",
+      "source": "DataHub",
+      "sourceUrl": "https://github.com/datasets/population",
+      "license": "PDDL",
+      "processing": "Downloaded the real CSV file and generated the cover from its actual header and first rows."
+    },
+    {
+      "file": "taxis.csv",
+      "cover": "taxis-cover.png",
+      "title": "Taxi Trips CSV",
+      "source": "seaborn-data",
+      "sourceUrl": "https://github.com/mwaskom/seaborn-data/blob/master/taxis.csv",
+      "license": "BSD-3-Clause",
+      "processing": "Downloaded the real CSV file and generated the cover from its actual header and first rows."
+    },
+    {
+      "file": "seattle-weather.csv",
+      "cover": "seattle-weather-cover.png",
+      "title": "Seattle Weather CSV",
+      "source": "vega-datasets",
+      "sourceUrl": "https://github.com/vega/vega-datasets/blob/main/data/seattle-weather.csv",
+      "license": "BSD-3-Clause",
+      "processing": "Downloaded the real CSV file and generated the cover from its actual header and first rows."
+    },
+    {
+      "file": "stocks.csv",
+      "cover": "stocks-cover.png",
+      "title": "Stock Prices CSV",
+      "source": "vega-datasets",
+      "sourceUrl": "https://github.com/vega/vega-datasets/blob/main/data/stocks.csv",
+      "license": "BSD-3-Clause",
+      "processing": "Downloaded the real CSV file and generated the cover from its actual header and first rows."
+    }
+  ]
+}

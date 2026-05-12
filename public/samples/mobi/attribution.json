@@ -1,0 +1,46 @@
+[
+  {
+    "file": "dracula.mobi",
+    "cover": "dracula-cover.jpg",
+    "title": "Dracula",
+    "source": "Project Gutenberg",
+    "sourceUrl": "https://www.gutenberg.org/ebooks/345",
+    "downloadUrl": "https://www.gutenberg.org/ebooks/345.kindle.images",
+    "coverUrl": "https://www.gutenberg.org/cache/epub/345/pg345.cover.medium.jpg",
+    "license": "Project Gutenberg License",
+    "processing": "Downloaded the Kindle images Mobipocket file and the matching Gutenberg cover image."
+  },
+  {
+    "file": "sherlock-holmes.mobi",
+    "cover": "sherlock-holmes-cover.jpg",
+    "title": "The Adventures of Sherlock Holmes",
+    "source": "Project Gutenberg",
+    "sourceUrl": "https://www.gutenberg.org/ebooks/1661",
+    "downloadUrl": "https://www.gutenberg.org/ebooks/1661.kindle.images",
+    "coverUrl": "https://www.gutenberg.org/cache/epub/1661/pg1661.cover.medium.jpg",
+    "license": "Project Gutenberg License",
+    "processing": "Downloaded the Kindle images Mobipocket file and the matching Gutenberg cover image."
+  },
+  {
+    "file": "war-of-the-worlds.mobi",
+    "cover": "war-of-the-worlds-cover.jpg",
+    "title": "The War of the Worlds",
+    "source": "Project Gutenberg",
+    "sourceUrl": "https://www.gutenberg.org/ebooks/36",
+    "downloadUrl": "https://www.gutenberg.org/ebooks/36.kindle.images",
+    "coverUrl": "https://www.gutenberg.org/cache/epub/36/pg36.cover.medium.jpg",
+    "license": "Project Gutenberg License",
+    "processing": "Downloaded the Kindle images Mobipocket file and the matching Gutenberg cover image."
+  },
+  {
+    "file": "tale-two-cities.mobi",
+    "cover": "tale-two-cities-cover.jpg",
+    "title": "A Tale of Two Cities",
+    "source": "Project Gutenberg",
+    "sourceUrl": "https://www.gutenberg.org/ebooks/98",
+    "downloadUrl": "https://www.gutenberg.org/ebooks/98.kindle.images",
+    "coverUrl": "https://www.gutenberg.org/cache/epub/98/pg98.cover.medium.jpg",
+    "license": "Project Gutenberg License",
+    "processing": "Downloaded the Kindle images Mobipocket file and the matching Gutenberg cover image."
+  }
+]

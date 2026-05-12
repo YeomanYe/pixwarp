@@ -1,0 +1,38 @@
+[
+  {
+    "file": "aurora-shimmer-1920x1080.avi",
+    "poster": "aurora-shimmer-1920x1080-poster.jpg",
+    "title": "Shimmer",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shimmer.webm",
+    "license": "Public domain",
+    "processing": "Downloaded the source WebM and transcoded the first 7 seconds to AVI with MPEG-4 video and MP3 audio; poster frame extracted with FFmpeg."
+  },
+  {
+    "file": "peony-timelapse-1280x720.avi",
+    "poster": "peony-timelapse-1280x720-poster.jpg",
+    "title": "Time lapse of Peony flower blooming",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Time_lapse_of_Peony_flower_blooming.webm",
+    "license": "CC BY 3.0",
+    "processing": "Downloaded the source WebM and transcoded the first 8 seconds to 1280 x 720 AVI with MPEG-4 video; poster frame extracted with FFmpeg."
+  },
+  {
+    "file": "grass-timelapse-1280x720.avi",
+    "poster": "grass-timelapse-1280x720-poster.jpg",
+    "title": "Watching Grass Grow",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Watching_Grass_Grow.webm",
+    "license": "CC BY-SA 3.0",
+    "processing": "Downloaded the source WebM and transcoded the first 8 seconds to 1280 x 720 AVI with MPEG-4 video; poster frame extracted with FFmpeg."
+  },
+  {
+    "file": "samplecat-seawater-640x360.avi",
+    "poster": "samplecat-seawater-640x360-poster.jpg",
+    "title": "Sample.Cat AVI 640 x 360",
+    "source": "Sample.Cat",
+    "sourceUrl": "https://sample.cat/en/avi",
+    "license": "Sample media for testing",
+    "processing": "Downloaded the AVI sample directly and extracted a poster frame with FFmpeg."
+  }
+]

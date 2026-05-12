@@ -1,0 +1,42 @@
+{
+  "format": "tar",
+  "updated": "2026-05-12",
+  "samples": [
+    {
+      "file": "hello-2.12.2.tar.gz",
+      "cover": "hello-2.12.2-cover.png",
+      "title": "GNU hello Source TAR.GZ",
+      "source": "GNU FTP",
+      "sourceUrl": "https://ftp.gnu.org/gnu/hello/",
+      "license": "GPL-3.0-or-later",
+      "processing": "Downloaded the official source archive and generated the cover from the archive's real tar file listing."
+    },
+    {
+      "file": "lua-5.4.8.tar.gz",
+      "cover": "lua-5.4.8-cover.png",
+      "title": "Lua 5.4.8 TAR.GZ",
+      "source": "Lua.org",
+      "sourceUrl": "https://www.lua.org/ftp/",
+      "license": "MIT",
+      "processing": "Downloaded the official source archive and generated the cover from the archive's real tar file listing."
+    },
+    {
+      "file": "is-number-7.0.0.tgz",
+      "cover": "is-number-7.0.0-cover.png",
+      "title": "is-number NPM TGZ",
+      "source": "npm Registry",
+      "sourceUrl": "https://www.npmjs.com/package/is-number/v/7.0.0",
+      "license": "MIT",
+      "processing": "Downloaded the npm package tarball and generated the cover from the archive's real tar file listing."
+    },
+    {
+      "file": "picocolors-1.1.1.tgz",
+      "cover": "picocolors-1.1.1-cover.png",
+      "title": "picocolors NPM TGZ",
+      "source": "npm Registry",
+      "sourceUrl": "https://www.npmjs.com/package/picocolors/v/1.1.1",
+      "license": "ISC",
+      "processing": "Downloaded the npm package tarball and generated the cover from the archive's real tar file listing."
+    }
+  ]
+}

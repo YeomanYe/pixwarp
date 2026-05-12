@@ -1,0 +1,38 @@
+[
+  {
+    "file": "rain-thunder-19s.opus",
+    "cover": "rain-thunder-19s-cover.jpg",
+    "title": "Rain and thunder",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rain_and_thunder.ogg",
+    "license": "Public domain",
+    "processing": "Downloaded the source Ogg Vorbis file, encoded it to Ogg Opus at 48 kbps, and generated a spectrogram cover with FFmpeg."
+  },
+  {
+    "file": "thunder-claps-24s.opus",
+    "cover": "thunder-claps-24s-cover.jpg",
+    "title": "Thunder Claps",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Thunder_Claps.ogg",
+    "license": "CC BY-SA 4.0",
+    "processing": "Downloaded the source Ogg Vorbis file, trimmed to 24 seconds, encoded it to Ogg Opus at 48 kbps, and generated a spectrogram cover with FFmpeg."
+  },
+  {
+    "file": "tbilisi-pronunciation.opus",
+    "cover": "tbilisi-pronunciation-cover.jpg",
+    "title": "Pronunciation audio-Tbilisi-KA",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pronunciation_audio-Tbilisi-KA.opus",
+    "license": "CC BY-SA 4.0",
+    "processing": "Downloaded the native .opus file and generated a spectrogram cover with FFmpeg."
+  },
+  {
+    "file": "wilhelm-scream-1s.opus",
+    "cover": "wilhelm-scream-1s-cover.jpg",
+    "title": "Wilhelm Scream",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wilhelm_Scream.ogg",
+    "license": "CC0",
+    "processing": "Downloaded the source Ogg Vorbis file, encoded it to Ogg Opus at 48 kbps, and generated a spectrogram cover with FFmpeg."
+  }
+]

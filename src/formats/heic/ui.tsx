@@ -13,29 +13,29 @@ interface FormatRow {
 const SAMPLE_ROWS: FormatRow[] = [
   {
     name: "HEIC (original)",
-    url: "/samples/heic/winter-photo.heic",
-    download: "winter-photo.heic",
-    size: 248_006,
-    note: "Apple iOS default — half the size of JPG",
+    url: "/samples/heic/great-point-lighthouse-1920x1080.heic",
+    download: "great-point-lighthouse-1920x1080.heic",
+    size: 209_746,
+    note: "Modern photo encoding with strong compression",
     ratio: "baseline",
   },
   {
     name: "JPG (quality 90)",
-    url: "/samples/heic/winter-photo.jpg",
-    download: "winter-photo.jpg",
-    size: 687_840,
+    url: "/samples/heic/great-point-lighthouse-1920x1080.jpg",
+    download: "great-point-lighthouse-1920x1080.jpg",
+    size: 337_790,
     note: "Universal compatibility, lossy compression",
-    ratio: "2.77× larger",
-    preview: "/samples/heic/winter-photo.jpg",
+    ratio: "1.61× larger",
+    preview: "/samples/heic/great-point-lighthouse-1920x1080.jpg",
   },
   {
     name: "PNG (lossless)",
-    url: "/samples/heic/winter-photo.png",
-    download: "winter-photo.png",
-    size: 2_421_339,
+    url: "/samples/heic/great-point-lighthouse-1920x1080.png",
+    download: "great-point-lighthouse-1920x1080.png",
+    size: 4_128_367,
     note: "Lossless, but no advantage for photos",
-    ratio: "9.76× larger",
-    preview: "/samples/heic/winter-photo.png",
+    ratio: "19.68× larger",
+    preview: "/samples/heic/great-point-lighthouse-1920x1080.png",
   },
 ]
 
@@ -56,73 +56,73 @@ const ASPECT_SAMPLES: AspectSample[] = [
   {
     ratio: "16:9",
     shape: "wide",
-    label: "Wide landscape",
-    dimensions: "1440 × 810",
-    preview: "/samples/heic/winter-16x9.jpg",
-    heicUrl: "/samples/heic/winter-16x9.heic",
-    heicName: "winter-16x9.heic",
-    heicSize: 348_755,
-    jpgSize: 580_976,
+    label: "Reef lighthouse",
+    dimensions: "1920 × 1080",
+    preview: "/samples/heic/carysfort-lighthouse-1920x1080.jpg",
+    heicUrl: "/samples/heic/carysfort-lighthouse-1920x1080.heic",
+    heicName: "carysfort-lighthouse-1920x1080.heic",
+    heicSize: 98_081,
+    jpgSize: 199_204,
     useCase: "Modern phone / monitor / video frame",
   },
   {
     ratio: "1:1",
     shape: "square",
-    label: "Square",
-    dimensions: "854 × 854",
-    preview: "/samples/heic/town-square-1x1.jpg",
-    heicUrl: "/samples/heic/town-square-1x1.heic",
-    heicName: "town-square-1x1.heic",
-    heicSize: 212_724,
-    jpgSize: 356_621,
+    label: "Rock ptarmigan",
+    dimensions: "1080 × 1080",
+    preview: "/samples/heic/rock-ptarmigan-1080x1080.jpg",
+    heicUrl: "/samples/heic/rock-ptarmigan-1080x1080.heic",
+    heicName: "rock-ptarmigan-1080x1080.heic",
+    heicSize: 90_396,
+    jpgSize: 145_734,
     useCase: "Instagram post / profile / album cover",
   },
   {
     ratio: "4:5",
     shape: "portrait",
-    label: "IG portrait",
-    dimensions: "800 × 1000",
-    preview: "/samples/heic/grassland-4x5.jpg",
-    heicUrl: "/samples/heic/grassland-4x5.heic",
-    heicName: "grassland-4x5.heic",
-    heicSize: 87_392,
-    jpgSize: 163_894,
+    label: "Teton biking",
+    dimensions: "1080 × 1350",
+    preview: "/samples/heic/teton-biking-1080x1350.jpg",
+    heicUrl: "/samples/heic/teton-biking-1080x1350.heic",
+    heicName: "teton-biking-1080x1350.heic",
+    heicSize: 237_301,
+    jpgSize: 320_320,
     useCase: "Instagram portrait post / feed-friendly crop",
   },
   {
     ratio: "3:4",
     shape: "portrait",
-    label: "Portrait / tall",
-    dimensions: "720 × 960",
-    preview: "/samples/heic/autumn-3x4.jpg",
-    heicUrl: "/samples/heic/autumn-3x4.heic",
-    heicName: "autumn-3x4.heic",
-    heicSize: 229_155,
-    jpgSize: 422_253,
+    label: "Globe flower",
+    dimensions: "1080 × 1440",
+    preview: "/samples/heic/globe-flower-1080x1440.jpg",
+    heicUrl: "/samples/heic/globe-flower-1080x1440.heic",
+    heicName: "globe-flower-1080x1440.heic",
+    heicSize: 128_513,
+    jpgSize: 230_606,
     useCase: "Phone photo / RedNote / portrait shoot",
   },
   {
     ratio: "2:3",
     shape: "portrait",
-    label: "Pinterest pin",
-    dimensions: "800 × 1200",
-    preview: "/samples/heic/dock-2x3.jpg",
-    heicUrl: "/samples/heic/dock-2x3.heic",
-    heicName: "dock-2x3.heic",
-    heicSize: 55_680,
-    jpgSize: 138_445,
+    label: "Sand Dune Arch",
+    dimensions: "1080 × 1620",
+    preview: "/samples/heic/sand-dune-arch-1080x1620.jpg",
+    heicUrl: "/samples/heic/sand-dune-arch-1080x1620.heic",
+    heicName: "sand-dune-arch-1080x1620.heic",
+    heicSize: 95_489,
+    jpgSize: 201_933,
     useCase: "Pinterest pin / postcard / vertical poster",
   },
   {
     ratio: "9:16",
     shape: "portrait",
-    label: "Stories / Reels",
-    dimensions: "540 × 960",
-    preview: "/samples/heic/lighthouse-9x16.jpg",
-    heicUrl: "/samples/heic/lighthouse-9x16.heic",
-    heicName: "lighthouse-9x16.heic",
-    heicSize: 33_038,
-    jpgSize: 80_881,
+    label: "Mugu waterfall",
+    dimensions: "1080 × 1920",
+    preview: "/samples/heic/mugu-waterfall-1080x1920.jpg",
+    heicUrl: "/samples/heic/mugu-waterfall-1080x1920.heic",
+    heicName: "mugu-waterfall-1080x1920.heic",
+    heicSize: 672_135,
+    jpgSize: 775_608,
     useCase: "Stories / Reels / TikTok / phone wallpaper",
   },
 ]
@@ -137,8 +137,8 @@ export function HeicCompareWidget() {
   return (
     <div className="space-y-5">
       <p className="text-sm text-[var(--muted)]">
-        The same winter landscape, encoded as HEIC, JPG (quality 90), and PNG (lossless). File sizes
-        below are real — verify with{" "}
+        The same lighthouse photo, encoded as HEIC, JPG (quality 90), and PNG (lossless). File sizes
+        below are real and generated from the same 1920 × 1080 source crop — verify with{" "}
         <code className="rounded bg-[var(--muted-bg)] px-1 py-0.5 font-mono text-xs">sips</code> or
         any HEIC tool. To see the actual rendered images side by side, open the{" "}
         <Link href="/tools/heic-to-jpg" className="text-[var(--accent)] hover:underline">
@@ -196,9 +196,9 @@ export function HeicCompareWidget() {
         <div>
           <h3 className="text-base font-semibold">HEIC at common aspect ratios</h3>
           <p className="mt-1 text-sm text-[var(--muted)]">
-            Six different scenes at six standard aspect ratios — landscape, square, and the four
-            mobile / social ratios you actually upload (Stories 9:16, Pinterest 2:3, classic 3:4, IG
-            portrait 4:5). Each card is a separate HEIC file you can download.
+            Six freshly sourced scenes at six standard aspect ratios — landscape, square, and the
+            four mobile / social ratios you actually upload (Stories 9:16, Pinterest 2:3, classic
+            3:4, IG portrait 4:5). Each card is a separate HEIC file you can download.
           </p>
         </div>
         <div className="grid gap-4 md:grid-cols-3">

@@ -1,0 +1,38 @@
+[
+  {
+    "file": "little-nemo-sunday-page.cbz",
+    "cover": "little-nemo-sunday-page-cover.jpg",
+    "title": "Little Nemo 1906-09-23",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Little_Nemo_1906-09-23.jpg",
+    "license": "Public domain",
+    "processing": "Downloaded the source image, stored it as 001-little-nemo.jpg inside a ZIP archive, and renamed the archive with a .cbz extension."
+  },
+  {
+    "file": "snookums-sunday-page.cbz",
+    "cover": "snookums-sunday-page-cover.jpg",
+    "title": "Snookums by George McManus",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Snookums_by_George_McManus.jpg",
+    "license": "Public domain",
+    "processing": "Downloaded the source image, stored it as 001-snookums.jpg inside a ZIP archive, and renamed the archive with a .cbz extension."
+  },
+  {
+    "file": "dingbat-family-strip.cbz",
+    "cover": "dingbat-family-strip-cover.jpg",
+    "title": "The Dingbat Family by George Herriman, 14 December 1915",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Dingbat_Family_by_George_Herriman_14_December_1915.jpg",
+    "license": "Public domain",
+    "processing": "Downloaded the source image, stored it as 001-dingbat-family.jpg inside a ZIP archive, and renamed the archive with a .cbz extension."
+  },
+  {
+    "file": "baron-bean-strip.cbz",
+    "cover": "baron-bean-strip-cover.jpg",
+    "title": "Baron Bean comic strip (1917)",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Baron_Bean_comic_strip_(1917).jpg",
+    "license": "Public domain",
+    "processing": "Downloaded the source image, stored it as 001-baron-bean.jpg inside a ZIP archive, and renamed the archive with a .cbz extension."
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "file": "canon-5d3-lossy-5g4a9394.dng",
+    "preview": "canon-5d3-lossy-5g4a9394-preview.jpg",
+    "title": "Canon EOS 5D Mark III DNG sample 5G4A9394",
+    "sourceUrl": "https://raw.pixls.us/data/Adobe%20DNG%20Converter/Canon%20EOS%205D%20Mark%20III/5G4A9394-compressed-lossy.DNG",
+    "creator": "raw.pixls.us contributor",
+    "license": "CC0",
+    "originalDimensions": "5760 x 3840",
+    "processing": "Freshly downloaded from raw.pixls.us for the DNG guide and stored as the original DNG; JPEG preview rendered locally with macOS sips."
+  },
+  {
+    "file": "leica-m9-l1049390.dng",
+    "preview": "leica-m9-l1049390-preview.jpg",
+    "title": "Leica M9 DNG sample L1049390",
+    "sourceUrl": "https://raw.pixls.us/data/Leica/M9/L1049390.DNG",
+    "creator": "raw.pixls.us contributor",
+    "license": "CC0",
+    "originalDimensions": "5212 x 3468",
+    "processing": "Freshly downloaded from raw.pixls.us for the DNG guide and stored as the original DNG; JPEG preview rendered locally with macOS sips."
+  },
+  {
+    "file": "iphone-xs-img-1105.dng",
+    "preview": "iphone-xs-img-1105-preview.jpg",
+    "title": "Apple iPhone XS DNG sample IMG_1105",
+    "sourceUrl": "https://raw.pixls.us/data/Apple/iPhone%20XS/IMG_1105.dng",
+    "creator": "raw.pixls.us contributor",
+    "license": "CC0",
+    "originalDimensions": "4032 x 3024",
+    "processing": "Freshly downloaded from raw.pixls.us for the DNG guide and stored as the original DNG; JPEG preview rendered locally with macOS sips."
+  },
+  {
+    "file": "iphone-7-plus-img-0739.dng",
+    "preview": "iphone-7-plus-img-0739-preview.jpg",
+    "title": "Apple iPhone 7 Plus DNG sample IMG_0739",
+    "sourceUrl": "https://raw.pixls.us/data/Apple/iPhone%207%20Plus/IMG_0739.DNG",
+    "creator": "raw.pixls.us contributor",
+    "license": "CC0",
+    "originalDimensions": "4032 x 3024",
+    "processing": "Freshly downloaded from raw.pixls.us for the DNG guide and stored as the original DNG; JPEG preview rendered locally with macOS sips."
+  }
+]

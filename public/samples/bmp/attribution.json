@@ -1,0 +1,38 @@
+[
+  {
+    "file": "earthrise-1080x1080.bmp",
+    "title": "NASA Apollo 8 Earthrise",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:NASA-Apollo8-Dec24-Earthrise.jpg",
+    "creator": "NASA / Bill Anders",
+    "license": "Public domain",
+    "originalDimensions": "2400 x 2400",
+    "processing": "Freshly downloaded from Wikimedia Commons for the BMP guide, resized to 1080 x 1080, and converted to BMP with macOS sips."
+  },
+  {
+    "file": "great-wave-1920x1080.bmp",
+    "title": "The Great Wave off Kanagawa",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Great_Wave_off_Kanagawa.jpg",
+    "creator": "Katsushika Hokusai",
+    "license": "Public domain",
+    "originalDimensions": "3840 x 2649",
+    "processing": "Freshly downloaded from Wikimedia Commons for the BMP guide, cropped to 16:9, resized to 1920 x 1080, and converted to BMP with macOS sips."
+  },
+  {
+    "file": "mona-lisa-1080x1350.bmp",
+    "title": "Mona Lisa",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mona_Lisa.jpg",
+    "creator": "Leonardo da Vinci",
+    "license": "Public domain",
+    "originalDimensions": "2835 x 4289",
+    "processing": "Freshly downloaded from Wikimedia Commons for the BMP guide, cropped to 4:5, resized to 1080 x 1350, and converted to BMP with macOS sips."
+  },
+  {
+    "file": "rembrandt-1080x1920.bmp",
+    "title": "Portrait of a Man in a Tall Hat",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rembrandt_-_Portrait_of_a_man_in_a_tall_hat_(c._1663).jpg",
+    "creator": "Rembrandt",
+    "license": "Public domain",
+    "originalDimensions": "1920 x 2444",
+    "processing": "Freshly downloaded from Wikimedia Commons for the BMP guide, cropped to 9:16, resized to 1080 x 1920, and converted to BMP with macOS sips."
+  }
+]

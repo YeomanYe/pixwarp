@@ -1,0 +1,42 @@
+[
+  {
+    "file": "alice-adventures.epub",
+    "cover": "alice-adventures-cover.jpg",
+    "title": "Alice's Adventures in Wonderland",
+    "source": "Project Gutenberg",
+    "sourceUrl": "https://www.gutenberg.org/ebooks/28885",
+    "downloadUrl": "https://www.gutenberg.org/ebooks/28885.epub3.images",
+    "license": "Project Gutenberg License",
+    "processing": "Downloaded the EPUB3 with images and extracted OEBPS/2521929183008149654_cover.jpg from the package."
+  },
+  {
+    "file": "frankenstein.epub",
+    "cover": "frankenstein-cover.jpg",
+    "title": "Frankenstein; or, The Modern Prometheus",
+    "source": "Project Gutenberg",
+    "sourceUrl": "https://www.gutenberg.org/ebooks/84",
+    "downloadUrl": "https://www.gutenberg.org/ebooks/84.epub3.images",
+    "license": "Project Gutenberg License",
+    "processing": "Downloaded the EPUB3 with images and extracted OEBPS/1350534604896852346_cover.jpg from the package."
+  },
+  {
+    "file": "moby-dick.epub",
+    "cover": "moby-dick-cover.jpg",
+    "title": "Moby Dick; Or, The Whale",
+    "source": "Project Gutenberg",
+    "sourceUrl": "https://www.gutenberg.org/ebooks/2701",
+    "downloadUrl": "https://www.gutenberg.org/ebooks/2701.epub3.images",
+    "license": "Project Gutenberg License",
+    "processing": "Downloaded the EPUB3 with images and extracted OEBPS/5052452836713769443_cover.jpg from the package."
+  },
+  {
+    "file": "romeo-juliet.epub",
+    "cover": "romeo-juliet-cover.jpg",
+    "title": "Romeo and Juliet",
+    "source": "Project Gutenberg",
+    "sourceUrl": "https://www.gutenberg.org/ebooks/1513",
+    "downloadUrl": "https://www.gutenberg.org/ebooks/1513.epub3.images",
+    "license": "Project Gutenberg License",
+    "processing": "Downloaded the EPUB3 with images and extracted OEBPS/8782368794376263656_cover.jpg from the package."
+  }
+]

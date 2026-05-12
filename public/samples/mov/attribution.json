@@ -1,0 +1,46 @@
+[
+  {
+    "file": "exoplanets-vertical-720x1280.mov",
+    "poster": "exoplanets-vertical-720x1280-poster.jpg",
+    "title": "Exoplanets Vertical Video transcoded to MOV",
+    "sourceTitle": "Exoplanets Vertical Video (SVS14797).webm",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Exoplanets_Vertical_Video_(SVS14797).webm",
+    "creator": "NASA",
+    "license": "Public domain",
+    "originalDimensions": "1080 x 1920",
+    "processing": "Freshly sourced from Wikimedia Commons, trimmed to eight seconds, transcoded to H.264 MOV at 720 x 1280, and given a poster frame extracted from the resulting MOV."
+  },
+  {
+    "file": "nasa-we-are-going-1280x720.mov",
+    "poster": "nasa-we-are-going-1280x720-poster.jpg",
+    "title": "NASA We Are Going transcoded to MOV",
+    "sourceTitle": "NASA WeAreGoing (661354393755).webm",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:NASA_WeAreGoing_(661354393755).webm",
+    "creator": "NASA",
+    "license": "Public domain",
+    "originalDimensions": "1920 x 1080",
+    "processing": "Freshly sourced from Wikimedia Commons, trimmed to eight seconds, transcoded to H.264 MOV at 1280 x 720, and given a poster frame extracted from the resulting MOV."
+  },
+  {
+    "file": "train-window-1280x720.mov",
+    "poster": "train-window-1280x720-poster.jpg",
+    "title": "Train Window transcoded to MOV",
+    "sourceTitle": "Train-window.webm",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Train-window.webm",
+    "creator": "Wikimedia Commons contributor",
+    "license": "CC BY-SA 4.0",
+    "originalDimensions": "1920 x 1080",
+    "processing": "Freshly sourced from Wikimedia Commons, trimmed to eight seconds, transcoded to H.264 MOV at 1280 x 720, and given a poster frame extracted from the resulting MOV."
+  },
+  {
+    "file": "samplelib-park-640x360.mov",
+    "poster": "samplelib-park-640x360-poster.jpg",
+    "title": "SampleLib park-and-bus clip transcoded to MOV",
+    "sourceTitle": "Sample MP4 video files",
+    "sourceUrl": "https://download.samplelib.com/sample-mp4.html",
+    "creator": "SampleLib",
+    "license": "No license restrictions",
+    "originalDimensions": "640 x 360",
+    "processing": "Freshly sourced from SampleLib, trimmed to eight seconds, transcoded to H.264 MOV at 640 x 360, and given a poster frame extracted from the resulting MOV."
+  }
+]

@@ -1,0 +1,42 @@
+{
+  "format": "7z",
+  "updated": "2026-05-12",
+  "samples": [
+    {
+      "file": "7z2601-src.7z",
+      "cover": "7z2601-src-cover.png",
+      "title": "7-Zip 26.01 Source",
+      "source": "7-Zip GitHub Releases",
+      "sourceUrl": "https://github.com/ip7z/7zip/releases/tag/26.01",
+      "license": "LGPL / BSD / public domain components",
+      "processing": "Downloaded the official 7-Zip source archive and generated the cover from the archive's real bsdtar listing."
+    },
+    {
+      "file": "lzma2601-sdk.7z",
+      "cover": "lzma2601-sdk-cover.png",
+      "title": "LZMA SDK 26.01",
+      "source": "7-Zip GitHub Releases",
+      "sourceUrl": "https://github.com/ip7z/7zip/releases/tag/26.01",
+      "license": "Public domain / 7-Zip SDK terms",
+      "processing": "Downloaded the official LZMA SDK archive and generated the cover from the archive's real bsdtar listing."
+    },
+    {
+      "file": "7z2601-extra.7z",
+      "cover": "7z2601-extra-cover.png",
+      "title": "7-Zip 26.01 Extra",
+      "source": "7-Zip GitHub Releases",
+      "sourceUrl": "https://github.com/ip7z/7zip/releases/tag/26.01",
+      "license": "LGPL / 7-Zip license",
+      "processing": "Downloaded the official 7-Zip extra archive and generated the cover from the archive's real bsdtar listing."
+    },
+    {
+      "file": "7z2301-extra.7z",
+      "cover": "7z2301-extra-cover.png",
+      "title": "7-Zip 23.01 Extra",
+      "source": "7-Zip.org",
+      "sourceUrl": "https://www.7-zip.org/a/7z2301-extra.7z",
+      "license": "LGPL / 7-Zip license",
+      "processing": "Downloaded the official older extra archive and generated the cover from the archive's real bsdtar listing."
+    }
+  ]
+}

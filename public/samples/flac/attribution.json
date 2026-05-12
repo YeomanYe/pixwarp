@@ -1,0 +1,38 @@
+[
+  {
+    "file": "entre-dos-aguas-guitar-20s.flac",
+    "cover": "entre-dos-aguas-guitar-20s-cover.jpg",
+    "title": "Entre dos aguas, Laucke version sample",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Entre-dos-aguas-laucke-version-sample.flac",
+    "license": "CC BY-SA 4.0",
+    "processing": "Downloaded the source FLAC, trimmed to 20 seconds, re-encoded as FLAC, and generated a spectrogram cover with FFmpeg."
+  },
+  {
+    "file": "pica-field-recording-20s.flac",
+    "cover": "pica-field-recording-20s-cover.jpg",
+    "title": "Pica pica 2015-6-12 part15",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pica_pica-2015-6-12-part15.flac",
+    "license": "CC BY-SA 4.0",
+    "processing": "Downloaded the source FLAC, trimmed to 20 seconds, re-encoded as FLAC, and generated a spectrogram cover with FFmpeg."
+  },
+  {
+    "file": "bio-duck-field-20s.flac",
+    "cover": "bio-duck-field-20s-cover.jpg",
+    "title": "Bio-duck",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bio-duck.flac",
+    "license": "CC BY-SA 4.0",
+    "processing": "Downloaded the source FLAC, trimmed to 20 seconds, re-encoded as FLAC, and generated a spectrogram cover with FFmpeg."
+  },
+  {
+    "file": "danse-macabre-orchestra-30s.flac",
+    "cover": "danse-macabre-orchestra-30s-cover.jpg",
+    "title": "Saint-Saens - Danse macabre (Fourestier, 1953)",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Saint-Sa%C3%ABns_-_Danse_macabre_(Fourestier,_1953).flac",
+    "license": "Public domain",
+    "processing": "Downloaded the source FLAC, trimmed to 30 seconds, re-encoded as FLAC, and generated a spectrogram cover with FFmpeg."
+  }
+]

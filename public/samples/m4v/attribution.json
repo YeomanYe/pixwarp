@@ -1,0 +1,46 @@
+[
+  {
+    "file": "ocean-960x400.m4v",
+    "poster": "ocean-960x400-poster.jpg",
+    "title": "Ocean bird M4V sample",
+    "sourceTitle": "sample_960x400_ocean_with_audio.m4v",
+    "sourceUrl": "https://filesamples.com/formats/m4v",
+    "creator": "FileSamples",
+    "license": "Sample media for testing",
+    "originalDimensions": "960 x 400",
+    "processing": "Freshly downloaded as an M4V file from FileSamples and given a poster frame extracted locally with ffmpeg-static."
+  },
+  {
+    "file": "coast-1280x720.m4v",
+    "poster": "coast-1280x720-poster.jpg",
+    "title": "Coast aerial M4V sample",
+    "sourceTitle": "sample_1280x720.m4v",
+    "sourceUrl": "https://filesamples.com/formats/m4v",
+    "creator": "FileSamples",
+    "license": "Sample media for testing",
+    "originalDimensions": "1280 x 720",
+    "processing": "Freshly downloaded as an M4V file from FileSamples and given a poster frame extracted locally with ffmpeg-static."
+  },
+  {
+    "file": "beach-640x360.m4v",
+    "poster": "beach-640x360-poster.jpg",
+    "title": "Beach clip M4V sample",
+    "sourceTitle": "sample_640x360.m4v",
+    "sourceUrl": "https://filesamples.com/formats/m4v",
+    "creator": "FileSamples",
+    "license": "Sample media for testing",
+    "originalDimensions": "640 x 360",
+    "processing": "Freshly downloaded as an M4V file from FileSamples and given a poster frame extracted locally with ffmpeg-static."
+  },
+  {
+    "file": "roundhay-garden-980x720.m4v",
+    "poster": "roundhay-garden-980x720-poster.jpg",
+    "title": "Roundhay Garden Scene transcoded to M4V",
+    "sourceTitle": "Roundhay Garden Scene (1888) 10fps.webm",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Roundhay_Garden_Scene_(1888)_10fps.webm",
+    "creator": "Louis Le Prince",
+    "license": "Public domain",
+    "originalDimensions": "980 x 720",
+    "processing": "Freshly sourced from Wikimedia Commons, transcoded to H.264 M4V at 980 x 720, and given a poster frame extracted from the resulting M4V."
+  }
+]

@@ -37,6 +37,12 @@ Sample assets must also come from traceable online sources or from a documented 
 Use public-domain, CC0, permissively licensed, or self-generated assets. Keep the source URL or
 generation note in a nearby README or code comment when the asset is not self-explanatory.
 
+Do not reuse existing project samples for a new format guide. Each format must get its own freshly
+researched online source assets, even if another format already has similar images, videos, audio,
+documents, or archive fixtures. It is acceptable to convert a newly sourced asset into the target
+format, but the source asset must be found specifically for that format and documented in that
+format's attribution file.
+
 ## Page Structure
 
 Each guide should include:
@@ -66,6 +72,12 @@ Every format guide should include visible proof whenever possible:
   extracted metadata.
 - Font formats: show live text rendering at several sizes and weights if supported.
 - 3D formats: show a lightweight rendered preview or fallback thumbnails.
+
+Sample previews must be visually meaningful. Do not use blank, nearly blank, pure solid-color, or
+pure gradient assets as format samples. Transparent images must show a clear subject against the
+checkerboard; animated samples must have a visible first frame and a visible motion state in normal
+page screenshots. If a technically valid file looks empty in the page, reject it and source a better
+asset.
 
 If a browser cannot render the original format directly, show a fallback preview in a browser-safe
 format and clearly label the downloadable original.

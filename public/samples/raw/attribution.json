@@ -1,0 +1,42 @@
+[
+  {
+    "file": "canon-powershot-g10-4416x3312.cr2",
+    "preview": "canon-powershot-g10-preview-1440x1080.jpg",
+    "title": "Canon PowerShot G10 CR2 sample RAW_CANON_G10",
+    "sourceUrl": "https://raw.pixls.us/data/Canon/PowerShot%20G10/RAW_CANON_G10.CR2",
+    "creator": "raw.pixls.us contributor",
+    "license": "CC0",
+    "originalDimensions": "4416 x 3312",
+    "processing": "Freshly downloaded from raw.pixls.us for the RAW guide and stored as the original CR2; JPEG preview rendered locally with macOS sips at 1440 x 1080."
+  },
+  {
+    "file": "nikon-d90-4288x2848.nef",
+    "preview": "nikon-d90-preview-1440x956.jpg",
+    "title": "Nikon D90 NEF sample 00001",
+    "sourceUrl": "https://raw.pixls.us/data/Nikon/D90/00001.NEF",
+    "creator": "raw.pixls.us contributor",
+    "license": "CC0",
+    "originalDimensions": "4288 x 2848",
+    "processing": "Freshly downloaded from raw.pixls.us for the RAW guide and stored as the original NEF; JPEG preview rendered locally with macOS sips at 1440 x 956."
+  },
+  {
+    "file": "sony-rx100m3-5472x3648.arw",
+    "preview": "sony-rx100m3-preview-1440x960.jpg",
+    "title": "Sony RX100 III ARW sample DSC00734",
+    "sourceUrl": "https://raw.pixls.us/data/Sony/DSC-RX100M3/DSC00734.ARW",
+    "creator": "raw.pixls.us contributor",
+    "license": "CC0",
+    "originalDimensions": "5472 x 3648",
+    "processing": "Freshly downloaded from raw.pixls.us for the RAW guide and stored as the original ARW; JPEG preview rendered locally with macOS sips at 1440 x 960."
+  },
+  {
+    "file": "fujifilm-xe2-4896x3264.raf",
+    "preview": "fujifilm-xe2-preview-1440x960.jpg",
+    "title": "Fujifilm X-E2 RAF sample DSCF9050",
+    "sourceUrl": "https://raw.pixls.us/data/Fujifilm/X-E2/DSCF9050.RAF",
+    "creator": "raw.pixls.us contributor",
+    "license": "CC0",
+    "originalDimensions": "4896 x 3264",
+    "processing": "Freshly downloaded from raw.pixls.us for the RAW guide and stored as the original RAF; JPEG preview rendered locally with macOS sips at 1440 x 960."
+  }
+]

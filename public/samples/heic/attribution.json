@@ -1,0 +1,73 @@
+[
+  {
+    "file": "great-point-lighthouse-1920x1080.heic",
+    "preview": "great-point-lighthouse-1920x1080.jpg",
+    "comparison": "great-point-lighthouse-1920x1080.png",
+    "title": "Great Point Lighthouse 1986",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Great_Point_Lighthouse_1986.jpg",
+    "creator": "Nantucket Historical Association / Flint Ranney",
+    "license": "No known copyright restrictions",
+    "originalDimensions": "4446 x 2896",
+    "processing": "Downloaded from Wikimedia Commons, center-cropped and resized to 1920 x 1080 with sharp, exported as JPG and PNG, then encoded to HEIC with sips."
+  },
+  {
+    "file": "carysfort-lighthouse-1920x1080.heic",
+    "preview": "carysfort-lighthouse-1920x1080.jpg",
+    "title": "FKNMS - Carysfort Lighthouse",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:FKNMS_-_Carysfort_Lighthouse_(31546650041).jpg",
+    "creator": "National Marine Sanctuaries / Nancy Diersing, NOAA",
+    "license": "Public domain",
+    "originalDimensions": "3264 x 2448",
+    "processing": "Downloaded from Wikimedia Commons, cropped and resized to 1920 x 1080 with sharp, exported as JPG, then encoded to HEIC with sips."
+  },
+  {
+    "file": "rock-ptarmigan-1080x1080.heic",
+    "preview": "rock-ptarmigan-1080x1080.jpg",
+    "title": "Rock Ptarmigan",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rock_Ptarmigan_(8035d3ed-e961-4043-ae76-14b89617f649).JPG",
+    "creator": "National Park Service",
+    "license": "Public domain",
+    "originalDimensions": "3000 x 4000",
+    "processing": "Downloaded from Wikimedia Commons, cropped and resized to 1080 x 1080 with sharp, exported as JPG, then encoded to HEIC with sips."
+  },
+  {
+    "file": "teton-biking-1080x1350.heic",
+    "preview": "teton-biking-1080x1350.jpg",
+    "title": "Spring Biking on the Teton Park Road",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spring_Biking_on_the_Teton_Park_Road_(52098764344).jpg",
+    "creator": "GrandTetonNPS / A. Falgoust",
+    "license": "Public domain",
+    "originalDimensions": "4000 x 6000",
+    "processing": "Downloaded from Wikimedia Commons, cropped and resized to 1080 x 1350 with sharp, exported as JPG, then encoded to HEIC with sips."
+  },
+  {
+    "file": "globe-flower-1080x1440.heic",
+    "preview": "globe-flower-1080x1440.jpg",
+    "title": "Globe flower, Rocky Mountain National Park",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Globe_flower,_Rocky_Mountain_National_Park.jpg",
+    "creator": "National Park Service / CH",
+    "license": "Public domain",
+    "originalDimensions": "3000 x 4000",
+    "processing": "Downloaded from Wikimedia Commons, cropped and resized to 1080 x 1440 with sharp, exported as JPG, then encoded to HEIC with sips."
+  },
+  {
+    "file": "sand-dune-arch-1080x1620.heic",
+    "preview": "sand-dune-arch-1080x1620.jpg",
+    "title": "Sand Dune Arch Trail",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sand_Dune_Arch_Trail_(34868409813).jpg",
+    "creator": "Arches National Park / NPS Marty Tow",
+    "license": "Public domain",
+    "originalDimensions": "4000 x 6000",
+    "processing": "Downloaded from Wikimedia Commons, cropped and resized to 1080 x 1620 with sharp, exported as JPG, then encoded to HEIC with sips."
+  },
+  {
+    "file": "mugu-waterfall-1080x1920.heic",
+    "preview": "mugu-waterfall-1080x1920.jpg",
+    "title": "Mugu Waterfall",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mugu_Waterfall_(11074317754).jpg",
+    "creator": "Santa Monica Mountains National Recreation Area",
+    "license": "Public domain",
+    "originalDimensions": "3000 x 4000",
+    "processing": "Downloaded from Wikimedia Commons, cropped and resized to 1080 x 1920 with sharp, exported as JPG, then encoded to HEIC with sips."
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "file": "armstrong-small-step-24s.m4a",
+    "cover": "armstrong-small-step-24s-cover.jpg",
+    "title": "Armstrong Small Step",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Armstrong_Small_Step.ogg",
+    "license": "Public domain",
+    "processing": "Downloaded the source Ogg Vorbis file, encoded it as AAC in an M4A container, and generated a spectrogram cover with FFmpeg."
+  },
+  {
+    "file": "bach-air-30s.m4a",
+    "cover": "bach-air-30s-cover.jpg",
+    "title": "Air (Bach)",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Air_(Bach).ogg",
+    "license": "Public domain",
+    "processing": "Downloaded the source Ogg Vorbis file, trimmed to 30 seconds, encoded it as AAC in an M4A container, and generated a spectrogram cover with FFmpeg."
+  },
+  {
+    "file": "blackbird-song-25s.m4a",
+    "cover": "blackbird-song-25s-cover.jpg",
+    "title": "Turdus merula 2",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Turdus_merula_2.ogg",
+    "license": "CC BY-SA 3.0",
+    "processing": "Downloaded the source Ogg Vorbis file, encoded the full 24.8 second sample as AAC in an M4A container, and generated a spectrogram cover with FFmpeg."
+  },
+  {
+    "file": "ragtime-nightingale-30s.m4a",
+    "cover": "ragtime-nightingale-30s-cover.jpg",
+    "title": "Ragtime-nightingale",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ragtime-nightingale.ogg",
+    "license": "Public domain",
+    "processing": "Downloaded the source Ogg Vorbis file, trimmed to 30 seconds, encoded it as AAC in an M4A container, and generated a spectrogram cover with FFmpeg."
+  }
+]

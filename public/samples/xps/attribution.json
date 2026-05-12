@@ -1,0 +1,42 @@
+{
+  "format": "xps",
+  "updated": "2026-05-12",
+  "samples": [
+    {
+      "file": "london-map.xps",
+      "cover": "london-map-cover.jpg",
+      "title": "London Map XPS",
+      "source": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:1806_Mogg_Pocket_or_Case_Map_of_London,_England_-_Geographicus_-_London-mogg-1806.jpg",
+      "license": "Public domain",
+      "processing": "Downloaded the real JPEG source, packaged it as a one-page XPS document, and generated the preview cover from the same image."
+    },
+    {
+      "file": "declaration.xps",
+      "cover": "declaration-cover.jpg",
+      "title": "Declaration XPS",
+      "source": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:United_States_Declaration_of_Independence.jpg",
+      "license": "Public domain",
+      "processing": "Downloaded the real JPEG source, packaged it as a one-page XPS document, and generated the preview cover from the same image."
+    },
+    {
+      "file": "mars-selfie.xps",
+      "cover": "mars-selfie-cover.jpg",
+      "title": "Mars Rover XPS",
+      "source": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Martian_Anniversary_Selfie.jpg",
+      "license": "Public domain / NASA",
+      "processing": "Downloaded the real JPEG source, packaged it as a one-page XPS document, and generated the preview cover from the same image."
+    },
+    {
+      "file": "wright-flyer.xps",
+      "cover": "wright-flyer-cover.jpg",
+      "title": "Wright Flyer XPS",
+      "source": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:1904-10-04_Huffman-Prairie_WrightFlyerIII.jpg",
+      "license": "Public domain",
+      "processing": "Downloaded the real JPEG source, packaged it as a one-page XPS document, and generated the preview cover from the same image."
+    }
+  ]
+}

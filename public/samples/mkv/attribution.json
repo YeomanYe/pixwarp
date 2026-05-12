@@ -1,0 +1,46 @@
+[
+  {
+    "file": "rain-clip-1280x720.mkv",
+    "poster": "rain-clip-1280x720-poster.jpg",
+    "title": "Rain clip remuxed to MKV",
+    "sourceTitle": "Rain clip.theora.ogv",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rain_clip.theora.ogv",
+    "creator": "PB / Buddpaul",
+    "license": "CC0",
+    "originalDimensions": "1280 x 720",
+    "processing": "Freshly downloaded from Wikimedia Commons, remuxed into Matroska with ffmpeg-static, and given a poster frame extracted from the resulting MKV."
+  },
+  {
+    "file": "sintel-extract-640x360.mkv",
+    "poster": "sintel-extract-640x360-poster.jpg",
+    "title": "Sintel extract remuxed to MKV",
+    "sourceTitle": "Sintel extract new.ogv",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sintel_extract_new.ogv",
+    "creator": "Blender Foundation / www.sintel.org",
+    "license": "CC BY 3.0",
+    "originalDimensions": "640 x 360",
+    "processing": "Freshly downloaded from Wikimedia Commons, trimmed to 20 seconds, remuxed into Matroska with ffmpeg-static, and given a poster frame extracted from the resulting MKV."
+  },
+  {
+    "file": "big-buck-bunny-mcu-854x480.mkv",
+    "poster": "big-buck-bunny-mcu-854x480-poster.jpg",
+    "title": "Big Buck Bunny MCU remuxed to MKV",
+    "sourceTitle": "Big buck bunny mcu.ogv",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Big_buck_bunny_mcu.ogv",
+    "creator": "Blender Foundation / www.bigbuckbunny.org",
+    "license": "CC BY 3.0",
+    "originalDimensions": "854 x 480",
+    "processing": "Freshly downloaded from Wikimedia Commons, remuxed into Matroska with ffmpeg-static, and given a poster frame extracted from the resulting MKV."
+  },
+  {
+    "file": "cymatics-1920x1080.mkv",
+    "poster": "cymatics-1920x1080-poster.jpg",
+    "title": "Cymatics demo remuxed to MKV",
+    "sourceTitle": "Cymatics-FromThe-Film Inner Worlds Outer Worlds 1.ogv",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cymatics-FromThe-Film_Inner_Worlds_Outer_Worlds_1.ogv",
+    "creator": "Spiritfilms",
+    "license": "CC BY-SA 3.0",
+    "originalDimensions": "1920 x 1080",
+    "processing": "Freshly downloaded from Wikimedia Commons, remuxed into Matroska with ffmpeg-static, and given a poster frame extracted from the resulting MKV."
+  }
+]

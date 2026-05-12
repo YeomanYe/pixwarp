@@ -60,7 +60,6 @@ export function IcoSamplesWidget() {
     <FormatSampleGallery
       intro="Four real ICO files downloaded from an external sample library. ICO is a container format: one .ico file often stores multiple sizes so browsers and operating systems can pick the best icon."
       samples={SAMPLES}
-      attributionPath="public/samples/ico/attribution.json"
     />
   )
 }

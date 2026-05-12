@@ -1,0 +1,42 @@
+{
+  "format": "jsonl",
+  "updated": "2026-05-12",
+  "samples": [
+    {
+      "file": "gsm8k-sample.jsonl",
+      "cover": "gsm8k-sample-cover.png",
+      "title": "GSM8K Messages JSONL",
+      "source": "Eval Protocol",
+      "sourceUrl": "https://github.com/eval-protocol/python-sdk/blob/main/development/gsm8k_sample.jsonl",
+      "license": "MIT",
+      "processing": "Downloaded the real JSONL file, validated every line with JSON.parse, and generated the cover from top-level keys and first records."
+    },
+    {
+      "file": "spec-bench-questions.jsonl",
+      "cover": "spec-bench-questions-cover.png",
+      "title": "Spec-Bench Questions JSONL",
+      "source": "Spec-Bench",
+      "sourceUrl": "https://github.com/hemingkx/Spec-Bench/blob/main/data/spec_bench/question.jsonl",
+      "license": "Apache-2.0",
+      "processing": "Downloaded the real JSONL file, validated every line with JSON.parse, and generated the cover from top-level keys and first records."
+    },
+    {
+      "file": "model-forge-text.jsonl",
+      "cover": "model-forge-text-cover.png",
+      "title": "Text Generation Pairs JSONL",
+      "source": "ModelForge",
+      "sourceUrl": "https://github.com/RETR0-OS/ModelForge/blob/main/ModelForge/test_datasets/low_text_generation.jsonl",
+      "license": "BSD-3-Clause",
+      "processing": "Downloaded the real JSONL file, validated every line with JSON.parse, and generated the cover from top-level keys and first records."
+    },
+    {
+      "file": "model-forge-summary.jsonl",
+      "cover": "model-forge-summary-cover.png",
+      "title": "Summary Pairs JSONL",
+      "source": "ModelForge",
+      "sourceUrl": "https://github.com/RETR0-OS/ModelForge/blob/main/ModelForge/test_datasets/low_summarization_train_set.jsonl",
+      "license": "BSD-3-Clause",
+      "processing": "Downloaded the real JSONL file, validated every line with JSON.parse, and generated the cover from top-level keys and first records."
+    }
+  ]
+}

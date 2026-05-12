@@ -1,0 +1,38 @@
+[
+  {
+    "file": "fur-elise-piano-30s.ogg",
+    "cover": "fur-elise-piano-30s-cover.jpg",
+    "title": "FurElise.ogg",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:FurElise.ogg",
+    "license": "Public domain",
+    "processing": "Downloaded the source Ogg Vorbis file, trimmed to 30 seconds, re-encoded as Ogg Vorbis, and generated a spectrogram cover with FFmpeg."
+  },
+  {
+    "file": "edison-cylinder-30s.ogg",
+    "cover": "edison-cylinder-30s-cover.jpg",
+    "title": "Edison cylinder Lost Chord",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Edison_cylinder_Lost_Chord.ogg",
+    "license": "Public domain",
+    "processing": "Downloaded the source Ogg Vorbis file, trimmed to 30 seconds, re-encoded as Ogg Vorbis, and generated a spectrogram cover with FFmpeg."
+  },
+  {
+    "file": "ode-to-joy-30s.ogg",
+    "cover": "ode-to-joy-30s-cover.jpg",
+    "title": "Ode to Joy",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ode_to_Joy.ogg",
+    "license": "Public domain",
+    "processing": "Downloaded the source Ogg Vorbis file, trimmed to 30 seconds, re-encoded as Ogg Vorbis, and generated a spectrogram cover with FFmpeg."
+  },
+  {
+    "file": "example-speech-3s.ogg",
+    "cover": "example-speech-3s-cover.jpg",
+    "title": "Example sound file in Ogg Vorbis format",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Example_sound_file_in_Ogg_Vorbis_format.ogg",
+    "license": "CC0",
+    "processing": "Downloaded the source Ogg Vorbis file without trimming and generated a spectrogram cover with FFmpeg."
+  }
+]

@@ -1,0 +1,46 @@
+[
+  {
+    "file": "bbb-burrow-16x9.webm",
+    "comparison": "bbb-burrow-16x9.mp4",
+    "poster": "bbb-burrow-16x9-poster.jpg",
+    "title": "Big Buck Bunny burrow sample",
+    "sourceUrl": "https://peach.blender.org/",
+    "creator": "Blender Foundation",
+    "license": "CC BY 3.0",
+    "dimensions": "854 x 480",
+    "processing": "Prepared as a real WebM sample and matching MP4 comparison file with a poster frame for browser preview."
+  },
+  {
+    "file": "lunar-1x1.webm",
+    "comparison": "lunar-1x1.mp4",
+    "poster": "lunar-1x1-poster.jpg",
+    "title": "Lunar Polar Wander",
+    "sourceUrl": "https://svs.gsfc.nasa.gov/5023/",
+    "creator": "NASA Scientific Visualization Studio",
+    "license": "Public domain",
+    "dimensions": "480 x 480",
+    "processing": "Prepared as a square real WebM sample and matching MP4 comparison file with a poster frame for browser preview."
+  },
+  {
+    "file": "rocket-4x5.webm",
+    "comparison": "rocket-4x5.mp4",
+    "poster": "rocket-4x5-poster.jpg",
+    "title": "Sound of All Human Knowledge rocket clip",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sound_of_All_Human_Knowledge.webm",
+    "creator": "Wikimedia Foundation",
+    "license": "CC BY-SA 4.0",
+    "dimensions": "480 x 600",
+    "processing": "Prepared as a 4:5 real WebM sample and matching MP4 comparison file with a poster frame for browser preview."
+  },
+  {
+    "file": "freddy-9x16.webm",
+    "comparison": "freddy-9x16.mp4",
+    "poster": "freddy-9x16-poster.jpg",
+    "title": "Tropical Cyclone Freddy vertical visualization",
+    "sourceUrl": "https://svs.gsfc.nasa.gov/14312/",
+    "creator": "NASA Scientific Visualization Studio",
+    "license": "Public domain",
+    "dimensions": "270 x 480",
+    "processing": "Prepared as a vertical real WebM sample and matching MP4 comparison file with a poster frame for browser preview."
+  }
+]

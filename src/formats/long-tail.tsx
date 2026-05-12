@@ -1,6 +1,6 @@
 import type { FormatManifest, FormatSource } from "./types"
-import { createReferencePreview } from "./shared/reference-preview"
-import type { ReferencePreviewItem, ReferencePreviewKind } from "./shared/reference-preview"
+import { FormatSampleGallery } from "./shared/sample-gallery"
+import type { FormatGuideSample } from "./shared/sample-gallery"
 
 const updated = "2026-05-11"
 
@@ -10,209 +10,1752 @@ const mdnImages: FormatSource = {
   note: "browser image support, MIME types, and practical web guidance",
 }
 
-const locFormats: FormatSource = {
-  title: "Library of Congress file format descriptions",
-  url: "https://www.loc.gov/preservation/digital/formats/fdd/browse_list.shtml",
-  note: "archival format descriptions and sustainability notes",
+const locBmp: FormatSource = {
+  title: "Library of Congress - BMP",
+  url: "https://www.loc.gov/preservation/digital/formats/fdd/fdd000189.shtml",
+  note: "BMP-specific archival description and sustainability notes",
 }
 
-function preview(kind: ReferencePreviewKind, name: string, items: ReferencePreviewItem[]) {
-  return createReferencePreview({
-    intro: `${name} samples should be judged in the sizes people actually receive, upload, or export. These reference cards show the common shapes and settings to check before choosing a conversion target.`,
-    items: items.map((item) => ({ ...item, kind: item.kind ?? kind })),
-    sourceNote:
-      "Reference dimensions are platform-style targets. Compatibility and format facts are verified from the linked online sources below.",
-  })
+const locPsd: FormatSource = {
+  title: "Library of Congress - Adobe Photoshop family",
+  url: "https://www.loc.gov/preservation/digital/formats/fdd/fdd000523.shtml",
+  note: "PSD/PSB format family description",
 }
 
-const visualSizes: ReferencePreviewItem[] = [
+const locDng: FormatSource = {
+  title: "Library of Congress - DNG 1.6",
+  url: "https://www.loc.gov/preservation/digital/formats/fdd/fdd000628.shtml",
+  note: "DNG-specific archival description",
+}
+
+const locRaw: FormatSource = {
+  title: "Library of Congress - Camera Raw formats",
+  url: "https://www.loc.gov/preservation/digital/formats/fdd/fdd000241.shtml",
+  note: "camera raw family description",
+}
+
+const locMkv: FormatSource = {
+  title: "Library of Congress - Matroska multimedia container",
+  url: "https://www.loc.gov/preservation/digital/formats/fdd/fdd000342.shtml",
+  note: "Matroska/MKV archival format description",
+}
+
+const locMov: FormatSource = {
+  title: "Library of Congress - QuickTime file format",
+  url: "https://www.loc.gov/preservation/digital/formats/fdd/fdd000052.shtml",
+  note: "MOV/QuickTime archival format description",
+}
+
+const locMpeg4: FormatSource = {
+  title: "Library of Congress - MPEG-4 file format",
+  url: "https://www.loc.gov/preservation/digital/formats/fdd/fdd000155.shtml",
+  note: "MP4/M4A-related file format description",
+}
+
+const locAvi: FormatSource = {
+  title: "Library of Congress - AVI",
+  url: "https://www.loc.gov/preservation/digital/formats/fdd/fdd000059.shtml",
+  note: "AVI-specific archival description",
+}
+
+const locAiff: FormatSource = {
+  title: "Library of Congress - AIFF",
+  url: "https://www.loc.gov/preservation/digital/formats/fdd/fdd000005.shtml",
+  note: "AIFF-specific archival description",
+}
+
+const locXps: FormatSource = {
+  title: "Library of Congress - XPS",
+  url: "https://www.loc.gov/preservation/digital/formats/fdd/fdd000514.shtml",
+  note: "Microsoft XPS archival format description",
+}
+
+const locEps: FormatSource = {
+  title: "Library of Congress - EPS",
+  url: "https://www.loc.gov/preservation/digital/formats/fdd/fdd000246.shtml",
+  note: "EPS-specific archival description",
+}
+
+const locTar: FormatSource = {
+  title: "Library of Congress - TAR",
+  url: "https://www.loc.gov/preservation/digital/formats/fdd/fdd000531.shtml",
+  note: "tar archive format family description",
+}
+
+const loc7z: FormatSource = {
+  title: "Library of Congress - 7z",
+  url: "https://www.loc.gov/preservation/digital/formats/fdd/fdd000539.shtml",
+  note: "7z-specific archival description",
+}
+
+const bmpSamples: FormatGuideSample[] = [
   {
-    label: "16:9",
-    size: "1920 x 1080",
-    useCase: "wide preview",
-    note: "Use for wallpapers, video frames, and desktop previews.",
+    title: "Earthrise converted to BMP",
+    capability: "1:1",
+    dimensions: "1080 x 1080",
+    fileSize: 3_499_254,
+    url: "/samples/bmp/earthrise-1080x1080.bmp",
+    download: "earthrise-1080x1080.bmp",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:NASA-Apollo8-Dec24-Earthrise.jpg",
+    license: "Public domain",
+    shape: "square",
+    aspectRatio: "1080 / 1080",
+    note: "A square NASA photo sample using a common social preview size.",
   },
   {
-    label: "1:1",
-    size: "1080 x 1080",
-    useCase: "square crop",
-    note: "Use for profile images, album art, and social posts.",
+    title: "Great Wave converted to BMP",
+    capability: "16:9",
+    dimensions: "1920 x 1080",
+    fileSize: 6_220_854,
+    url: "/samples/bmp/great-wave-1920x1080.bmp",
+    download: "great-wave-1920x1080.bmp",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:The_Great_Wave_off_Kanagawa.jpg",
+    license: "Public domain",
+    shape: "wide",
+    aspectRatio: "1920 / 1080",
+    note: "A wide public-domain artwork cropped to the standard full-HD canvas.",
   },
   {
-    label: "4:5",
-    size: "1080 x 1350",
-    useCase: "feed portrait",
-    note: "A common portrait export for social feeds.",
+    title: "Mona Lisa converted to BMP",
+    capability: "4:5",
+    dimensions: "1080 x 1350",
+    fileSize: 4_374_054,
+    url: "/samples/bmp/mona-lisa-1080x1350.bmp",
+    download: "mona-lisa-1080x1350.bmp",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Mona_Lisa.jpg",
+    license: "Public domain",
+    shape: "portrait",
+    aspectRatio: "1080 / 1350",
+    note: "A portrait artwork sample using the common 4:5 feed ratio.",
   },
   {
-    label: "9:16",
-    size: "1080 x 1920",
-    useCase: "story frame",
-    note: "Use for phone-first previews and vertical posts.",
+    title: "Rembrandt portrait converted to BMP",
+    capability: "9:16",
+    dimensions: "1080 x 1920",
+    fileSize: 6_220_854,
+    url: "/samples/bmp/rembrandt-1080x1920.bmp",
+    download: "rembrandt-1080x1920.bmp",
+    source: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Rembrandt_-_Portrait_of_a_man_in_a_tall_hat_(c._1663).jpg",
+    license: "Public domain",
+    shape: "portrait",
+    aspectRatio: "1080 / 1920",
+    note: "A vertical artwork sample prepared for phone-first preview workflows.",
   },
 ]
 
-const videoSizes: ReferencePreviewItem[] = [
+function BmpResourceGallery() {
+  return (
+    <FormatSampleGallery
+      intro="Four freshly sourced public-domain images converted to common BMP sizes: 16:9, 1:1, 4:5, and 9:16. The files are stored locally so previews and downloads are stable."
+      samples={bmpSamples}
+    />
+  )
+}
+
+const psdSamples: FormatGuideSample[] = [
   {
-    label: "16:9",
-    size: "1920 x 1080",
-    useCase: "landscape video",
-    note: "The baseline export for web players and presentations.",
+    title: "Chardin still life PSD",
+    capability: "16:9",
+    dimensions: "1440 x 810",
+    fileSize: 3_525_992,
+    url: "/samples/psd/chardin-still-life-1440x810.psd",
+    download: "chardin-still-life-1440x810.psd",
+    previewUrl: "/samples/psd/chardin-still-life-1440x810-preview.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Jean-Baptiste_Sim%C3%A9on_Chardin_(2.11.1699_-_6.12.1779)_-_Still_life_with_a_copper_kettle,_bottle,_bowl_with_eggs_and_two_leek_plants_-_1669_-_Gem%C3%A4ldegalerie.jpg",
+    license: "Public domain",
+    shape: "wide",
+    aspectRatio: "1440 / 810",
+    note: "A fresh public-domain still life converted to PSD with a browser-safe JPEG preview.",
   },
   {
-    label: "9:16",
-    size: "1080 x 1920",
-    useCase: "vertical video",
-    note: "Used by stories, reels, shorts, and phone captures.",
+    title: "Duncanson still life PSD",
+    capability: "1:1",
+    dimensions: "1080 x 1080",
+    fileSize: 2_688_880,
+    url: "/samples/psd/duncanson-still-life-1080x1080.psd",
+    download: "duncanson-still-life-1080x1080.psd",
+    previewUrl: "/samples/psd/duncanson-still-life-1080x1080-preview.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Still_Life_LACMA_M.78.98.jpg",
+    license: "Public domain",
+    shape: "square",
+    aspectRatio: "1080 / 1080",
+    note: "A square PSD sample prepared for profile, catalog, and artwork previews.",
   },
   {
-    label: "1:1",
-    size: "1080 x 1080",
-    useCase: "square post",
-    note: "Useful where feeds crop landscape video too aggressively.",
+    title: "Renoir flowers PSD",
+    capability: "4:5",
+    dimensions: "1080 x 1350",
+    fileSize: 4_398_414,
+    url: "/samples/psd/renoir-flowers-1080x1350.psd",
+    download: "renoir-flowers-1080x1350.psd",
+    previewUrl: "/samples/psd/renoir-flowers-1080x1350-preview.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:GUGG_Still_Life_Flowers.jpg",
+    license: "Public domain",
+    shape: "portrait",
+    aspectRatio: "1080 / 1350",
+    note: "A portrait PSD sample prepared for the common 4:5 feed ratio.",
   },
   {
-    label: "4:5",
-    size: "1080 x 1350",
-    useCase: "portrait feed",
-    note: "A feed-friendly alternative to full vertical video.",
+    title: "Chicago poster PSD",
+    capability: "9:16",
+    dimensions: "1080 x 1920",
+    fileSize: 5_948_978,
+    url: "/samples/psd/chicago-poster-1080x1920.psd",
+    download: "chicago-poster-1080x1920.psd",
+    previewUrl: "/samples/psd/chicago-poster-1080x1920-preview.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Chicago_world%27s_fair,_a_century_of_progress,_expo_poster,_1933,_2.jpg",
+    license: "Public domain",
+    shape: "portrait",
+    aspectRatio: "1080 / 1920",
+    note: "A poster-style PSD sample prepared for phone-first previews.",
   },
 ]
 
-const audioSettings: ReferencePreviewItem[] = [
+function PsdResourceGallery() {
+  return (
+    <FormatSampleGallery
+      intro="Four freshly sourced public-domain images converted to PSD in common preview sizes. Browsers cannot render PSD directly, so each card shows a JPEG preview while the download link points to the real .psd file."
+      samples={psdSamples}
+    />
+  )
+}
+
+const dngSamples: FormatGuideSample[] = [
   {
-    label: "voice",
-    size: "48 kHz mono",
-    useCase: "spoken audio",
-    note: "Checks speech clarity and low-bitrate behavior.",
+    title: "Canon 5D Mark III DNG",
+    capability: "full-frame",
+    dimensions: "5760 x 3840",
+    fileSize: 6_193_902,
+    url: "/samples/dng/canon-5d3-lossy-5g4a9394.dng",
+    download: "canon-5d3-lossy-5g4a9394.dng",
+    previewUrl: "/samples/dng/canon-5d3-lossy-5g4a9394-preview.jpg",
+    source: "raw.pixls.us",
+    sourceUrl:
+      "https://raw.pixls.us/data/Adobe%20DNG%20Converter/Canon%20EOS%205D%20Mark%20III/5G4A9394-compressed-lossy.DNG",
+    license: "CC0",
+    shape: "wide",
+    aspectRatio: "5760 / 3840",
+    note: "A full-frame DNG sample with a locally rendered JPEG preview.",
   },
   {
-    label: "music",
-    size: "44.1 kHz stereo",
-    useCase: "music sample",
-    note: "Checks stereo image, transients, and codec artifacts.",
+    title: "Leica M9 DNG",
+    capability: "rangefinder",
+    dimensions: "5212 x 3468",
+    fileSize: 18_324_480,
+    url: "/samples/dng/leica-m9-l1049390.dng",
+    download: "leica-m9-l1049390.dng",
+    previewUrl: "/samples/dng/leica-m9-l1049390-preview.jpg",
+    source: "raw.pixls.us",
+    sourceUrl: "https://raw.pixls.us/data/Leica/M9/L1049390.DNG",
+    license: "CC0",
+    shape: "wide",
+    aspectRatio: "5212 / 3468",
+    note: "A Leica DNG sample that shows indoor raw exposure and highlight handling.",
   },
   {
-    label: "portable",
-    size: "96-128 kbps",
-    useCase: "small export",
-    note: "A practical range for sharing or streaming constrained files.",
+    title: "iPhone XS DNG",
+    capability: "mobile raw",
+    dimensions: "4032 x 3024",
+    fileSize: 10_290_665,
+    url: "/samples/dng/iphone-xs-img-1105.dng",
+    download: "iphone-xs-img-1105.dng",
+    previewUrl: "/samples/dng/iphone-xs-img-1105-preview.jpg",
+    source: "raw.pixls.us",
+    sourceUrl: "https://raw.pixls.us/data/Apple/iPhone%20XS/IMG_1105.dng",
+    license: "CC0",
+    shape: "wide",
+    aspectRatio: "4032 / 3024",
+    note: "A modern phone DNG sample with a detailed architecture preview.",
   },
   {
-    label: "archive",
-    size: "lossless",
-    useCase: "source copy",
-    note: "Use when quality preservation matters more than size.",
+    title: "iPhone 7 Plus DNG",
+    capability: "mobile raw",
+    dimensions: "4032 x 3024",
+    fileSize: 10_550_105,
+    url: "/samples/dng/iphone-7-plus-img-0739.dng",
+    download: "iphone-7-plus-img-0739.dng",
+    previewUrl: "/samples/dng/iphone-7-plus-img-0739-preview.jpg",
+    source: "raw.pixls.us",
+    sourceUrl: "https://raw.pixls.us/data/Apple/iPhone%207%20Plus/IMG_0739.DNG",
+    license: "CC0",
+    shape: "wide",
+    aspectRatio: "4032 / 3024",
+    note: "An older phone DNG sample useful for comparing mobile raw workflows.",
   },
 ]
 
-const documentSizes: ReferencePreviewItem[] = [
+function DngResourceGallery() {
+  return (
+    <FormatSampleGallery
+      intro="Four freshly sourced CC0 DNG files from raw.pixls.us. The downloads are real camera raw files kept at their original sensor dimensions; each card uses a locally rendered JPEG preview because browsers do not display DNG directly."
+      samples={dngSamples}
+    />
+  )
+}
+
+const rawSamples: FormatGuideSample[] = [
   {
-    label: "A4",
-    size: "210 x 297 mm",
-    useCase: "international page",
-    note: "The default document shape for many countries.",
+    title: "Canon PowerShot G10 CR2",
+    capability: "Canon CR2",
+    dimensions: "4416 x 3312",
+    fileSize: 20_092_969,
+    url: "/samples/raw/canon-powershot-g10-4416x3312.cr2",
+    download: "canon-powershot-g10-4416x3312.cr2",
+    previewUrl: "/samples/raw/canon-powershot-g10-preview-1440x1080.jpg",
+    source: "raw.pixls.us",
+    sourceUrl: "https://raw.pixls.us/data/Canon/PowerShot%20G10/RAW_CANON_G10.CR2",
+    license: "CC0",
+    shape: "wide",
+    aspectRatio: "4416 / 3312",
+    note: "A Canon CR2 raw file with a snow-covered forest preview.",
   },
   {
-    label: "Letter",
-    size: "8.5 x 11 in",
-    useCase: "US page",
-    note: "Important for North American documents.",
+    title: "Nikon D90 NEF",
+    capability: "Nikon NEF",
+    dimensions: "4288 x 2848",
+    fileSize: 11_653_767,
+    url: "/samples/raw/nikon-d90-4288x2848.nef",
+    download: "nikon-d90-4288x2848.nef",
+    previewUrl: "/samples/raw/nikon-d90-preview-1440x956.jpg",
+    source: "raw.pixls.us",
+    sourceUrl: "https://raw.pixls.us/data/Nikon/D90/00001.NEF",
+    license: "CC0",
+    shape: "wide",
+    aspectRatio: "4288 / 2848",
+    note: "A Nikon NEF sample showing a bright outdoor landscape.",
   },
   {
-    label: "multi-page",
-    size: "12 pages",
-    useCase: "report",
-    note: "Checks navigation, thumbnails, and file size scaling.",
+    title: "Sony RX100 III ARW",
+    capability: "Sony ARW",
+    dimensions: "5472 x 3648",
+    fileSize: 20_958_208,
+    url: "/samples/raw/sony-rx100m3-5472x3648.arw",
+    download: "sony-rx100m3-5472x3648.arw",
+    previewUrl: "/samples/raw/sony-rx100m3-preview-1440x960.jpg",
+    source: "raw.pixls.us",
+    sourceUrl: "https://raw.pixls.us/data/Sony/DSC-RX100M3/DSC00734.ARW",
+    license: "CC0",
+    shape: "wide",
+    aspectRatio: "5472 / 3648",
+    note: "A Sony ARW file with a detailed playground and sky preview.",
   },
   {
-    label: "scan",
-    size: "300 dpi",
-    useCase: "image-heavy file",
-    note: "Useful when the format often stores scanned pages.",
+    title: "Fujifilm X-E2 RAF",
+    capability: "Fujifilm RAF",
+    dimensions: "4896 x 3264",
+    fileSize: 33_800_704,
+    url: "/samples/raw/fujifilm-xe2-4896x3264.raf",
+    download: "fujifilm-xe2-4896x3264.raf",
+    previewUrl: "/samples/raw/fujifilm-xe2-preview-1440x960.jpg",
+    source: "raw.pixls.us",
+    sourceUrl: "https://raw.pixls.us/data/Fujifilm/X-E2/DSCF9050.RAF",
+    license: "CC0",
+    shape: "wide",
+    aspectRatio: "4896 / 3264",
+    note: "A Fujifilm RAF sample with a frozen lakeside landscape.",
   },
 ]
 
-const archiveSamples: ReferencePreviewItem[] = [
+function RawResourceGallery() {
+  return (
+    <FormatSampleGallery
+      intro="Four freshly sourced CC0 camera raw files from raw.pixls.us, covering common proprietary RAW families. Browsers cannot render these files directly, so each card shows a locally rendered JPEG preview while the download link points to the real RAW file."
+      samples={rawSamples}
+    />
+  )
+}
+
+const mkvSamples: FormatGuideSample[] = [
   {
-    label: "folder",
-    size: "10 files",
-    useCase: "project backup",
-    note: "Checks nested paths, filenames, and extraction behavior.",
+    title: "Rain Clip remuxed to MKV",
+    capability: "720p clip",
+    dimensions: "1280 x 720",
+    fileSize: 9_840_864,
+    url: "/samples/mkv/rain-clip-1280x720.mkv",
+    download: "rain-clip-1280x720.mkv",
+    previewUrl: "/samples/mkv/rain-clip-1280x720-poster.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Rain_clip.theora.ogv",
+    license: "CC0",
+    shape: "wide",
+    aspectRatio: "1280 / 720",
+    note: "A short rain scene remuxed into a real Matroska container.",
   },
   {
-    label: "media",
-    size: "500 MB",
-    useCase: "large bundle",
-    note: "Shows why compression method and split archives matter.",
+    title: "Sintel Extract remuxed to MKV",
+    capability: "360p clip",
+    dimensions: "640 x 360",
+    fileSize: 1_432_188,
+    url: "/samples/mkv/sintel-extract-640x360.mkv",
+    download: "sintel-extract-640x360.mkv",
+    previewUrl: "/samples/mkv/sintel-extract-640x360-poster.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Sintel_extract_new.ogv",
+    license: "CC BY 3.0",
+    shape: "wide",
+    aspectRatio: "640 / 360",
+    note: "A 20-second animated film extract remuxed into MKV.",
   },
   {
-    label: "text",
-    size: "many small files",
-    useCase: "source archive",
-    note: "Metadata and permissions are often more important than compression.",
+    title: "Big Buck Bunny MCU remuxed to MKV",
+    capability: "480p clip",
+    dimensions: "854 x 480",
+    fileSize: 614_303,
+    url: "/samples/mkv/big-buck-bunny-mcu-854x480.mkv",
+    download: "big-buck-bunny-mcu-854x480.mkv",
+    previewUrl: "/samples/mkv/big-buck-bunny-mcu-854x480-poster.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Big_buck_bunny_mcu.ogv",
+    license: "CC BY 3.0",
+    shape: "wide",
+    aspectRatio: "854 / 480",
+    note: "A compact Blender open movie clip remuxed into MKV.",
   },
   {
-    label: "portable",
-    size: "single file",
-    useCase: "email attachment",
-    note: "Checks whether recipients can open it without extra tools.",
+    title: "Cymatics demo remuxed to MKV",
+    capability: "1080p clip",
+    dimensions: "1920 x 1080",
+    fileSize: 2_871_870,
+    url: "/samples/mkv/cymatics-1920x1080.mkv",
+    download: "cymatics-1920x1080.mkv",
+    previewUrl: "/samples/mkv/cymatics-1920x1080-poster.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Cymatics-FromThe-Film_Inner_Worlds_Outer_Worlds_1.ogv",
+    license: "CC BY-SA 3.0",
+    shape: "wide",
+    aspectRatio: "1920 / 1080",
+    note: "A 1080p cymatics experiment clip remuxed into MKV.",
   },
 ]
 
-const dataSamples: ReferencePreviewItem[] = [
+function MkvResourceGallery() {
+  return (
+    <FormatSampleGallery
+      intro="Four freshly sourced public video clips remuxed into real .mkv files. Each card uses a poster frame because browsers often do not play Matroska directly; the download link points to the actual MKV container."
+      samples={mkvSamples}
+    />
+  )
+}
+
+const movSamples: FormatGuideSample[] = [
   {
-    label: "rows",
-    size: "1k rows",
-    useCase: "spreadsheet export",
-    note: "Checks headers, delimiters, quoting, and encoding.",
+    title: "NASA We Are Going MOV",
+    capability: "16:9",
+    dimensions: "1280 x 720",
+    fileSize: 738_894,
+    url: "/samples/mov/nasa-we-are-going-1280x720.mov",
+    download: "nasa-we-are-going-1280x720.mov",
+    previewUrl: "/samples/mov/nasa-we-are-going-1280x720-poster.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:NASA_WeAreGoing_(661354393755).webm",
+    license: "Public domain",
+    shape: "wide",
+    aspectRatio: "1280 / 720",
+    note: "A 720p NASA archival clip transcoded into MOV.",
   },
   {
-    label: "events",
-    size: "10k lines",
-    useCase: "log stream",
-    note: "Checks append-friendly parsing and per-line recovery.",
+    title: "Train Window MOV",
+    capability: "travel clip",
+    dimensions: "1280 x 720",
+    fileSize: 1_694_963,
+    url: "/samples/mov/train-window-1280x720.mov",
+    download: "train-window-1280x720.mov",
+    previewUrl: "/samples/mov/train-window-1280x720-poster.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Train-window.webm",
+    license: "CC BY-SA 4.0",
+    shape: "wide",
+    aspectRatio: "1280 / 720",
+    note: "A moving train-window view transcoded into MOV.",
   },
   {
-    label: "unicode",
-    size: "UTF-8",
-    useCase: "international data",
-    note: "Avoids broken names, commas, and non-Latin text.",
+    title: "Park Buses MOV",
+    capability: "360p",
+    dimensions: "640 x 360",
+    fileSize: 510_251,
+    url: "/samples/mov/samplelib-park-640x360.mov",
+    download: "samplelib-park-640x360.mov",
+    previewUrl: "/samples/mov/samplelib-park-640x360-poster.jpg",
+    source: "SampleLib",
+    sourceUrl: "https://download.samplelib.com/sample-mp4.html",
+    license: "No license restrictions",
+    shape: "wide",
+    aspectRatio: "640 / 360",
+    note: "A small park-and-traffic sample transcoded into MOV.",
   },
   {
-    label: "large",
-    size: "100 MB+",
-    useCase: "batch import",
-    note: "Checks streaming, memory use, and preview limits.",
+    title: "Exoplanets Vertical MOV",
+    capability: "9:16",
+    dimensions: "720 x 1280",
+    fileSize: 224_940,
+    url: "/samples/mov/exoplanets-vertical-720x1280.mov",
+    download: "exoplanets-vertical-720x1280.mov",
+    previewUrl: "/samples/mov/exoplanets-vertical-720x1280-poster.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Exoplanets_Vertical_Video_(SVS14797).webm",
+    license: "Public domain",
+    shape: "portrait",
+    aspectRatio: "720 / 1280",
+    note: "A NASA vertical science video transcoded into a QuickTime MOV sample.",
   },
 ]
 
-const vectorSizes: ReferencePreviewItem[] = [
+function MovResourceGallery() {
+  return (
+    <FormatSampleGallery
+      intro="Four freshly sourced video clips converted into real QuickTime .mov files in common preview sizes. Each card shows an extracted poster frame so the page stays useful even when a browser does not preview MOV inline."
+      samples={movSamples}
+    />
+  )
+}
+
+const m4vSamples: FormatGuideSample[] = [
   {
-    label: "logo",
-    size: "512 x 512",
-    useCase: "brand mark",
-    note: "Checks curves, fills, and transparent backgrounds.",
+    title: "Ocean Bird M4V",
+    capability: "cinematic",
+    dimensions: "960 x 400",
+    fileSize: 17_520_926,
+    url: "/samples/m4v/ocean-960x400.m4v",
+    download: "ocean-960x400.m4v",
+    previewUrl: "/samples/m4v/ocean-960x400-poster.jpg",
+    source: "FileSamples",
+    sourceUrl: "https://filesamples.com/formats/m4v",
+    license: "Sample media for testing",
+    shape: "wide",
+    aspectRatio: "960 / 400",
+    note: "A wide ocean sample stored as a real Apple iTunes Video file.",
   },
   {
-    label: "poster",
-    size: "A4",
-    useCase: "print layout",
-    note: "Checks text, embedded images, and color handling.",
+    title: "Coast Aerial M4V",
+    capability: "720p",
+    dimensions: "1280 x 720",
+    fileSize: 17_436_142,
+    url: "/samples/m4v/coast-1280x720.m4v",
+    download: "coast-1280x720.m4v",
+    previewUrl: "/samples/m4v/coast-1280x720-poster.jpg",
+    source: "FileSamples",
+    sourceUrl: "https://filesamples.com/formats/m4v",
+    license: "Sample media for testing",
+    shape: "wide",
+    aspectRatio: "1280 / 720",
+    note: "A 720p M4V sample with an aerial coast preview.",
   },
   {
-    label: "icon",
-    size: "64 x 64",
-    useCase: "small vector",
-    note: "Checks whether strokes survive downscaling.",
+    title: "Beach Clip M4V",
+    capability: "360p",
+    dimensions: "640 x 360",
+    fileSize: 574_847,
+    url: "/samples/m4v/beach-640x360.m4v",
+    download: "beach-640x360.m4v",
+    previewUrl: "/samples/m4v/beach-640x360-poster.jpg",
+    source: "FileSamples",
+    sourceUrl: "https://filesamples.com/formats/m4v",
+    license: "Sample media for testing",
+    shape: "wide",
+    aspectRatio: "640 / 360",
+    note: "A small M4V beach sample for upload and parser checks.",
   },
   {
-    label: "wide",
-    size: "16:9",
-    useCase: "presentation art",
-    note: "Useful for slides, web banners, and exports to PNG.",
+    title: "Roundhay Garden Scene M4V",
+    capability: "historical",
+    dimensions: "980 x 720",
+    fileSize: 602_722,
+    url: "/samples/m4v/roundhay-garden-980x720.m4v",
+    download: "roundhay-garden-980x720.m4v",
+    previewUrl: "/samples/m4v/roundhay-garden-980x720-poster.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Roundhay_Garden_Scene_(1888)_10fps.webm",
+    license: "Public domain",
+    shape: "wide",
+    aspectRatio: "980 / 720",
+    note: "A public-domain historical clip transcoded into an M4V test file.",
   },
 ]
+
+function M4vResourceGallery() {
+  return (
+    <FormatSampleGallery
+      intro="Four freshly sourced real .m4v files with extracted poster frames. The set covers compact upload samples, wide Apple-style media files, and a public-domain clip transcoded into M4V for parser testing."
+      samples={m4vSamples}
+    />
+  )
+}
+
+const aviSamples: FormatGuideSample[] = [
+  {
+    title: "Aurora Shimmer AVI",
+    capability: "1080p",
+    dimensions: "1920 x 1080",
+    fileSize: 3_633_758,
+    url: "/samples/avi/aurora-shimmer-1920x1080.avi",
+    download: "aurora-shimmer-1920x1080.avi",
+    previewUrl: "/samples/avi/aurora-shimmer-1920x1080-poster.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Shimmer.webm",
+    license: "Public domain",
+    shape: "wide",
+    aspectRatio: "1920 / 1080",
+    note: "A public-domain aurora time-lapse transcoded into AVI with MPEG-4 video and MP3 audio.",
+  },
+  {
+    title: "Peony Time-Lapse AVI",
+    capability: "botanical",
+    dimensions: "1280 x 720",
+    fileSize: 1_355_994,
+    url: "/samples/avi/peony-timelapse-1280x720.avi",
+    download: "peony-timelapse-1280x720.avi",
+    previewUrl: "/samples/avi/peony-timelapse-1280x720-poster.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Time_lapse_of_Peony_flower_blooming.webm",
+    license: "CC BY 3.0",
+    shape: "wide",
+    aspectRatio: "1280 / 720",
+    note: "A flower time-lapse converted to a compact AVI sample for legacy container testing.",
+  },
+  {
+    title: "Grass Tray AVI",
+    capability: "time-lapse",
+    dimensions: "1280 x 720",
+    fileSize: 3_703_368,
+    url: "/samples/avi/grass-timelapse-1280x720.avi",
+    download: "grass-timelapse-1280x720.avi",
+    previewUrl: "/samples/avi/grass-timelapse-1280x720-poster.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Watching_Grass_Grow.webm",
+    license: "CC BY-SA 3.0",
+    shape: "wide",
+    aspectRatio: "1280 / 720",
+    note: "A real time-lapse clip converted into AVI to show older desktop media workflows.",
+  },
+  {
+    title: "Coast Drone AVI",
+    capability: "legacy sample",
+    dimensions: "640 x 360",
+    fileSize: 10_135_326,
+    url: "/samples/avi/samplecat-seawater-640x360.avi",
+    download: "samplecat-seawater-640x360.avi",
+    previewUrl: "/samples/avi/samplecat-seawater-640x360-poster.jpg",
+    source: "Sample.Cat",
+    sourceUrl: "https://sample.cat/en/avi",
+    license: "Sample media for testing",
+    shape: "wide",
+    aspectRatio: "640 / 360",
+    note: "A directly downloaded XviD AVI sample with a coastal aerial scene.",
+  },
+]
+
+function AviResourceGallery() {
+  return (
+    <FormatSampleGallery
+      intro="Four real .avi files with extracted poster frames. The set avoids blank, solid-color, and gradient previews while covering direct legacy AVI samples and freshly sourced public media converted into AVI."
+      samples={aviSamples}
+    />
+  )
+}
+
+const flacSamples: FormatGuideSample[] = [
+  {
+    title: "Guitar FLAC",
+    capability: "music",
+    dimensions: "20 s / 44.1 kHz",
+    fileSize: 2_097_029,
+    url: "/samples/flac/entre-dos-aguas-guitar-20s.flac",
+    download: "entre-dos-aguas-guitar-20s.flac",
+    previewUrl: "/samples/flac/entre-dos-aguas-guitar-20s-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Entre-dos-aguas-laucke-version-sample.flac",
+    license: "CC BY-SA 4.0",
+    shape: "wide",
+    aspectRatio: "16 / 9",
+    note: "A real lossless guitar sample trimmed to 20 seconds with a spectrogram cover.",
+  },
+  {
+    title: "Field Recording FLAC",
+    capability: "48 kHz",
+    dimensions: "20 s / 48 kHz",
+    fileSize: 1_840_045,
+    url: "/samples/flac/pica-field-recording-20s.flac",
+    download: "pica-field-recording-20s.flac",
+    previewUrl: "/samples/flac/pica-field-recording-20s-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Pica_pica-2015-6-12-part15.flac",
+    license: "CC BY-SA 4.0",
+    shape: "wide",
+    aspectRatio: "16 / 9",
+    note: "A high-sample-rate field recording clipped to a manageable FLAC preview.",
+  },
+  {
+    title: "Underwater Sound FLAC",
+    capability: "stereo",
+    dimensions: "20 s / 44.1 kHz",
+    fileSize: 1_097_840,
+    url: "/samples/flac/bio-duck-field-20s.flac",
+    download: "bio-duck-field-20s.flac",
+    previewUrl: "/samples/flac/bio-duck-field-20s-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bio-duck.flac",
+    license: "CC BY-SA 4.0",
+    shape: "wide",
+    aspectRatio: "16 / 9",
+    note: "A compact FLAC field sample with a dense frequency-domain cover image.",
+  },
+  {
+    title: "Orchestra FLAC",
+    capability: "archive",
+    dimensions: "30 s / 44.1 kHz",
+    fileSize: 722_634,
+    url: "/samples/flac/danse-macabre-orchestra-30s.flac",
+    download: "danse-macabre-orchestra-30s.flac",
+    previewUrl: "/samples/flac/danse-macabre-orchestra-30s-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Saint-Sa%C3%ABns_-_Danse_macabre_(Fourestier,_1953).flac",
+    license: "Public domain",
+    shape: "wide",
+    aspectRatio: "16 / 9",
+    note: "A public-domain orchestral recording trimmed into a small lossless sample.",
+  },
+]
+
+function FlacResourceGallery() {
+  return (
+    <FormatSampleGallery
+      intro="Four real .flac files prepared from online source recordings. Each audio sample includes a nonblank spectrogram cover so the format page can be inspected visually before downloading."
+      samples={flacSamples}
+    />
+  )
+}
+
+const oggSamples: FormatGuideSample[] = [
+  {
+    title: "Fur Elise OGG",
+    capability: "Vorbis stereo",
+    dimensions: "30 s / 44.1 kHz",
+    fileSize: 315_958,
+    url: "/samples/ogg/fur-elise-piano-30s.ogg",
+    download: "fur-elise-piano-30s.ogg",
+    previewUrl: "/samples/ogg/fur-elise-piano-30s-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:FurElise.ogg",
+    license: "Public domain",
+    shape: "wide",
+    aspectRatio: "16 / 9",
+    note: "A piano recording trimmed into a compact Ogg Vorbis stereo sample.",
+  },
+  {
+    title: "Edison Cylinder OGG",
+    capability: "historic mono",
+    dimensions: "30 s / 44.1 kHz",
+    fileSize: 245_693,
+    url: "/samples/ogg/edison-cylinder-30s.ogg",
+    download: "edison-cylinder-30s.ogg",
+    previewUrl: "/samples/ogg/edison-cylinder-30s-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Edison_cylinder_Lost_Chord.ogg",
+    license: "Public domain",
+    shape: "wide",
+    aspectRatio: "16 / 9",
+    note: "A historical cylinder transfer prepared as a mono Ogg Vorbis sample.",
+  },
+  {
+    title: "Ode to Joy OGG",
+    capability: "classical",
+    dimensions: "30 s / 44.1 kHz",
+    fileSize: 203_093,
+    url: "/samples/ogg/ode-to-joy-30s.ogg",
+    download: "ode-to-joy-30s.ogg",
+    previewUrl: "/samples/ogg/ode-to-joy-30s-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Ode_to_Joy.ogg",
+    license: "Public domain",
+    shape: "wide",
+    aspectRatio: "16 / 9",
+    note: "A small Ogg Vorbis music sample from a public-domain MIDI source.",
+  },
+  {
+    title: "Speech Example OGG",
+    capability: "voice",
+    dimensions: "3.7 s / 44.1 kHz",
+    fileSize: 153_301,
+    url: "/samples/ogg/example-speech-3s.ogg",
+    download: "example-speech-3s.ogg",
+    previewUrl: "/samples/ogg/example-speech-3s-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Example_sound_file_in_Ogg_Vorbis_format.ogg",
+    license: "CC0",
+    shape: "wide",
+    aspectRatio: "16 / 9",
+    note: "A short spoken Ogg Vorbis file kept at its original length for parser checks.",
+  },
+]
+
+function OggResourceGallery() {
+  return (
+    <FormatSampleGallery
+      intro="Four real .ogg files using Vorbis audio, each paired with a spectrogram cover generated from the actual sample. The set covers music, historical audio, and short speech."
+      samples={oggSamples}
+    />
+  )
+}
+
+const opusSamples: FormatGuideSample[] = [
+  {
+    title: "Rain Thunder Opus",
+    capability: "48 kbps",
+    dimensions: "18.9 s / 48 kHz",
+    fileSize: 99_668,
+    url: "/samples/opus/rain-thunder-19s.opus",
+    download: "rain-thunder-19s.opus",
+    previewUrl: "/samples/opus/rain-thunder-19s-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Rain_and_thunder.ogg",
+    license: "Public domain",
+    shape: "wide",
+    aspectRatio: "16 / 9",
+    note: "A weather field recording converted into a compact Ogg Opus audio file.",
+  },
+  {
+    title: "Thunder Claps Opus",
+    capability: "48 kbps",
+    dimensions: "24 s / 48 kHz",
+    fileSize: 124_005,
+    url: "/samples/opus/thunder-claps-24s.opus",
+    download: "thunder-claps-24s.opus",
+    previewUrl: "/samples/opus/thunder-claps-24s-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Thunder_Claps.ogg",
+    license: "CC BY-SA 4.0",
+    shape: "wide",
+    aspectRatio: "16 / 9",
+    note: "A stereo thunder recording converted into Opus for transient-heavy audio tests.",
+  },
+  {
+    title: "Tbilisi Pronunciation Opus",
+    capability: "native opus",
+    dimensions: "1.9 s / 48 kHz",
+    fileSize: 8_624,
+    url: "/samples/opus/tbilisi-pronunciation.opus",
+    download: "tbilisi-pronunciation.opus",
+    previewUrl: "/samples/opus/tbilisi-pronunciation-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Pronunciation_audio-Tbilisi-KA.opus",
+    license: "CC BY-SA 4.0",
+    shape: "wide",
+    aspectRatio: "16 / 9",
+    note: "A native .opus pronunciation file kept in its original Opus container.",
+  },
+  {
+    title: "Wilhelm Scream Opus",
+    capability: "short voice",
+    dimensions: "1.6 s / 48 kHz",
+    fileSize: 9_768,
+    url: "/samples/opus/wilhelm-scream-1s.opus",
+    download: "wilhelm-scream-1s.opus",
+    previewUrl: "/samples/opus/wilhelm-scream-1s-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Wilhelm_Scream.ogg",
+    license: "CC0",
+    shape: "wide",
+    aspectRatio: "16 / 9",
+    note: "A very short voice sample converted into Opus for tiny upload checks.",
+  },
+]
+
+function OpusResourceGallery() {
+  return (
+    <FormatSampleGallery
+      intro="Four real .opus files, including one native Opus upload and three newly encoded Opus samples from fresh online audio sources. Each card uses a spectrogram generated from the exact file."
+      samples={opusSamples}
+    />
+  )
+}
+
+const m4aSamples: FormatGuideSample[] = [
+  {
+    title: "Apollo Voice M4A",
+    capability: "AAC mono",
+    dimensions: "24.1 s / 11 kHz",
+    fileSize: 165_110,
+    url: "/samples/m4a/armstrong-small-step-24s.m4a",
+    download: "armstrong-small-step-24s.m4a",
+    previewUrl: "/samples/m4a/armstrong-small-step-24s-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Armstrong_Small_Step.ogg",
+    license: "Public domain",
+    shape: "wide",
+    aspectRatio: "16 / 9",
+    note: "A public-domain Apollo 11 voice recording encoded as AAC inside an M4A container.",
+  },
+  {
+    title: "Bach Air M4A",
+    capability: "AAC stereo",
+    dimensions: "30 s / 44.1 kHz",
+    fileSize: 486_875,
+    url: "/samples/m4a/bach-air-30s.m4a",
+    download: "bach-air-30s.m4a",
+    previewUrl: "/samples/m4a/bach-air-30s-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Air_(Bach).ogg",
+    license: "Public domain",
+    shape: "wide",
+    aspectRatio: "16 / 9",
+    note: "A historical Bach recording encoded into a browser-friendly AAC M4A sample.",
+  },
+  {
+    title: "Blackbird Song M4A",
+    capability: "field audio",
+    dimensions: "24.8 s / 44.1 kHz",
+    fileSize: 409_088,
+    url: "/samples/m4a/blackbird-song-25s.m4a",
+    download: "blackbird-song-25s.m4a",
+    previewUrl: "/samples/m4a/blackbird-song-25s-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Turdus_merula_2.ogg",
+    license: "CC BY-SA 3.0",
+    shape: "wide",
+    aspectRatio: "16 / 9",
+    note: "A bird-song field recording converted to AAC-in-M4A for compact media previews.",
+  },
+  {
+    title: "Ragtime Nightingale M4A",
+    capability: "archive",
+    dimensions: "30 s / 48 kHz",
+    fileSize: 501_903,
+    url: "/samples/m4a/ragtime-nightingale-30s.m4a",
+    download: "ragtime-nightingale-30s.m4a",
+    previewUrl: "/samples/m4a/ragtime-nightingale-30s-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Ragtime-nightingale.ogg",
+    license: "Public domain",
+    shape: "wide",
+    aspectRatio: "16 / 9",
+    note: "A public-domain ragtime recording encoded as an M4A sample for Apple-style workflows.",
+  },
+]
+
+function M4aResourceGallery() {
+  return (
+    <FormatSampleGallery
+      intro="Four real .m4a files encoded as AAC inside the MPEG-4 audio container. Each sample comes from a fresh online source and includes a spectrogram cover generated from the exact file."
+      samples={m4aSamples}
+    />
+  )
+}
+
+const aiffSamples: FormatGuideSample[] = [
+  {
+    title: "Bell Intercept AIFF",
+    capability: "PCM stereo",
+    dimensions: "10 s / 44.1 kHz",
+    fileSize: 1_764_054,
+    url: "/samples/aiff/bell-intercept-10s.aiff",
+    download: "bell-intercept-10s.aiff",
+    previewUrl: "/samples/aiff/bell-intercept-10s-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Old-bell-system-intercept-recording.ogg",
+    license: "Public domain",
+    shape: "wide",
+    aspectRatio: "16 / 9",
+    note: "A telephone intercept recording converted to uncompressed 16-bit PCM AIFF.",
+  },
+  {
+    title: "Steam Locomotive AIFF",
+    capability: "field audio",
+    dimensions: "20 s / 44.1 kHz",
+    fileSize: 3_528_054,
+    url: "/samples/aiff/steam-locomotive-20s.aiff",
+    download: "steam-locomotive-20s.aiff",
+    previewUrl: "/samples/aiff/steam-locomotive-20s-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:WWS_Steamlocomotive.ogg",
+    license: "CC BY 4.0",
+    shape: "wide",
+    aspectRatio: "16 / 9",
+    note: "A field recording converted into AIFF to show the large PCM file footprint.",
+  },
+  {
+    title: "School Bell AIFF",
+    capability: "mono PCM",
+    dimensions: "20 s / 44.1 kHz",
+    fileSize: 1_764_054,
+    url: "/samples/aiff/school-bell-20s.aiff",
+    download: "school-bell-20s.aiff",
+    previewUrl: "/samples/aiff/school-bell-20s-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Old_school_bell_1.ogg",
+    license: "Public domain",
+    shape: "wide",
+    aspectRatio: "16 / 9",
+    note: "A mono bell recording converted to an uncompressed AIFF sample.",
+  },
+  {
+    title: "Organ Duo AIFF",
+    capability: "music source",
+    dimensions: "24 s / 44.1 kHz",
+    fileSize: 4_233_654,
+    url: "/samples/aiff/organ-duo-24s.aiff",
+    download: "organ-duo-24s.aiff",
+    previewUrl: "/samples/aiff/organ-duo-24s-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Duo_cors_de_chasse_Dandrieu.ogg",
+    license: "Public domain",
+    shape: "wide",
+    aspectRatio: "16 / 9",
+    note: "A pipe-organ excerpt converted to AIFF for pro-audio interchange examples.",
+  },
+]
+
+function AiffResourceGallery() {
+  return (
+    <FormatSampleGallery
+      intro="Four real .aiff files encoded as uncompressed 16-bit PCM. Each sample comes from a fresh online source and includes a spectrogram cover generated from the exact AIFF file."
+      samples={aiffSamples}
+    />
+  )
+}
+
+const epubSamples: FormatGuideSample[] = [
+  {
+    title: "Alice's Adventures EPUB",
+    capability: "illustrated",
+    dimensions: "EPUB3 / 350 x 500 cover",
+    fileSize: 1_475_204,
+    url: "/samples/epub/alice-adventures.epub",
+    download: "alice-adventures.epub",
+    previewUrl: "/samples/epub/alice-adventures-cover.jpg",
+    source: "Project Gutenberg",
+    sourceUrl: "https://www.gutenberg.org/ebooks/28885",
+    license: "Project Gutenberg License",
+    shape: "portrait",
+    aspectRatio: "350 / 500",
+    note: "An illustrated EPUB3 file with its embedded cover extracted for preview.",
+  },
+  {
+    title: "Frankenstein EPUB",
+    capability: "novel",
+    dimensions: "EPUB3 / 1824 x 2726 cover",
+    fileSize: 474_453,
+    url: "/samples/epub/frankenstein.epub",
+    download: "frankenstein.epub",
+    previewUrl: "/samples/epub/frankenstein-cover.jpg",
+    source: "Project Gutenberg",
+    sourceUrl: "https://www.gutenberg.org/ebooks/84",
+    license: "Project Gutenberg License",
+    shape: "portrait",
+    aspectRatio: "1824 / 2726",
+    note: "A compact reflowable EPUB3 novel with a high-resolution cover image inside the package.",
+  },
+  {
+    title: "Moby-Dick EPUB",
+    capability: "classic",
+    dimensions: "EPUB3 / 780 x 1227 cover",
+    fileSize: 812_577,
+    url: "/samples/epub/moby-dick.epub",
+    download: "moby-dick.epub",
+    previewUrl: "/samples/epub/moby-dick-cover.jpg",
+    source: "Project Gutenberg",
+    sourceUrl: "https://www.gutenberg.org/ebooks/2701",
+    license: "Project Gutenberg License",
+    shape: "portrait",
+    aspectRatio: "780 / 1227",
+    note: "A long text-heavy EPUB3 file useful for navigation, metadata, and reflow testing.",
+  },
+  {
+    title: "Romeo and Juliet EPUB",
+    capability: "drama",
+    dimensions: "EPUB3 / 1498 x 2250 cover",
+    fileSize: 341_045,
+    url: "/samples/epub/romeo-juliet.epub",
+    download: "romeo-juliet.epub",
+    previewUrl: "/samples/epub/romeo-juliet-cover.jpg",
+    source: "Project Gutenberg",
+    sourceUrl: "https://www.gutenberg.org/ebooks/1513",
+    license: "Project Gutenberg License",
+    shape: "portrait",
+    aspectRatio: "1498 / 2250",
+    note: "A smaller EPUB3 play sample with an embedded portrait cover.",
+  },
+]
+
+function EpubResourceGallery() {
+  return (
+    <FormatSampleGallery
+      intro="Four real EPUB3 files downloaded from Project Gutenberg. Each card previews the embedded cover extracted from the same .epub package, so the visual and downloadable file stay tied together."
+      samples={epubSamples}
+    />
+  )
+}
+
+const mobiSamples: FormatGuideSample[] = [
+  {
+    title: "Dracula MOBI",
+    capability: "legacy Kindle",
+    dimensions: "MOBI / 197 x 300 cover",
+    fileSize: 774_549,
+    url: "/samples/mobi/dracula.mobi",
+    download: "dracula.mobi",
+    previewUrl: "/samples/mobi/dracula-cover.jpg",
+    source: "Project Gutenberg",
+    sourceUrl: "https://www.gutenberg.org/ebooks/345",
+    license: "Project Gutenberg License",
+    shape: "portrait",
+    aspectRatio: "197 / 300",
+    note: "A real Mobipocket file from the Kindle images download, paired with its Gutenberg cover.",
+  },
+  {
+    title: "Sherlock Holmes MOBI",
+    capability: "illustrated",
+    dimensions: "MOBI / 199 x 299 cover",
+    fileSize: 529_315,
+    url: "/samples/mobi/sherlock-holmes.mobi",
+    download: "sherlock-holmes.mobi",
+    previewUrl: "/samples/mobi/sherlock-holmes-cover.jpg",
+    source: "Project Gutenberg",
+    sourceUrl: "https://www.gutenberg.org/ebooks/1661",
+    license: "Project Gutenberg License",
+    shape: "portrait",
+    aspectRatio: "199 / 299",
+    note: "A compact MOBI sample for older Kindle-era reading and converter checks.",
+  },
+  {
+    title: "War of the Worlds MOBI",
+    capability: "classic",
+    dimensions: "MOBI / 200 x 254 cover",
+    fileSize: 362_248,
+    url: "/samples/mobi/war-of-the-worlds.mobi",
+    download: "war-of-the-worlds.mobi",
+    previewUrl: "/samples/mobi/war-of-the-worlds-cover.jpg",
+    source: "Project Gutenberg",
+    sourceUrl: "https://www.gutenberg.org/ebooks/36",
+    license: "Project Gutenberg License",
+    shape: "portrait",
+    aspectRatio: "200 / 254",
+    note: "A small Mobipocket ebook with cover art suitable for legacy-reader tests.",
+  },
+  {
+    title: "A Tale of Two Cities MOBI",
+    capability: "large sample",
+    dimensions: "MOBI / 199 x 300 cover",
+    fileSize: 8_324_413,
+    url: "/samples/mobi/tale-two-cities.mobi",
+    download: "tale-two-cities.mobi",
+    previewUrl: "/samples/mobi/tale-two-cities-cover.jpg",
+    source: "Project Gutenberg",
+    sourceUrl: "https://www.gutenberg.org/ebooks/98",
+    license: "Project Gutenberg License",
+    shape: "portrait",
+    aspectRatio: "199 / 300",
+    note: "A larger MOBI sample useful for archive handling and file-size checks.",
+  },
+]
+
+function MobiResourceGallery() {
+  return (
+    <FormatSampleGallery
+      intro="Four real Mobipocket files from Project Gutenberg Kindle downloads. Browsers cannot preview MOBI directly, so each card uses the matching Gutenberg cover as a visible fallback."
+      samples={mobiSamples}
+    />
+  )
+}
+
+const cbzSamples: FormatGuideSample[] = [
+  {
+    title: "Dingbat Family CBZ",
+    capability: "wide strip",
+    dimensions: "1 page / 4654 x 1390",
+    fileSize: 1_980_131,
+    url: "/samples/cbz/dingbat-family-strip.cbz",
+    download: "dingbat-family-strip.cbz",
+    previewUrl: "/samples/cbz/dingbat-family-strip-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:The_Dingbat_Family_by_George_Herriman_14_December_1915.jpg",
+    license: "Public domain",
+    shape: "wide",
+    aspectRatio: "4654 / 1390",
+    note: "A wide newspaper strip stored in a ZIP archive with CBZ extension.",
+  },
+  {
+    title: "Baron Bean CBZ",
+    capability: "strip sample",
+    dimensions: "1 page / 1080 x 266",
+    fileSize: 70_894,
+    url: "/samples/cbz/baron-bean-strip.cbz",
+    download: "baron-bean-strip.cbz",
+    previewUrl: "/samples/cbz/baron-bean-strip-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Baron_Bean_comic_strip_(1917).jpg",
+    license: "Public domain",
+    shape: "wide",
+    aspectRatio: "1080 / 266",
+    note: "A compact black-and-white comic strip packaged as a valid CBZ archive.",
+  },
+  {
+    title: "Little Nemo CBZ",
+    capability: "Sunday page",
+    dimensions: "1 page / 1760 x 2332",
+    fileSize: 723_326,
+    url: "/samples/cbz/little-nemo-sunday-page.cbz",
+    download: "little-nemo-sunday-page.cbz",
+    previewUrl: "/samples/cbz/little-nemo-sunday-page-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Little_Nemo_1906-09-23.jpg",
+    license: "Public domain",
+    shape: "portrait",
+    aspectRatio: "1760 / 2332",
+    note: "A real CBZ archive containing one ordered comic page image.",
+  },
+  {
+    title: "Snookums CBZ",
+    capability: "comic page",
+    dimensions: "1 page / 1171 x 1499",
+    fileSize: 1_615_300,
+    url: "/samples/cbz/snookums-sunday-page.cbz",
+    download: "snookums-sunday-page.cbz",
+    previewUrl: "/samples/cbz/snookums-sunday-page-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Snookums_by_George_McManus.jpg",
+    license: "Public domain",
+    shape: "portrait",
+    aspectRatio: "1171 / 1499",
+    note: "A public-domain comic page packaged as a CBZ sample.",
+  },
+]
+
+function CbzResourceGallery() {
+  return (
+    <FormatSampleGallery
+      intro="Four real .cbz archives built from public-domain comic page images. Each file is a ZIP archive with ordered page names, and each preview is the first image from the same archive."
+      samples={cbzSamples}
+    />
+  )
+}
+
+const xpsSamples: FormatGuideSample[] = [
+  {
+    title: "London Map XPS",
+    capability: "landscape",
+    dimensions: "XPS / 7000 x 3813 source",
+    fileSize: 8_215_289,
+    url: "/samples/xps/london-map.xps",
+    download: "london-map.xps",
+    previewUrl: "/samples/xps/london-map-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:1806_Mogg_Pocket_or_Case_Map_of_London,_England_-_Geographicus_-_London-mogg-1806.jpg",
+    license: "Public domain",
+    shape: "wide",
+    aspectRatio: "7000 / 3813",
+    note: "A one-page XPS package built from a detailed public-domain map sheet.",
+  },
+  {
+    title: "Declaration XPS",
+    capability: "document page",
+    dimensions: "XPS / 3923 x 4656 source",
+    fileSize: 1_937_338,
+    url: "/samples/xps/declaration.xps",
+    download: "declaration.xps",
+    previewUrl: "/samples/xps/declaration-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:United_States_Declaration_of_Independence.jpg",
+    license: "Public domain",
+    shape: "portrait",
+    aspectRatio: "3923 / 4656",
+    note: "A portrait XPS sample made from a real archival document image.",
+  },
+  {
+    title: "Mars Rover XPS",
+    capability: "photo page",
+    dimensions: "XPS / 630 x 725 source",
+    fileSize: 439_505,
+    url: "/samples/xps/mars-selfie.xps",
+    download: "mars-selfie.xps",
+    previewUrl: "/samples/xps/mars-selfie-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Martian_Anniversary_Selfie.jpg",
+    license: "Public domain / NASA",
+    shape: "portrait",
+    aspectRatio: "630 / 725",
+    note: "A compact photo-based XPS sample from a NASA Mars rover image.",
+  },
+  {
+    title: "Wright Flyer XPS",
+    capability: "historic photo",
+    dimensions: "XPS / 1421 x 1080 source",
+    fileSize: 529_773,
+    url: "/samples/xps/wright-flyer.xps",
+    download: "wright-flyer.xps",
+    previewUrl: "/samples/xps/wright-flyer-cover.jpg",
+    source: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:1904-10-04_Huffman-Prairie_WrightFlyerIII.jpg",
+    license: "Public domain",
+    shape: "wide",
+    aspectRatio: "1421 / 1080",
+    note: "A landscape XPS sample made from a public-domain aviation photograph.",
+  },
+]
+
+function XpsResourceGallery() {
+  return (
+    <FormatSampleGallery
+      intro="Four real .xps packages built from separate public-domain source images. Browsers usually cannot render XPS directly, so each card uses a cover derived from the same source page."
+      samples={xpsSamples}
+    />
+  )
+}
+
+const epsSamples: FormatGuideSample[] = [
+  {
+    title: "Download Files EPS",
+    capability: "concept art",
+    dimensions: "EPS / 600 x 600 cover",
+    fileSize: 815_954,
+    url: "/samples/eps/download-files-concept.eps",
+    download: "download-files-concept.eps",
+    previewUrl: "/samples/eps/download-files-concept-cover.jpg",
+    source: "Public Domain Vectors",
+    sourceUrl: "https://publicdomainvectors.org/en/free-clipart/Download-files-concept/92540.html",
+    license: "Public domain / CC0",
+    shape: "square",
+    aspectRatio: "600 / 600",
+    note: "A real EPS illustration for checking square concept artwork and embedded preview handling.",
+  },
+  {
+    title: "Hand Holding Book EPS",
+    capability: "editorial",
+    dimensions: "EPS / 600 x 600 cover",
+    fileSize: 1_092_358,
+    url: "/samples/eps/hand-holding-book.eps",
+    download: "hand-holding-book.eps",
+    previewUrl: "/samples/eps/hand-holding-book-cover.jpg",
+    source: "Public Domain Vectors",
+    sourceUrl: "https://publicdomainvectors.org/en/free-clipart/Hand-holding-a-big-book/92548.html",
+    license: "Public domain / CC0",
+    shape: "square",
+    aspectRatio: "600 / 600",
+    note: "A detailed EPS illustration with flat shapes, text-line details, and a square preview.",
+  },
+  {
+    title: "Credit Card Payment EPS",
+    capability: "commerce",
+    dimensions: "EPS / 500 x 500 cover",
+    fileSize: 1_039_191,
+    url: "/samples/eps/credit-card-payment.eps",
+    download: "credit-card-payment.eps",
+    previewUrl: "/samples/eps/credit-card-payment-cover.jpg",
+    source: "Public Domain Vectors",
+    sourceUrl:
+      "https://publicdomainvectors.org/en/free-clipart/Credit-card-payment-concept/92324.html",
+    license: "Public domain / CC0",
+    shape: "square",
+    aspectRatio: "500 / 500",
+    note: "A payment-terminal EPS sample useful for modern illustration and prepress import checks.",
+  },
+  {
+    title: "Halftone Shape EPS",
+    capability: "print texture",
+    dimensions: "EPS / 500 x 500 cover",
+    fileSize: 2_815_166,
+    url: "/samples/eps/halftone-shape.eps",
+    download: "halftone-shape.eps",
+    previewUrl: "/samples/eps/halftone-shape-cover.jpg",
+    source: "Public Domain Vectors",
+    sourceUrl: "https://publicdomainvectors.org/en/free-clipart/Halftone-vector-shape/1361.html",
+    license: "Public domain / CC0",
+    shape: "square",
+    aspectRatio: "500 / 500",
+    note: "A larger EPS with dense halftone geometry for checking vector complexity and print-style detail.",
+  },
+]
+
+function EpsResourceGallery() {
+  return (
+    <FormatSampleGallery
+      intro="Four real public-domain EPS files from separate vector downloads. Each preview uses the source-provided raster cover because browsers do not render EPS directly."
+      samples={epsSamples}
+    />
+  )
+}
+
+const aiSamples: FormatGuideSample[] = [
+  {
+    title: "Internet Search AI",
+    capability: "web concept",
+    dimensions: "AI / 660 x 660 cover",
+    fileSize: 118_401,
+    url: "/samples/ai/concept-search.ai",
+    download: "concept-search.ai",
+    previewUrl: "/samples/ai/concept-search-cover.jpg",
+    source: "Public Domain Vectors",
+    sourceUrl:
+      "https://publicdomainvectors.org/en/free-clipart/Concept-of-Internet-search/92512.html",
+    license: "Public domain / CC0",
+    shape: "square",
+    aspectRatio: "660 / 660",
+    note: "A PDF-compatible Illustrator file with a web-search illustration and a square source cover.",
+  },
+  {
+    title: "Time Management AI",
+    capability: "dashboard concept",
+    dimensions: "AI / 600 x 600 cover",
+    fileSize: 104_714,
+    url: "/samples/ai/time-management.ai",
+    download: "time-management.ai",
+    previewUrl: "/samples/ai/time-management-cover.jpg",
+    source: "Public Domain Vectors",
+    sourceUrl: "https://publicdomainvectors.org/en/free-clipart/Time-managment/92495.html",
+    license: "Public domain / CC0",
+    shape: "square",
+    aspectRatio: "600 / 600",
+    note: "A compact Illustrator sample for checking PDF-compatible AI import and preview metadata.",
+  },
+  {
+    title: "Cleaning Rag AI",
+    capability: "full-bleed color",
+    dimensions: "AI / 660 x 660 cover",
+    fileSize: 266_437,
+    url: "/samples/ai/cleaning-rag.ai",
+    download: "cleaning-rag.ai",
+    previewUrl: "/samples/ai/cleaning-rag-cover.jpg",
+    source: "Public Domain Vectors",
+    sourceUrl:
+      "https://publicdomainvectors.org/en/free-clipart/Hand-with-a-cleaning-rag/92524.html",
+    license: "Public domain / CC0",
+    shape: "square",
+    aspectRatio: "660 / 660",
+    note: "A brighter Illustrator file with large flat shapes and a denser color field.",
+  },
+  {
+    title: "Automatic Hand AI",
+    capability: "object scene",
+    dimensions: "AI / 500 x 500 cover",
+    fileSize: 105_709,
+    url: "/samples/ai/automatic-hand.ai",
+    download: "automatic-hand.ai",
+    previewUrl: "/samples/ai/automatic-hand-cover.jpg",
+    source: "Public Domain Vectors",
+    sourceUrl: "https://publicdomainvectors.org/en/free-clipart/Automatic-hand/92380.html",
+    license: "Public domain / CC0",
+    shape: "square",
+    aspectRatio: "500 / 500",
+    note: "A PDF-compatible AI sample with isolated machinery artwork and simple object layers.",
+  },
+]
+
+function AiResourceGallery() {
+  return (
+    <FormatSampleGallery
+      intro="Four real public-domain Adobe Illustrator files from fresh vector downloads. Browser previews use the source-provided covers because .ai files are not web-renderable."
+      samples={aiSamples}
+    />
+  )
+}
+
+const tarSamples: FormatGuideSample[] = [
+  {
+    title: "GNU hello Source TAR.GZ",
+    capability: "source release",
+    dimensions: "538 entries / tar.gz",
+    fileSize: 1_168_515,
+    url: "/samples/tar/hello-2.12.2.tar.gz",
+    download: "hello-2.12.2.tar.gz",
+    previewUrl: "/samples/tar/hello-2.12.2-cover.png",
+    source: "GNU FTP",
+    sourceUrl: "https://ftp.gnu.org/gnu/hello/",
+    license: "GPL-3.0-or-later",
+    shape: "square",
+    aspectRatio: "1200 / 1200",
+    note: "A full GNU source release archive with build files, translations, and documentation.",
+  },
+  {
+    title: "Lua 5.4.8 TAR.GZ",
+    capability: "language source",
+    dimensions: "78 entries / tar.gz",
+    fileSize: 374_332,
+    url: "/samples/tar/lua-5.4.8.tar.gz",
+    download: "lua-5.4.8.tar.gz",
+    previewUrl: "/samples/tar/lua-5.4.8-cover.png",
+    source: "Lua.org",
+    sourceUrl: "https://www.lua.org/ftp/",
+    license: "MIT",
+    shape: "square",
+    aspectRatio: "1200 / 1200",
+    note: "A compact language source archive with C sources, headers, manuals, and docs.",
+  },
+  {
+    title: "is-number NPM TGZ",
+    capability: "tiny package",
+    dimensions: "4 entries / tgz",
+    fileSize: 3_730,
+    url: "/samples/tar/is-number-7.0.0.tgz",
+    download: "is-number-7.0.0.tgz",
+    previewUrl: "/samples/tar/is-number-7.0.0-cover.png",
+    source: "npm Registry",
+    sourceUrl: "https://www.npmjs.com/package/is-number/v/7.0.0",
+    license: "MIT",
+    shape: "square",
+    aspectRatio: "1200 / 1200",
+    note: "A very small npm tarball useful for checking package-root paths and metadata.",
+  },
+  {
+    title: "picocolors NPM TGZ",
+    capability: "typed package",
+    dimensions: "7 entries / tgz",
+    fileSize: 2_625,
+    url: "/samples/tar/picocolors-1.1.1.tgz",
+    download: "picocolors-1.1.1.tgz",
+    previewUrl: "/samples/tar/picocolors-1.1.1-cover.png",
+    source: "npm Registry",
+    sourceUrl: "https://www.npmjs.com/package/picocolors/v/1.1.1",
+    license: "ISC",
+    shape: "square",
+    aspectRatio: "1200 / 1200",
+    note: "A small JavaScript package archive with browser, Node, and TypeScript definition files.",
+  },
+]
+
+function TarResourceGallery() {
+  return (
+    <FormatSampleGallery
+      intro="Four real compressed tar archives from package registries and official source releases. Each preview is generated from the actual archive file list, so the cover reflects the downloaded tarball contents."
+      samples={tarSamples}
+    />
+  )
+}
+
+const sevenZSamples: FormatGuideSample[] = [
+  {
+    title: "7-Zip 26.01 Source",
+    capability: "source archive",
+    dimensions: "1292 entries / 7z",
+    fileSize: 1_530_276,
+    url: "/samples/7z/7z2601-src.7z",
+    download: "7z2601-src.7z",
+    previewUrl: "/samples/7z/7z2601-src-cover.png",
+    source: "7-Zip GitHub Releases",
+    sourceUrl: "https://github.com/ip7z/7zip/releases/tag/26.01",
+    license: "LGPL / BSD / public domain components",
+    shape: "square",
+    aspectRatio: "1200 / 1200",
+    note: "A large official 7-Zip source archive with C, C++, assembly, resources, and build files.",
+  },
+  {
+    title: "LZMA SDK 26.01",
+    capability: "SDK archive",
+    dimensions: "715 entries / 7z",
+    fileSize: 1_782_428,
+    url: "/samples/7z/lzma2601-sdk.7z",
+    download: "lzma2601-sdk.7z",
+    previewUrl: "/samples/7z/lzma2601-sdk-cover.png",
+    source: "7-Zip GitHub Releases",
+    sourceUrl: "https://github.com/ip7z/7zip/releases/tag/26.01",
+    license: "Public domain / 7-Zip SDK terms",
+    shape: "square",
+    aspectRatio: "1200 / 1200",
+    note: "An official LZMA SDK archive with compression sources, headers, examples, and docs.",
+  },
+  {
+    title: "7-Zip 26.01 Extra",
+    capability: "binary package",
+    dimensions: "23 entries / 7z",
+    fileSize: 1_759_805,
+    url: "/samples/7z/7z2601-extra.7z",
+    download: "7z2601-extra.7z",
+    previewUrl: "/samples/7z/7z2601-extra-cover.png",
+    source: "7-Zip GitHub Releases",
+    sourceUrl: "https://github.com/ip7z/7zip/releases/tag/26.01",
+    license: "LGPL / 7-Zip license",
+    shape: "square",
+    aspectRatio: "1200 / 1200",
+    note: "A current official extra package with DLLs, command-line binaries, help, and FAR files.",
+  },
+  {
+    title: "7-Zip 23.01 Extra",
+    capability: "older package",
+    dimensions: "18 entries / 7z",
+    fileSize: 1_027_828,
+    url: "/samples/7z/7z2301-extra.7z",
+    download: "7z2301-extra.7z",
+    previewUrl: "/samples/7z/7z2301-extra-cover.png",
+    source: "7-Zip.org",
+    sourceUrl: "https://www.7-zip.org/a/7z2301-extra.7z",
+    license: "LGPL / 7-Zip license",
+    shape: "square",
+    aspectRatio: "1200 / 1200",
+    note: "An older official extra package for comparing archive contents across 7-Zip releases.",
+  },
+]
+
+function SevenZResourceGallery() {
+  return (
+    <FormatSampleGallery
+      intro="Four real .7z archives from official 7-Zip release downloads. Each preview is generated from the actual archive listing, so it shows real entries and file-type counts instead of a generic archive icon."
+      samples={sevenZSamples}
+    />
+  )
+}
+
+const csvSamples: FormatGuideSample[] = [
+  {
+    title: "World Population CSV",
+    capability: "large table",
+    dimensions: "17195 rows / 4 columns",
+    fileSize: 552_112,
+    url: "/samples/csv/population.csv",
+    download: "population.csv",
+    previewUrl: "/samples/csv/population-cover.png",
+    source: "DataHub",
+    sourceUrl: "https://github.com/datasets/population",
+    license: "PDDL",
+    shape: "square",
+    aspectRatio: "1200 / 1200",
+    note: "A country-year population table with many rows and a compact four-column schema.",
+  },
+  {
+    title: "Taxi Trips CSV",
+    capability: "wide table",
+    dimensions: "6433 rows / 14 columns",
+    fileSize: 869_349,
+    url: "/samples/csv/taxis.csv",
+    download: "taxis.csv",
+    previewUrl: "/samples/csv/taxis-cover.png",
+    source: "seaborn-data",
+    sourceUrl: "https://github.com/mwaskom/seaborn-data/blob/master/taxis.csv",
+    license: "BSD-3-Clause",
+    shape: "square",
+    aspectRatio: "1200 / 1200",
+    note: "A wider CSV with timestamps, numeric amounts, payment labels, and location fields.",
+  },
+  {
+    title: "Seattle Weather CSV",
+    capability: "time series",
+    dimensions: "1461 rows / 6 columns",
+    fileSize: 48_219,
+    url: "/samples/csv/seattle-weather.csv",
+    download: "seattle-weather.csv",
+    previewUrl: "/samples/csv/seattle-weather-cover.png",
+    source: "vega-datasets",
+    sourceUrl: "https://github.com/vega/vega-datasets/blob/main/data/seattle-weather.csv",
+    license: "BSD-3-Clause",
+    shape: "square",
+    aspectRatio: "1200 / 1200",
+    note: "A weather time-series CSV with dates, numeric measurements, and categorical labels.",
+  },
+  {
+    title: "Stock Prices CSV",
+    capability: "compact series",
+    dimensions: "559 rows / 3 columns",
+    fileSize: 12_245,
+    url: "/samples/csv/stocks.csv",
+    download: "stocks.csv",
+    previewUrl: "/samples/csv/stocks-cover.png",
+    source: "vega-datasets",
+    sourceUrl: "https://github.com/vega/vega-datasets/blob/main/data/stocks.csv",
+    license: "BSD-3-Clause",
+    shape: "square",
+    aspectRatio: "1200 / 1200",
+    note: "A small long-form CSV with a symbol column, date strings, and numeric prices.",
+  },
+]
+
+function CsvResourceGallery() {
+  return (
+    <FormatSampleGallery
+      intro="Four real CSV datasets from public repositories. Each preview is generated from the actual header and first rows, so it shows the shape of the downloaded table rather than a generic spreadsheet icon."
+      samples={csvSamples}
+    />
+  )
+}
+
+const jsonlSamples: FormatGuideSample[] = [
+  {
+    title: "GSM8K Messages JSONL",
+    capability: "nested records",
+    dimensions: "1000 lines / 2 keys",
+    fileSize: 2_523_181,
+    url: "/samples/jsonl/gsm8k-sample.jsonl",
+    download: "gsm8k-sample.jsonl",
+    previewUrl: "/samples/jsonl/gsm8k-sample-cover.png",
+    source: "Eval Protocol",
+    sourceUrl:
+      "https://github.com/eval-protocol/python-sdk/blob/main/development/gsm8k_sample.jsonl",
+    license: "MIT",
+    shape: "square",
+    aspectRatio: "1200 / 1200",
+    note: "A real JSONL sample where each record stores nested chat messages and a ground-truth answer.",
+  },
+  {
+    title: "Spec-Bench Questions JSONL",
+    capability: "benchmark",
+    dimensions: "480 lines / 3 keys",
+    fileSize: 698_768,
+    url: "/samples/jsonl/spec-bench-questions.jsonl",
+    download: "spec-bench-questions.jsonl",
+    previewUrl: "/samples/jsonl/spec-bench-questions-cover.png",
+    source: "Spec-Bench",
+    sourceUrl: "https://github.com/hemingkx/Spec-Bench/blob/main/data/spec_bench/question.jsonl",
+    license: "Apache-2.0",
+    shape: "square",
+    aspectRatio: "1200 / 1200",
+    note: "A benchmark question stream with category labels and multi-turn prompt arrays.",
+  },
+  {
+    title: "Text Generation Pairs JSONL",
+    capability: "input/output",
+    dimensions: "142 lines / 2 keys",
+    fileSize: 15_894,
+    url: "/samples/jsonl/model-forge-text.jsonl",
+    download: "model-forge-text.jsonl",
+    previewUrl: "/samples/jsonl/model-forge-text-cover.png",
+    source: "ModelForge",
+    sourceUrl:
+      "https://github.com/RETR0-OS/ModelForge/blob/main/ModelForge/test_datasets/low_text_generation.jsonl",
+    license: "BSD-3-Clause",
+    shape: "square",
+    aspectRatio: "1200 / 1200",
+    note: "A compact JSONL file with one input and one output string per line.",
+  },
+  {
+    title: "Summary Pairs JSONL",
+    capability: "summaries",
+    dimensions: "100 lines / 2 keys",
+    fileSize: 40_739,
+    url: "/samples/jsonl/model-forge-summary.jsonl",
+    download: "model-forge-summary.jsonl",
+    previewUrl: "/samples/jsonl/model-forge-summary-cover.png",
+    source: "ModelForge",
+    sourceUrl:
+      "https://github.com/RETR0-OS/ModelForge/blob/main/ModelForge/test_datasets/low_summarization_train_set.jsonl",
+    license: "BSD-3-Clause",
+    shape: "square",
+    aspectRatio: "1200 / 1200",
+    note: "A summarization dataset where each line contains an article and its summary.",
+  },
+]
+
+function JsonlResourceGallery() {
+  return (
+    <FormatSampleGallery
+      intro="Four real JSONL files from public repositories. Each preview is generated from valid one-line JSON records, showing top-level keys and the first records instead of a generic code icon."
+      samples={jsonlSamples}
+    />
+  )
+}
 
 const make = (manifest: FormatManifest): FormatManifest => manifest
 
@@ -272,9 +1815,9 @@ export const longTailFormats: FormatManifest[] = [
         a: "Many BMP files store raw or lightly compressed pixels, so file size grows directly with width, height, and color depth.",
       },
     ],
-    sources: [mdnImages, locFormats],
+    sources: [mdnImages, locBmp],
     lastUpdated: updated,
-    Component: preview("image", "BMP", visualSizes),
+    Component: BmpResourceGallery,
   }),
   make({
     slug: "psd",
@@ -337,10 +1880,10 @@ export const longTailFormats: FormatManifest[] = [
         url: "https://helpx.adobe.com/photoshop/using/file-formats.html",
         note: "Photoshop format capabilities and usage",
       },
-      locFormats,
+      locPsd,
     ],
     lastUpdated: updated,
-    Component: preview("image", "PSD", visualSizes),
+    Component: PsdResourceGallery,
   }),
   make({
     slug: "dng",
@@ -406,24 +1949,24 @@ export const longTailFormats: FormatManifest[] = [
         url: "https://helpx.adobe.com/camera-raw/digital-negative.html",
         note: "DNG purpose and specification downloads",
       },
-      locFormats,
+      locDng,
     ],
     lastUpdated: updated,
-    Component: preview("image", "DNG", visualSizes),
+    Component: DngResourceGallery,
   }),
   make({
     slug: "raw",
     category: "image",
     name: "RAW",
-    fullName: "Camera Raw Image",
+    fullName: "Camera RAW formats",
     year: 1997,
     extensions: ["raw", "cr2", "nef", "arw", "raf", "orf", "rw2"],
     mimeTypes: ["image/x-canon-cr2", "image/x-nikon-nef", "image/x-sony-arw"],
-    standard: "Vendor-specific camera raw formats",
+    standard: "Format family: vendor-specific camera raw files",
     tagline:
-      "A family of camera sensor formats used before a photo is rendered into JPG, TIFF, or WebP.",
+      "A family of vendor-specific camera sensor files used before a photo is rendered into JPG, TIFF, or WebP.",
     description:
-      "RAW is not one single standard. It is a family of camera vendor formats that store minimally processed sensor data.\n\nUse RAW when you need maximum editing latitude. Export a normal image format when you need compatibility, previews, or upload support.",
+      "RAW is not one single file format. It is a category of camera vendor formats, such as Canon CR2, Nikon NEF, Sony ARW, Fujifilm RAF, Olympus ORF, and Panasonic RW2.\n\nUse RAW when you need maximum editing latitude. Export a normal image format when you need compatibility, previews, or upload support.",
     pros: [
       "Maximum photo editing flexibility",
       "Preserves camera metadata",
@@ -463,7 +2006,7 @@ export const longTailFormats: FormatManifest[] = [
       },
     ],
     sources: [
-      locFormats,
+      locRaw,
       {
         title: "Adobe Camera Raw supported cameras",
         url: "https://helpx.adobe.com/camera-raw/kb/camera-raw-plug-supported-cameras.html",
@@ -471,7 +2014,7 @@ export const longTailFormats: FormatManifest[] = [
       },
     ],
     lastUpdated: updated,
-    Component: preview("image", "RAW", visualSizes),
+    Component: RawResourceGallery,
   }),
   make({
     slug: "mkv",
@@ -535,10 +2078,10 @@ export const longTailFormats: FormatManifest[] = [
         url: "https://www.matroska.org/technical/notes.html",
         note: "Matroska container design and technical notes",
       },
-      locFormats,
+      locMkv,
     ],
     lastUpdated: updated,
-    Component: preview("video", "MKV", videoSizes),
+    Component: MkvResourceGallery,
   }),
   make({
     slug: "mov",
@@ -601,13 +2144,13 @@ export const longTailFormats: FormatManifest[] = [
     sources: [
       {
         title: "Apple QuickTime File Format",
-        url: "https://developer.apple.com/library/archive/documentation/QuickTime/QTFF/QTFFPreface/qtffPreface.html",
+        url: "https://developer.apple.com/documentation/quicktime-file-format",
         note: "QuickTime container reference",
       },
-      locFormats,
+      locMov,
     ],
     lastUpdated: updated,
-    Component: preview("video", "MOV", videoSizes),
+    Component: MovResourceGallery,
   }),
   make({
     slug: "m4v",
@@ -670,10 +2213,10 @@ export const longTailFormats: FormatManifest[] = [
         url: "https://www.iana.org/assignments/media-types/video/mp4",
         note: "registered MP4 media type used by MP4-like containers",
       },
-      locFormats,
+      locMpeg4,
     ],
     lastUpdated: updated,
-    Component: preview("video", "M4V", videoSizes),
+    Component: M4vResourceGallery,
   }),
   make({
     slug: "avi",
@@ -736,10 +2279,10 @@ export const longTailFormats: FormatManifest[] = [
         url: "https://learn.microsoft.com/en-us/windows/win32/directshow/avi-riff-file-reference",
         note: "AVI container structure and RIFF basis",
       },
-      locFormats,
+      locAvi,
     ],
     lastUpdated: updated,
-    Component: preview("video", "AVI", videoSizes),
+    Component: AviResourceGallery,
   }),
   make({
     slug: "flac",
@@ -797,10 +2340,9 @@ export const longTailFormats: FormatManifest[] = [
         url: "https://xiph.org/flac/format.html",
         note: "official FLAC bitstream and metadata format",
       },
-      locFormats,
     ],
     lastUpdated: updated,
-    Component: preview("audio", "FLAC", audioSettings),
+    Component: FlacResourceGallery,
   }),
   make({
     slug: "ogg",
@@ -869,7 +2411,7 @@ export const longTailFormats: FormatManifest[] = [
       },
     ],
     lastUpdated: updated,
-    Component: preview("audio", "OGG", audioSettings),
+    Component: OggResourceGallery,
   }),
   make({
     slug: "opus",
@@ -934,7 +2476,7 @@ export const longTailFormats: FormatManifest[] = [
       },
     ],
     lastUpdated: updated,
-    Component: preview("audio", "Opus", audioSettings),
+    Component: OpusResourceGallery,
   }),
   make({
     slug: "m4a",
@@ -996,10 +2538,10 @@ export const longTailFormats: FormatManifest[] = [
         url: "https://www.iana.org/assignments/media-types/audio/mp4",
         note: "registered MPEG-4 audio media type",
       },
-      locFormats,
+      locMpeg4,
     ],
     lastUpdated: updated,
-    Component: preview("audio", "M4A", audioSettings),
+    Component: M4aResourceGallery,
   }),
   make({
     slug: "aiff",
@@ -1052,16 +2594,9 @@ export const longTailFormats: FormatManifest[] = [
         a: "No. Use AAC, Opus, MP3, or another browser-friendly delivery format.",
       },
     ],
-    sources: [
-      locFormats,
-      {
-        title: "Apple AIFF overview in legacy docs",
-        url: "https://developer.apple.com/library/archive/documentation/QuickTime/RM/MusicAndAudio/Sound/Audio_File_Format_Specification.pdf",
-        note: "Apple audio file format specification PDF",
-      },
-    ],
+    sources: [locAiff],
     lastUpdated: updated,
-    Component: preview("audio", "AIFF", audioSettings),
+    Component: AiffResourceGallery,
   }),
   make({
     slug: "epub",
@@ -1123,10 +2658,9 @@ export const longTailFormats: FormatManifest[] = [
         url: "https://www.w3.org/TR/epub-33/",
         note: "current EPUB core specification",
       },
-      locFormats,
     ],
     lastUpdated: updated,
-    Component: preview("ebook", "EPUB", documentSizes),
+    Component: EpubResourceGallery,
   }),
   make({
     slug: "mobi",
@@ -1189,10 +2723,9 @@ export const longTailFormats: FormatManifest[] = [
         url: "https://www.loc.gov/preservation/digital/formats/fdd/fdd000472.shtml",
         note: "MOBI format description and history",
       },
-      locFormats,
     ],
     lastUpdated: updated,
-    Component: preview("ebook", "MOBI", documentSizes),
+    Component: MobiResourceGallery,
   }),
   make({
     slug: "cbz",
@@ -1255,14 +2788,9 @@ export const longTailFormats: FormatManifest[] = [
         url: "https://www.loc.gov/preservation/digital/formats/fdd/fdd000527.shtml",
         note: "comic archive format family",
       },
-      locFormats,
     ],
     lastUpdated: updated,
-    Component: preview(
-      "archive",
-      "CBZ",
-      documentSizes.map((item) => ({ ...item, kind: "document" })),
-    ),
+    Component: CbzResourceGallery,
   }),
   make({
     slug: "xps",
@@ -1325,10 +2853,10 @@ export const longTailFormats: FormatManifest[] = [
         url: "https://learn.microsoft.com/en-us/windows/win32/printdocs/documents",
         note: "Windows XPS document and print architecture docs",
       },
-      locFormats,
+      locXps,
     ],
     lastUpdated: updated,
-    Component: preview("document", "XPS", documentSizes),
+    Component: XpsResourceGallery,
   }),
   make({
     slug: "eps",
@@ -1388,10 +2916,10 @@ export const longTailFormats: FormatManifest[] = [
         url: "https://www.adobe.com/jp/print/postscript/pdfs/PLRM.pdf",
         note: "PostScript reference used by EPS workflows",
       },
-      locFormats,
+      locEps,
     ],
     lastUpdated: updated,
-    Component: preview("vector", "EPS", vectorSizes),
+    Component: EpsResourceGallery,
   }),
   make({
     slug: "ai",
@@ -1450,14 +2978,13 @@ export const longTailFormats: FormatManifest[] = [
     ],
     sources: [
       {
-        title: "Adobe Illustrator file formats",
-        url: "https://helpx.adobe.com/illustrator/using/file-formats.html",
+        title: "Adobe Illustrator supported file formats",
+        url: "https://helpx.adobe.com/sg/illustrator/kb/supported-file-formats-illustrator.html",
         note: "Illustrator import/export format guidance",
       },
-      locFormats,
     ],
     lastUpdated: updated,
-    Component: preview("vector", "AI", vectorSizes),
+    Component: AiResourceGallery,
   }),
   make({
     slug: "tar",
@@ -1520,10 +3047,10 @@ export const longTailFormats: FormatManifest[] = [
         url: "https://www.gnu.org/software/tar/manual/tar.html",
         note: "tar archive behavior and common usage",
       },
-      locFormats,
+      locTar,
     ],
     lastUpdated: updated,
-    Component: preview("archive", "TAR", archiveSamples),
+    Component: TarResourceGallery,
   }),
   make({
     slug: "7z",
@@ -1582,10 +3109,10 @@ export const longTailFormats: FormatManifest[] = [
         url: "https://www.7-zip.org/7z.html",
         note: "official 7z format features",
       },
-      locFormats,
+      loc7z,
     ],
     lastUpdated: updated,
-    Component: preview("archive", "7Z", archiveSamples),
+    Component: SevenZResourceGallery,
   }),
   make({
     slug: "csv",
@@ -1647,7 +3174,7 @@ export const longTailFormats: FormatManifest[] = [
       },
     ],
     lastUpdated: updated,
-    Component: preview("data", "CSV", dataSamples),
+    Component: CsvResourceGallery,
   }),
   make({
     slug: "jsonl",
@@ -1712,6 +3239,6 @@ export const longTailFormats: FormatManifest[] = [
       },
     ],
     lastUpdated: updated,
-    Component: preview("data", "JSONL", dataSamples),
+    Component: JsonlResourceGallery,
   }),
 ]
